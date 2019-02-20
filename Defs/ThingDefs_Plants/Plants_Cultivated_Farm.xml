@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="PlantBase" Name="ResidentEvilHerb" Abstract="True">
+    <statBases>
+      <MaxHitPoints>60</MaxHitPoints>
+      <Nutrition>0.15</Nutrition>
+    </statBases>
+    <selectable>true</selectable>
+    <pathCost>10</pathCost>
+    <ingestible />
+  </ThingDef>
+
+  <ThingDef ParentName="ResidentEvilHerb">
+    <defName>RE_Plant_ResidentEvilHerbGreen</defName>
+    <label>green herb</label>
+    <description>The most useful of the three herbs you can find. The Green Herb by itself will restore a small amount of health. It can be mixed with other herbs.</description>
+     <graphicData>
+      <texPath>Things/Plant/Greenherb</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>   
+    <plant>
+      <growDays>7</growDays>
+      <sowWork>800</sowWork>
+      <sowMinSkill>8</sowMinSkill>
+      <sowTags>
+				<li>Ground</li>
+				<li>Hydroponic</li>
+			</sowTags>
+      <purpose>Health</purpose>
+    </plant>
+    <plant>
+      <growDays>10</growDays>
+      <dieIfLeafless>false</dieIfLeafless>
+      <harvestWork>400</harvestWork>
+      <harvestTag>Standard</harvestTag>
+      <harvestedThingDef>MedicineHerbal</harvestedThingDef>
+      <harvestYield>1</harvestYield>
+      <topWindExposure>0.1</topWindExposure>
+      <visualSizeRange>
+        <min>0.3</min>
+        <max>1.0</max>
+      </visualSizeRange>
+      <wildOrder>2</wildOrder>
+    </plant>
+  </ThingDef>
+
+  <ThingDef ParentName="ResidentEvilHerb">
+    <defName>RE_Plant_ResidentEvilHerbRed</defName>
+    <label>red herb</label>
+    <description>A herb that has no use on its own, but enhances the effect of other herbs.</description>
+     <graphicData>
+      <texPath>Things/Plant/Redherb</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>   
+    <plant>
+      <growDays>7</growDays>
+      <sowWork>800</sowWork>
+      <sowMinSkill>8</sowMinSkill>
+      <sowTags>
+				<li>Ground</li>
+				<li>Hydroponic</li>
+			</sowTags>
+      <purpose>Health</purpose>
+    </plant>
+    <plant>
+      <growDays>10</growDays>
+      <dieIfLeafless>false</dieIfLeafless>
+      <harvestWork>400</harvestWork>
+      <harvestTag>Standard</harvestTag>
+      <harvestedThingDef>MedicineHerbal</harvestedThingDef>
+      <harvestYield>1</harvestYield>
+      <topWindExposure>0.1</topWindExposure>
+      <visualSizeRange>
+        <min>0.3</min>
+        <max>1.0</max>
+      </visualSizeRange>
+      <wildOrder>2</wildOrder>
+    </plant>
+  </ThingDef>
+
+  <ThingDef ParentName="ResidentEvilHerb">
+    <defName>RE_Plant_ResidentEvilHerbRed</defName>
+    <label>blue herb</label>
+    <description>This herb can be used to neutralize the effect of any toxins and poisons. It can be mixed with other herbs for additional effects.</description>
+     <graphicData>
+      <texPath>Things/Plant/Blueherb</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>   
+    <plant>
+      <growDays>7</growDays>
+      <sowWork>800</sowWork>
+      <sowMinSkill>8</sowMinSkill>
+      <sowTags>
+				<li>Ground</li>
+				<li>Hydroponic</li>
+			</sowTags>
+      <purpose>Health</purpose>
+    </plant>
+    <plant>
+      <growDays>10</growDays>
+      <dieIfLeafless>false</dieIfLeafless>
+      <harvestWork>400</harvestWork>
+      <harvestTag>Standard</harvestTag>
+      <harvestedThingDef>MedicineHerbal</harvestedThingDef>
+      <harvestYield>1</harvestYield>
+      <topWindExposure>0.1</topWindExposure>
+      <visualSizeRange>
+        <min>0.3</min>
+        <max>1.0</max>
+      </visualSizeRange>
+      <wildOrder>2</wildOrder>
+    </plant>
+  </ThingDef>
+
+</Defs>

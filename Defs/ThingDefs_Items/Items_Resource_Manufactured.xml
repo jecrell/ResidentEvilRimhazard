@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="MedicineBase">
+    <defName>RE_MedicineGreenGreen</defName>
+    <label>Mixed Herbs (G+G)</label>
+    <description>.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Medicine/MedicineIndustrial</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+      <drawSize>0.85</drawSize>
+    </graphicData>
+		<techLevel>Industrial</techLevel>
+		<statBases>
+      <MarketValue>18</MarketValue>
+      <Mass>0.50</Mass>
+      <Flammability>0.7</Flammability>
+      <MedicalPotency>1.00</MedicalPotency>
+      <MedicalQualityMax>1.00</MedicalQualityMax>
+      <DeteriorationRate>2</DeteriorationRate>
+      <WorkToMake>700</WorkToMake>
+    </statBases>
+    <costList>
+      <MedicineHerbal>1</MedicineHerbal>
+      <Neutroamine>1</Neutroamine>
+      <Cloth>3</Cloth>
+    </costList>
+    <recipeMaker>
+      <workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+      <workSkill>Intellectual</workSkill>
+      <recipeUsers>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <researchPrerequisite>MedicineProduction</researchPrerequisite>
+      <skillRequirements>
+				<Crafting>4</Crafting>
+        <Intellectual>4</Intellectual>
+      </skillRequirements>
+    </recipeMaker>
+  </ThingDef>
+
+  <ThingDef ParentName="MedicineBase">
+    <defName>RE_MedicineGreenGreenGreen</defName>
+    <label>Mixed Herbs (G+G+G)</label>
+    <description>.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Medicine/MedicineIndustrial</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+      <drawSize>0.85</drawSize>
+    </graphicData>
+		<techLevel>Industrial</techLevel>
+		<statBases>
+      <MarketValue>18</MarketValue>
+      <Mass>0.50</Mass>
+      <Flammability>0.7</Flammability>
+      <MedicalPotency>1.60</MedicalPotency>
+      <MedicalQualityMax>1.60</MedicalQualityMax>
+      <DeteriorationRate>2</DeteriorationRate>
+      <WorkToMake>700</WorkToMake>
+    </statBases>
+    <costList>
+      <MedicineHerbal>1</MedicineHerbal>
+      <Neutroamine>1</Neutroamine>
+      <Cloth>3</Cloth>
+    </costList>
+    <recipeMaker>
+      <workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+      <workSkill>Intellectual</workSkill>
+      <recipeUsers>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <researchPrerequisite>MedicineProduction</researchPrerequisite>
+      <skillRequirements>
+				<Crafting>4</Crafting>
+        <Intellectual>4</Intellectual>
+      </skillRequirements>
+    </recipeMaker>
+  </ThingDef>
+
+  <ThingDef ParentName="MedicineBase">
+    <defName>RE_MedicineGreenRed</defName>
+    <label>Mixed Herbs (G+R)</label>
+    <description>.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Medicine/MedicineIndustrial</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+      <drawSize>0.85</drawSize>
+    </graphicData>
+		<techLevel>Industrial</techLevel>
+		<statBases>
+      <MarketValue>18</MarketValue>
+      <Mass>0.50</Mass>
+      <Flammability>0.7</Flammability>
+      <MedicalPotency>1.60</MedicalPotency>
+      <MedicalQualityMax>1.60</MedicalQualityMax>
+      <DeteriorationRate>2</DeteriorationRate>
+      <WorkToMake>700</WorkToMake>
+    </statBases>
+    <costList>
+      <MedicineHerbal>1</MedicineHerbal>
+      <Neutroamine>1</Neutroamine>
+      <Cloth>3</Cloth>
+    </costList>
+    <recipeMaker>
+      <workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+      <workSkill>Intellectual</workSkill>
+      <recipeUsers>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <researchPrerequisite>MedicineProduction</researchPrerequisite>
+      <skillRequirements>
+				<Crafting>4</Crafting>
+        <Intellectual>4</Intellectual>
+      </skillRequirements>
+    </recipeMaker>
+  </ThingDef>
+
+</Defs>
