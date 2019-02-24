@@ -52,6 +52,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IngestionOutcomeDoer_Herb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="REUtility.cs" />
   </ItemGroup>

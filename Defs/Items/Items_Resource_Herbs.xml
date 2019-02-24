@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+  <HediffDef>
+    <defName>RE_MedicineGreenHediff</defName>
+    <hediffClass>HediffWithComps</hediffClass>
+    <label>Green herb effects</label>
+    <labelNoun>Green herb effects</labelNoun>
+    <defaultLabelColor>(0,1.0,0)</defaultLabelColor>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <maxSeverity>1.0</maxSeverity>
+    <isBad>false</isBad>
+    <comps>
+      <li Class="HediffCompProperties_SeverityPerDay">
+        <severityPerDay>-1.0</severityPerDay>
+      </li>
+    </comps>
+      <stages>
+        <li>
+          <statOffsets>
+            <ImmunityGainSpeed>0.30</ImmunityGainSpeed>            
+          </statOffsets>
+        </li>
+      </stages>
+  </HediffDef>
+
   <ThingDef ParentName="MedicineBase">
     <defName>RE_MedicineGreen</defName>
     <label>green herb powder</label>
@@ -19,6 +42,17 @@
       <MedicalQualityMax>0.70</MedicalQualityMax>
       <DeteriorationRate>6</DeteriorationRate>
     </statBases>
+    <ingestible>
+      <foodType>Plant, Processed</foodType>
+      <drugCategory>Medical</drugCategory>
+      <outcomeDoers>
+        <li Class="IngestionOutcomeDoer_GiveHediff">
+          <hediffDef>SmokeleafHigh</hediffDef>
+          <severity>0.5</severity>
+          <toleranceChemical>Smokeleaf</toleranceChemical>
+        </li>
+      </outcomeDoers>
+    </ingestible>
     <tickerType>Rare</tickerType>
     <comps>
       <li Class="CompProperties_Rottable">
