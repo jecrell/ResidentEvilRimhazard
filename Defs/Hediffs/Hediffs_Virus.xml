@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+
+  <HediffDef>
+    <defName>RE_TVirus</defName>
+    <label>T-Virus</label>
+    <hediffClass>RERimhazard.HediffWithComps_TVirus</hediffClass>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <stages>
+      <li>
+        <label>minor</label>
+        <painOffset>0.02</painOffset>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.02</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.02</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.4375</minSeverity>
+        <label>minor</label>
+        <painOffset>0.03</painOffset>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.04</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.04</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.625</minSeverity>
+        <label>major</label>
+        <vomitMtbDays>3.5</vomitMtbDays>
+        <painOffset>0.05</painOffset>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.15</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.06</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.875</minSeverity>
+        <label>extreme</label>
+        <lifeThreatening>true</lifeThreatening>
+        <vomitMtbDays>1.75</vomitMtbDays>
+        <painOffset>0.1</painOffset>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.2</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.2</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.9375</minSeverity>
+        <label>extreme</label>
+        <lifeThreatening>true</lifeThreatening>
+        <vomitMtbDays>1</vomitMtbDays>
+        <painOffset>0.15</painOffset>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.1</setMax>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.2</offset>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+
+  <HediffDef ParentName="InfectionBase">
+    <defName>RE_TVirusLocal</defName>
+    <hediffClass>RERimhazard.HediffWithComps_TVirusLocal</hediffClass>
+    <label>T-Virus Infection Site</label>
+    <makesSickThought>true</makesSickThought>
+    <tendable>false</tendable>
+
+  </HediffDef>
+
+</Defs>

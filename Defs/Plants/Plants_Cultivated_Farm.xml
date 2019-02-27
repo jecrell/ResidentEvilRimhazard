@@ -28,9 +28,6 @@
 				<li>Hydroponic</li>
 			</sowTags>
       <purpose>Health</purpose>
-    </plant>
-    <plant>
-      <growDays>10</growDays>
       <dieIfLeafless>false</dieIfLeafless>
       <harvestWork>400</harvestWork>
       <harvestTag>Standard</harvestTag>
@@ -62,9 +59,6 @@
 				<li>Hydroponic</li>
 			</sowTags>
       <purpose>Health</purpose>
-    </plant>
-    <plant>
-      <growDays>10</growDays>
       <dieIfLeafless>false</dieIfLeafless>
       <harvestWork>400</harvestWork>
       <harvestTag>Standard</harvestTag>
@@ -96,9 +90,6 @@
 				<li>Hydroponic</li>
 			</sowTags>
       <purpose>Health</purpose>
-    </plant>
-    <plant>
-      <growDays>10</growDays>
       <dieIfLeafless>false</dieIfLeafless>
       <harvestWork>400</harvestWork>
       <harvestTag>Standard</harvestTag>

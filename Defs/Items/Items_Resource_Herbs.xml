@@ -43,6 +43,8 @@
       <DeteriorationRate>6</DeteriorationRate>
     </statBases>
     <ingestible>
+      <preferability>NeverForNutrition</preferability>
+      <maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
       <foodType>Plant, Processed</foodType>
       <drugCategory>Medical</drugCategory>
       <outcomeDoers>

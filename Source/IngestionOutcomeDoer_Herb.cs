@@ -10,6 +10,16 @@ namespace RERimhazard
     public class IngestionOutcomeDoer_Herb : IngestionOutcomeDoer
     {
         
+        /// <summary>
+        /// Herbs in the Resident Evil franchise provide healing to characters in need of it.
+        /// They also provide other effects, and the following calculation is for immediate
+        /// benefits provided from ingestion.
+        /// 
+        /// TODO Add other effects rather than just healing.
+        /// 
+        /// </summary>
+        /// <param name="pawn"></param>
+        /// <param name="ingested"></param>
         protected override void DoIngestionOutcomeSpecial(Pawn pawn, Thing ingested)
         {
             var nameOfMixedHerbThingdef = ingested.def.defName;
