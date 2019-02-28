@@ -35,6 +35,13 @@ namespace RERimhazard
             => base.ShouldRemove 
             || NumOfSites <= 0;
 
+        /// <summary>
+        /// A simple variable keeping track of how long between
+        ///   the spreading of infection sites for the T-Virus.
+        /// This variable will be overridden by RESettings after
+        ///   its first call.
+        /// </summary>
+        private int nextSpreadTicks = 1500;
 
         /// <summary>
         /// The T-Virus will continue to add new infection
@@ -44,17 +51,23 @@ namespace RERimhazard
         public override void Tick()
         {
             base.Tick();
-            if (GenTicks.TicksGame % 1500 == 0)
+            if (GenTicks.TicksGame % nextSpreadTicks == 0)
             {
+                nextSpreadTicks = RESettings.SPREADTIME.RandomInRange;
                 if (pawn.Spawned && !pawn.Dead)
                 {
-                    var site = pawn.health.hediffSet.GetHediffs<HediffWithComps_TVirusLocal>().RandomElement();
+                    var sites =
+                        from s in pawn.health.hediffSet.GetHediffs<HediffWithComps_TVirusLocal>()
+                        where s?.GetInfectableParts()?.Count() > 0
+                        select s;
+                    var site = sites.RandomElement();
+
                     site.Notify_SpreadToNextUninfectedPart();
                     numOfSites = null;
                     this.Severity = 0.1f * NumOfSites;
                 }
 
-                if (this.Severity > 0.9f)
+                if (this.Severity > 0.95f)
                 {
                     CreateZombie();
                 }

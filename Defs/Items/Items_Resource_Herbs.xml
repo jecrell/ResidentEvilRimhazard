@@ -26,11 +26,11 @@
 
   <ThingDef ParentName="MedicineBase">
     <defName>RE_MedicineGreen</defName>
-    <label>green herb powder</label>
+    <label>green herb (powder)</label>
     <description>Powder extracted from the Green Herb. More potent than standard herbal medicine, but less potent than industrial pharmaceuticals.</description>
     <graphicData>
-      <texPath>Things/Item/Resource/Medicine/MedicineHerbal</texPath>
-      <graphicClass>Graphic_StackCount</graphicClass>
+      <texPath>Things/Item/Resource/Herbs/GreenPowder</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
       <drawSize>0.85</drawSize>
     </graphicData>
 		<techLevel>Neolithic</techLevel>
@@ -46,12 +46,8 @@
       <preferability>NeverForNutrition</preferability>
       <maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
       <foodType>Plant, Processed</foodType>
-      <drugCategory>Medical</drugCategory>
       <outcomeDoers>
-        <li Class="IngestionOutcomeDoer_GiveHediff">
-          <hediffDef>SmokeleafHigh</hediffDef>
-          <severity>0.5</severity>
-          <toleranceChemical>Smokeleaf</toleranceChemical>
+        <li Class="RERimhazard.IngestionOutcomeDoer_Herb">
         </li>
       </outcomeDoers>
     </ingestible>
@@ -66,11 +62,11 @@
 
   <ThingDef ParentName="MedicineBase">
     <defName>RE_MedicineRed</defName>
-    <label>red herb powder</label>
+    <label>red herb (powder)</label>
     <description>Powder extracted from the Red Herb. Provides no benefits alone. Can be mixed with other herbs.</description>
     <graphicData>
-      <texPath>Things/Item/Resource/Medicine/MedicineHerbal</texPath>
-      <graphicClass>Graphic_StackCount</graphicClass>
+      <texPath>Things/Item/Resource/Herbs/RedPowder</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
       <drawSize>0.85</drawSize>
     </graphicData>
 		<techLevel>Neolithic</techLevel>
@@ -91,11 +87,11 @@
 
   <ThingDef ParentName="MedicineBase">
     <defName>RE_MedicineBlue</defName>
-    <label>blue herb powder</label>
+    <label>blue herb (powder)</label>
     <description>Powder extracted from the Blue Herb. Can be used to relieve poison and toxic effects.</description>
     <graphicData>
-      <texPath>Things/Item/Resource/Medicine/MedicineHerbal</texPath>
-      <graphicClass>Graphic_StackCount</graphicClass>
+      <texPath>Things/Item/Resource/Herbs/BluePowder</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
       <drawSize>0.85</drawSize>
     </graphicData>
 		<techLevel>Neolithic</techLevel>
