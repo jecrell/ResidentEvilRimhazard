@@ -81,6 +81,7 @@ namespace RERimhazard
         public void CreateZombie()
         {
             Pawn thisPawn = this.pawn;
+            thisPawn.MapHeld.GetComponent<MapComponent_ZombieTracker>().AddInfectedDeadLocation(thisPawn);
             this.pawn.Kill(null, this);
             //TODO Zombie creation
         }

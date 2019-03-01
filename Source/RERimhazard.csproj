@@ -52,12 +52,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HediffWithComps_TVirusLocal.cs" />
-    <Compile Include="HediffWithComps_TVirus.cs" />
+    <Compile Include="Hediffs\HediffWithComps_TVirusLocal.cs" />
+    <Compile Include="Hediffs\HediffWithComps_TVirus.cs" />
     <Compile Include="IngestionOutcomeDoer_Herb.cs" />
+    <Compile Include="MapComponent_ZombieTracker.cs" />
+    <Compile Include="MiscUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RESettings.cs" />
     <Compile Include="REUtility.cs" />
+    <Compile Include="Creatures\Zombie.cs" />
+    <Compile Include="ZombieUtility.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
