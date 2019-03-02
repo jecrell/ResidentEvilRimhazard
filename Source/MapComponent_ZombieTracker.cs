@@ -7,9 +7,11 @@ using Verse;
 
 namespace RERimhazard
 {
+
     public class MapComponent_ZombieTracker : MapComponent
     {
         private Dictionary<IntVec3, Pawn> infectedDeadLocations = new Dictionary<IntVec3, Pawn>();
+        private Dictionary<Pawn, int> deadToRise = new Dictionary<Pawn, int>();
 
         public void AddInfectedDeadLocation(Pawn infectedDead)
         {
@@ -21,9 +23,17 @@ namespace RERimhazard
             {
                 if (!infectedDeadLocations.Keys.Contains(loc))
                 {
-                    Log.Message($"IDL: {infectedDead.Label} : {loc.x},{loc.z}");
+                    //Log.Message($"IDL: {infectedDead.Label} : {loc.x},{loc.z}");
                     infectedDeadLocations.Add(loc, infectedDead);
                 }
+            }
+        }
+
+        public void Notify_ZombieDied(Pawn zombie)
+        {
+            if (Rand.Value < RESettings.DEADZOMBIE_RESURRECTION_CHANCE)
+            {
+                deadToRise.Add(zombie, Find.TickManager.TicksGame + Rand.Range(RESettings.DEADZOMBIE_RESURRECTION_MINTIME, RESettings.DEADZOMBIE_RESURRECTION_MAXTIME));
             }
         }
 
@@ -31,14 +41,37 @@ namespace RERimhazard
         {
             base.MapComponentTick();
 
+            //Bring back some of the dead
+            if (Find.TickManager.TicksGame % 500 == 0)
+            {
+                if (deadToRise != null && deadToRise?.Count > 0)
+                {
+                    HashSet<Pawn> risen = new HashSet<Pawn>();
+                    foreach(var dtr in deadToRise)
+                    {
+                        if (dtr.Value > Find.TickManager.TicksGame)
+                        {
+                            ResurrectionUtility.Resurrect(dtr.Key);
+                        }
+                    }
+                    if (risen != null && risen?.Count() > 0)
+                    {
+                        foreach (var r in risen)
+                        {
+                            deadToRise.RemoveAll(x => x.Key == r);
+                        }
+                    }
+                }
+            }
+
             //Only perform this action after a certain time 
             if (Find.TickManager.TicksGame % RESettings.RESSURECTION_TIME == 0)
             {
-                Log.Message($"ZT Tick : { Find.TickManager.TicksGame}");
+                //Log.Message($"ZT Tick : { Find.TickManager.TicksGame}");
                 //If no infected dead locations exist, we shouldn't continue
                 if (infectedDeadLocations == null || infectedDeadLocations.Count <= 0) return;
 
-                Log.Message($"ZT Pass 1");
+                //Log.Message($"ZT Pass 1");
 
                 //Clean out destroyed corpses, and then exit if none remain
                 infectedDeadLocations.RemoveAll(x => 
@@ -46,7 +79,7 @@ namespace RERimhazard
                 if (infectedDeadLocations == null || infectedDeadLocations.Count <= 0) return;
 
 
-                Log.Message($"ZT Pass 2");
+                //Log.Message($"ZT Pass 2");
 
                 //Check all active humanoid pawns. 
                 //  If any are setting foot on infectedDeadLocations,
@@ -58,7 +91,7 @@ namespace RERimhazard
                     select p).ToArray();
 
 
-                Log.Message($"ZT Pass 3");
+                //Log.Message($"ZT Pass 3");
 
 
                 //Track new resurrections
@@ -80,7 +113,7 @@ namespace RERimhazard
                 }
 
 
-                Log.Message($"ZT Pass 4");
+                //Log.Message($"ZT Pass 4");
 
 
                 //Resurrect each lucky new zombie
@@ -88,14 +121,14 @@ namespace RERimhazard
                 foreach (var newZombie in toBeResurrected)
                 {
 
-                    Log.Message($"ZT {newZombie.Label} resurected");
+                    //Log.Message($"ZT {newZombie.Label} resurected");
 
                     ZombieUtility.CreateZombieAtSourcePawnLocation(newZombie);
                     infectedDeadLocations.RemoveAll(x => x.Value == newZombie);
                 }
 
 
-                Log.Message($"ZT Pass Complete");
+                //Log.Message($"ZT Pass Complete");
 
             }
         }
@@ -105,17 +138,9 @@ namespace RERimhazard
             this.map = map;
         }
 
-        //In-case our component injector doesn't pick up the map component,
-        //this method causes a new map component to be generated from a static method.
-        public static MapComponent_ZombieTracker Get(Map map)
+        public override void ExposeData()
         {
-            MapComponent_ZombieTracker MapComponent_ZombieTracker = map.components.OfType<MapComponent_ZombieTracker>().FirstOrDefault<MapComponent_ZombieTracker>();
-            if (MapComponent_ZombieTracker == null)
-            {
-                MapComponent_ZombieTracker = new MapComponent_ZombieTracker(map);
-                map.components.Add(MapComponent_ZombieTracker);
-            }
-            return MapComponent_ZombieTracker;
+            base.ExposeData();
         }
     }
 }

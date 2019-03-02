@@ -91,13 +91,63 @@
   </HediffDef>
 
 
-  <HediffDef ParentName="InfectionBase">
-    <defName>RE_TVirusLocal</defName>
+  <HediffDef ParentName="InjuryBase">
+    <defName>RE_TVirusBiteHediff</defName>
     <hediffClass>RERimhazard.HediffWithComps_TVirusLocal</hediffClass>
-    <label>T-Virus Infection Site</label>
+    <label>infected bite</label>
+    <labelNoun>infected bite wound</labelNoun>
     <makesSickThought>true</makesSickThought>
-    <tendable>false</tendable>
-
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_Infecter">
+        <infectionChance>0.30</infectionChance>
+      </li>
+      <li Class="HediffCompProperties_GetsPermanent">
+        <permanentLabel>bite scar</permanentLabel>
+      </li>
+    </comps>
+    <injuryProps>
+      <painPerSeverity>0.0125</painPerSeverity>
+      <averagePainPerSeverityPermanent>0.00625</averagePainPerSeverityPermanent>
+      <bleedRate>0.06</bleedRate>
+      <canMerge>false</canMerge>
+      <destroyedLabel>Bitten off</destroyedLabel>
+      <destroyedOutLabel>Bitten out</destroyedOutLabel>
+    </injuryProps>
   </HediffDef>
+
+  
+  <HediffDef ParentName="InjuryBase">
+    <defName>RE_TVirusScratchHediff</defName>
+    <label>infected scratch</label>
+    <labelNoun>an infected scratch</labelNoun>
+    <hediffClass>RERimhazard.HediffWithComps_TVirusLocal</hediffClass>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_Infecter">
+        <infectionChance>0.15</infectionChance>
+      </li>
+      <li Class="HediffCompProperties_GetsPermanent">
+        <permanentLabel>scratch scar</permanentLabel>
+      </li>
+    </comps>
+    <injuryProps>
+      <painPerSeverity>0.0125</painPerSeverity>
+      <averagePainPerSeverityPermanent>0.00625</averagePainPerSeverityPermanent>
+      <bleedRate>0.06</bleedRate>
+      <canMerge>false</canMerge>
+      <destroyedLabel>Torn off</destroyedLabel>
+      <destroyedOutLabel>Torn out</destroyedOutLabel>
+    </injuryProps>
+  </HediffDef>
+
 
 </Defs>

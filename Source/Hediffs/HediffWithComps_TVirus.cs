@@ -43,28 +43,44 @@ namespace RERimhazard
         /// </summary>
         private int nextSpreadTicks = 1500;
 
+
+        public override void Tick()
+        {
+            base.Tick();
+
+            TVirusTick();
+        }
+
         /// <summary>
         /// The T-Virus will continue to add new infection
         /// sites throughout the body as the character continues
         /// to live.
         /// </summary>
-        public override void Tick()
+        private void TVirusTick()
         {
-            base.Tick();
             if (GenTicks.TicksGame % nextSpreadTicks == 0)
             {
                 nextSpreadTicks = RESettings.SPREADTIME.RandomInRange;
                 if (pawn.Spawned && !pawn.Dead)
                 {
-                    var sites =
-                        from s in pawn.health.hediffSet.GetHediffs<HediffWithComps_TVirusLocal>()
-                        where s?.GetInfectableParts()?.Count() > 0
-                        select s;
-                    var site = sites.RandomElement();
+                    var hediffs = pawn?.health?.hediffSet?.GetHediffs<HediffWithComps_TVirusLocal>();
+                    if (hediffs != null)
+                    {
+                        var sites =
+                            from s in hediffs
+                            where s?.GetInfectableParts()?.Count() > 0
+                            select s;
 
-                    site.Notify_SpreadToNextUninfectedPart();
-                    numOfSites = null;
-                    this.Severity = 0.1f * NumOfSites;
+                        if (sites != null)
+                        {
+
+                            var site = sites.RandomElement();
+
+                            site.Notify_SpreadToNextUninfectedPart();
+                            numOfSites = null;
+                            this.Severity = 0.1f * NumOfSites;
+                        }
+                    }
                 }
 
                 if (this.Severity > 0.95f)

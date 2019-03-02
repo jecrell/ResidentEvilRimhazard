@@ -7,8 +7,9 @@ using Verse;
 
 namespace RERimhazard
 {
-    public class HediffWithComps_TVirusLocal : HediffWithComps
+    public class HediffWithComps_TVirusLocal : Hediff_Injury
     {
+
         /// <summary>
         /// Keeps track of the actual T-Virus controller that
         ///   controls the local sites of infection.
@@ -60,6 +61,7 @@ namespace RERimhazard
             pawn.health.AddHediff(hediff2);
         }
 
+
         /// <summary>
         /// Finds connected parts that are yet to be infected by the T-Virus.
         /// </summary>
@@ -80,5 +82,7 @@ namespace RERimhazard
             this.pawn.health.hediffSet.hediffs.Any(y => y.def.defName == "RE_TVirusLocal" && y.Part == x));
             return connectedParts;
         }
+
+
     }
 }

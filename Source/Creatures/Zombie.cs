@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 using Verse;
 using Verse.AI;
 
@@ -20,7 +21,7 @@ namespace RERimhazard
         public bool wasColonist;
 
         public float notRaidingAttackRange = 15f;
-
+        
 
         public override void ExposeData()
         {
@@ -31,7 +32,14 @@ namespace RERimhazard
             //    Cthulhu.Utility.GiveZombieSkinEffect(this);
             //}
         }
-        
+
+        public override void Kill(DamageInfo? dinfo, Hediff exactCulprit = null)
+        {
+            base.Kill(dinfo, exactCulprit);
+            Log.Message("Added zombie to resurrection list");
+            this.MapHeld.GetComponent<MapComponent_ZombieTracker>().Notify_ZombieDied(this);
+        }
+
 
         public override void PreApplyDamage(ref DamageInfo dinfo, out bool absorbed)
         {
@@ -61,6 +69,7 @@ namespace RERimhazard
             }
         }
 
+
         public override void Tick()
         {
             try
@@ -78,6 +87,7 @@ namespace RERimhazard
                     if (base.Spawned)
                     {
                         this.pather.PatherTick();
+                        rotationTracker.RotationTrackerTick();
                     }
                     base.Drawer.DrawTrackerTick();
                     this.health.HealthTick();
@@ -85,23 +95,15 @@ namespace RERimhazard
                     if (base.Spawned)
                     {
                         this.stances.StanceTrackerTick();
-                    }
-                    if (base.Spawned)
-                    {
                         this.verbTracker.VerbsTick();
-                    }
-                    if (base.Spawned)
-                    {
                         this.natives.NativeVerbsTick();
                     }
                     if (this.equipment != null)
-                    {
                         this.equipment.EquipmentTrackerTick();
-                    }
+
                     if (this.apparel != null)
-                    {
                         this.apparel.ApparelTrackerTick();
-                    }
+
                     if (base.Spawned)
                     {
                         this.jobs.JobTrackerTick();

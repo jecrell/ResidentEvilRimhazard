@@ -76,9 +76,9 @@
     </statBases>
     <tools>
       <li>
-        <label>left fist</label>
+        <label>left hand</label>
         <capacities>
-          <li>Blunt</li>
+          <li>RE_TVirusScratchHediff</li>
         </capacities>
         <power>8.2</power>
         <cooldownTime>2</cooldownTime>
@@ -94,9 +94,9 @@
         <chanceFactor>0.2</chanceFactor>
       </li>
       <li>
-        <label>right fist</label>
+        <label>right hand</label>
         <capacities>
-          <li>Blunt</li>
+          <li>RE_TVirusScratchHediff</li>
         </capacities>
         <power>8.2</power>
         <cooldownTime>2</cooldownTime>

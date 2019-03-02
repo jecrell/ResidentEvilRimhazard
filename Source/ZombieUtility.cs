@@ -148,10 +148,10 @@ namespace RERimhazard
         }
 
 
-        public static Zombie DoGenerateZombiePawnFromSource(Pawn sourcePawn, bool isBerserk = true)
+        public static Zombie DoGenerateZombiePawnFromSource(Pawn sourcePawn)
         {
             PawnKindDef pawnKindDef = PawnKindDef.Named("RE_ZombieKind");
-            Faction factionDirect = isBerserk ? Find.FactionManager.FirstFactionOfDef(FactionDefOf.AncientsHostile) : Faction.OfPlayer;
+            Faction factionDirect = Find.FactionManager.FirstFactionOfDef(FactionDefOf.AncientsHostile);
             Zombie pawn = (Zombie)ThingMaker.MakeThing(pawnKindDef.race, null);
             try
             {
@@ -200,10 +200,10 @@ namespace RERimhazard
                 PawnGenerationRequest con = new PawnGenerationRequest();
                 PawnInventoryGenerator.GenerateInventoryFor(pawn, con);
                 GiveZombieSkinEffect(pawn, sourcePawn as Zombie);
-                if (isBerserk)
-                {
-                    pawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Berserk);
-                }
+                //if (isBerserk)
+                //{
+                //    pawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.Berserk);
+                //}
                 //Log.Message(pawn.Name.ToStringShort);
                 return pawn;
             }

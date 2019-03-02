@@ -21,6 +21,8 @@
                     <treeDef>BurningResponse</treeDef>
                 </li>
 
+                <li Class="RERimhazard.JobGiver_FindKillEat"></li>
+
                 <!-- React to close melee threat -->
                 <li Class="JobGiver_ReactToCloseMeleeThreat" />
 
@@ -123,13 +125,6 @@
                     </subNodes>
                 </li>
 
-                <!-- Behavior from traits -->
-                <li Class="ThinkNode_TraitBehaviors" />
-
-                <!-- Insertion hook for modders -->
-                <li Class="ThinkNode_SubtreesByTag">
-                    <insertTag>Humanlike_PreMain</insertTag>
-                </li>
 
                 <!-- Main colonist behavior core -->
                 <li Class="ThinkNode_ConditionalColonist">
@@ -139,21 +134,6 @@
                             <leaveJoinableLordIfIssuesJob>true</leaveJoinableLordIfIssuesJob>
                         </li>
                     </subNodes>
-                </li>
-                <!-- Main wild man behavior core -->
-                <li Class="ThinkNode_ConditionalPawnKind">
-                    <pawnKind>WildMan</pawnKind>
-                    <subNodes>
-                        <li Class="ThinkNode_Subtree">
-                            <treeDef>MainWildManBehaviorCore</treeDef>
-                            <leaveJoinableLordIfIssuesJob>true</leaveJoinableLordIfIssuesJob>
-                        </li>
-                    </subNodes>
-                </li>
-
-                <!-- Insertion hook for modders -->
-                <li Class="ThinkNode_SubtreesByTag">
-                    <insertTag>Humanlike_PostMain</insertTag>
                 </li>
 
                 <!-- Idle colonist -->
@@ -175,67 +155,6 @@
                                 <!-- Wander -->
                                 <li Class="JobGiver_WanderColony">
                                     <maxDanger>None</maxDanger>
-                                </li>
-                            </subNodes>
-                        </li>
-                    </subNodes>
-                </li>
-
-                <!-- Idle wild man -->
-                <li Class="ThinkNode_ConditionalPawnKind">
-                    <pawnKind>WildMan</pawnKind>
-                    <subNodes>
-                        <li Class="ThinkNode_Tagger">
-                            <tagToGive>Idle</tagToGive>
-                            <subNodes>
-                                <!-- Wander -->
-                                <li Class="JobGiver_WanderAnywhere">
-                                    <maxDanger>Deadly</maxDanger>
-                                    <ticksBetweenWandersRange>
-                                        <min>120</min>
-                                        <max>240</max>
-                                    </ticksBetweenWandersRange>
-                                </li>
-                            </subNodes>
-                        </li>
-                    </subNodes>
-                </li>
-
-                <!-- If you're a neutral guest, if you're not hurt exit the map, otherwise use a medical bed -->
-                <li Class="ThinkNode_ConditionalGuest">
-                    <subNodes>
-                        <li Class="ThinkNode_ConditionalNonPlayerNonHostileFactionOrFactionless">
-                            <subNodes>
-                                <li Class="ThinkNode_Tagger">
-                                    <tagToGive>RestingForMedicalReasons</tagToGive>
-                                    <subNodes>
-                                        <li Class="JobGiver_PatientGoToBed" />
-                                    </subNodes>
-                                </li>
-
-                                <li Class="ThinkNode_Tagger">
-                                    <tagToGive>Misc</tagToGive>
-                                    <subNodes>
-                                        <li Class="JobGiver_ExitMapBest">
-                                            <defaultLocomotion>Walk</defaultLocomotion>
-                                        </li>
-                                    </subNodes>
-                                </li>
-                            </subNodes>
-                        </li>
-                    </subNodes>
-                </li>
-
-                <!-- Final backup: If you're just here for no apparent reason, and not a colonist, leave the map
-						 e.g. This happens for pawns who are downed during combat, then later self-heal -->
-                <li Class="ThinkNode_ConditionalColonist">
-                    <invert>true</invert>
-                    <subNodes>
-                        <li Class="ThinkNode_Tagger">
-                            <tagToGive>Misc</tagToGive>
-                            <subNodes>
-                                <li Class="JobGiver_ExitMapBest">
-                                    <defaultLocomotion>Walk</defaultLocomotion>
                                 </li>
                             </subNodes>
                         </li>
