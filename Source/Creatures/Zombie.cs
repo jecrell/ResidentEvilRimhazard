@@ -21,12 +21,14 @@ namespace RERimhazard
         public bool wasColonist;
 
         public float notRaidingAttackRange = 15f;
-        
+
+        private bool hadTransformationChance = false;
 
         public override void ExposeData()
         {
             base.ExposeData();
             Scribe_Values.Look<bool>(ref this.wasColonist, "wasColonist", false, false);
+            Scribe_Values.Look<bool>(ref this.hadTransformationChance, "hadTransformationChance", false);
             //if (Scribe.mode == LoadSaveMode.LoadingVars)
             //{
             //    Cthulhu.Utility.GiveZombieSkinEffect(this);
@@ -39,6 +41,7 @@ namespace RERimhazard
             Log.Message("Added zombie to resurrection list");
             this.MapHeld.GetComponent<MapComponent_ZombieTracker>().Notify_ZombieDied(this);
         }
+        
 
 
         public override void PreApplyDamage(ref DamageInfo dinfo, out bool absorbed)
@@ -153,6 +156,20 @@ namespace RERimhazard
                 }
                 if (base.Downed || this.health.Downed || this.health.InPainShock)
                 {
+                    if (!hadTransformationChance)
+                    {
+                        hadTransformationChance = true;
+                        //if (Rand.Value < RESettings.MUTATION_CHANCE)
+                        //{
+                            var curLoc = this.PositionHeld;
+                            var curMap = this.MapHeld;
+                            this.Destroy();
+                            FilthMaker.MakeFilth(curLoc, curMap, ThingDefOf.Filth_Blood, Rand.Range(5, 8));
+                            Pawn newThing = PawnGenerator.GeneratePawn(PawnKindDef.Named("RE_LickerKind"));
+                            GenSpawn.Spawn(newThing, curLoc, curMap);
+                        return;
+                        //}
+                    }
                     DamageInfo damageInfo = new DamageInfo(DamageDefOf.Blunt, 9999, 1f, -1f, this, null, null);
                     damageInfo.SetHitPart(this.health.hediffSet.GetBrain());
                     //damageInfo.SetPart(new BodyPartDamageInfo(this.health.hediffSet.GetBrain(), false, HediffDefOf.Cut));

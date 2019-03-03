@@ -57,7 +57,7 @@ namespace RERimhazard
             List<BodyPartRecord> connectedParts = new List<BodyPartRecord>(GetInfectableParts());
 
             BodyPartRecord partRecord = connectedParts.RandomElement();
-            Hediff hediff2 = HediffMaker.MakeHediff(HediffDef.Named("RE_TVirusLocal"), pawn, partRecord);
+            Hediff hediff2 = HediffMaker.MakeHediff(HediffDef.Named("RE_TVirusLocalHediff"), pawn, partRecord);
             pawn.health.AddHediff(hediff2);
         }
 
@@ -79,6 +79,7 @@ namespace RERimhazard
             }
 
             connectedParts.RemoveAll(x => x.def == BodyPartDefOf.Body ||
+                                x.coverageAbs <= 0f ||
             this.pawn.health.hediffSet.hediffs.Any(y => y.def.defName == "RE_TVirusLocal" && y.Part == x));
             return connectedParts;
         }

@@ -52,8 +52,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HarmonyPatches.cs" />
     <Compile Include="Hediffs\HediffWithComps_TVirusLocal.cs" />
     <Compile Include="Hediffs\HediffWithComps_TVirus.cs" />
+    <Compile Include="IncidentWorker_RefugeeChasedZombies.cs" />
     <Compile Include="IngestionOutcomeDoer_Herb.cs" />
     <Compile Include="JobGiver_FindKillEat.cs" />
     <Compile Include="MapComponent_ZombieTracker.cs" />

@@ -68,7 +68,8 @@ namespace RERimhazard
                     {
                         var sites =
                             from s in hediffs
-                            where s?.GetInfectableParts()?.Count() > 0
+                            where 
+                                s?.GetInfectableParts()?.Count() > 0
                             select s;
 
                         if (sites != null)
@@ -99,7 +100,6 @@ namespace RERimhazard
             Pawn thisPawn = this.pawn;
             thisPawn.MapHeld.GetComponent<MapComponent_ZombieTracker>().AddInfectedDeadLocation(thisPawn);
             this.pawn.Kill(null, this);
-            //TODO Zombie creation
         }
 
     }

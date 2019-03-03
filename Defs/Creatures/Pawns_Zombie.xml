@@ -32,8 +32,8 @@
     <defName>RE_ZombieKind</defName>
     <label>Zombie</label>
     <race>RE_ZombieRace</race>
-    <combatPower>50</combatPower>
-    <defaultFactionType>AncientsHostile</defaultFactionType>
+    <combatPower>20</combatPower>
+    <defaultFactionType>RE_Zombies</defaultFactionType>
     <baseRecruitDifficulty>0.99</baseRecruitDifficulty>
     <backstoryCategories><li>Slave</li></backstoryCategories>
     <itemQuality>Shoddy</itemQuality>
@@ -78,7 +78,7 @@
       <li>
         <label>left hand</label>
         <capacities>
-          <li>RE_TVirusScratchHediff</li>
+          <li>RE_TVirusScratch</li>
         </capacities>
         <power>8.2</power>
         <cooldownTime>2</cooldownTime>
@@ -96,7 +96,7 @@
       <li>
         <label>right hand</label>
         <capacities>
-          <li>RE_TVirusScratchHediff</li>
+          <li>RE_TVirusScratch</li>
         </capacities>
         <power>8.2</power>
         <cooldownTime>2</cooldownTime>

@@ -16,6 +16,7 @@ namespace RERimhazard
         public static float DEADZOMBIE_RESURRECTION_CHANCE = 1.0f;
         internal static int DEADZOMBIE_RESURRECTION_MINTIME = 1500;
         internal static int DEADZOMBIE_RESURRECTION_MAXTIME = 2000;
+        internal static float MUTATION_CHANCE = 0.15f;
 
         public static IntRange SPREADTIME => new IntRange(SPREADTIME_MIN, SPREADTIME_MAX);
     }
