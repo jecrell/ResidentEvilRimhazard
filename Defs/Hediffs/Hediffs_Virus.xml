@@ -1,64 +1,117 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+  <HediffDef Name="RE_TVirusBase" Abstract="True">
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.8, 0.8, 0.35)</defaultLabelColor>
+    <initialSeverity>0.001</initialSeverity>
+  </HediffDef>
+
+  <HediffDef Name="RE_TVirusInjuryBase" ParentName="InjuryBase" Abstract="True">
+    <defaultLabelColor>(0.8, 0.8, 0.35)</defaultLabelColor>
+    <initialSeverity>0.001</initialSeverity>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>RE_TVirusCarrier_Zombie</defName>
+    <label>T-Virus Carrier (Zombie)</label>
+    <labelNoun>a T-virus Carrier (Zombie)</labelNoun>
+    <hediffClass>RERimhazard.HediffWithComps_TVirusCarrier</hediffClass>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <postFactor>0.8</postFactor>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>RE_TVirusCarrier_Licker</defName>
+    <label>T-Virus Carrier (Licker)</label>
+    <labelNoun>a T-virus Carrier (Licker)</labelNoun>
+    <hediffClass>RERimhazard.HediffWithComps_TVirusCarrier</hediffClass>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <postFactor>1.2</postFactor>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>RE_TVirusCarrier_CrimsonHead</defName>
+    <label>T-Virus Carrier (V-ACT)</label>
+    <labelNoun>a T-virus Carrier (V-ACT)</labelNoun>
+    <hediffClass>RERimhazard.HediffWithComps_TVirusCarrier</hediffClass>
+    <stages>
+      <li>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <postFactor>1.1</postFactor>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
 
   <HediffDef>
     <defName>RE_TVirus</defName>
-    <label>T-Virus</label>
+    <label>T-Virus Biohazard</label>
     <hediffClass>RERimhazard.HediffWithComps_TVirus</hediffClass>
     <scenarioCanAdd>true</scenarioCanAdd>
     <stages>
       <li>
-        <label>minor</label>
-        <painOffset>0.02</painOffset>
-        <capMods>
-          <li>
-            <capacity>Consciousness</capacity>
-            <offset>-0.02</offset>
-          </li>
-          <li>
-            <capacity>Manipulation</capacity>
-            <offset>-0.02</offset>
-          </li>
-        </capMods>
-      </li>
-      <li>
-        <minSeverity>0.4375</minSeverity>
-        <label>minor</label>
-        <painOffset>0.03</painOffset>
-        <capMods>
-          <li>
-            <capacity>Consciousness</capacity>
-            <offset>-0.04</offset>
-          </li>
-          <li>
-            <capacity>Manipulation</capacity>
-            <offset>-0.04</offset>
-          </li>
-        </capMods>
-      </li>
-      <li>
-        <minSeverity>0.625</minSeverity>
-        <label>major</label>
-        <vomitMtbDays>3.5</vomitMtbDays>
+        <label>insignificant</label>
         <painOffset>0.05</painOffset>
         <capMods>
           <li>
             <capacity>Consciousness</capacity>
-            <offset>-0.15</offset>
+            <offset>-0.05</offset>
           </li>
           <li>
             <capacity>Manipulation</capacity>
-            <offset>-0.06</offset>
+            <offset>-0.05</offset>
+          </li>
+          <li>
+            <capacity>Breathing</capacity>
+            <offset>-0.1</offset>
           </li>
         </capMods>
       </li>
       <li>
-        <minSeverity>0.875</minSeverity>
-        <label>extreme</label>
-        <lifeThreatening>true</lifeThreatening>
-        <vomitMtbDays>1.75</vomitMtbDays>
+        <label>minor</label>
+        <minSeverity>0.2</minSeverity>
+        <vomitMtbDays>1.0</vomitMtbDays>
         <painOffset>0.1</painOffset>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.1</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.1</offset>
+          </li>
+          <li>
+            <capacity>Breathing</capacity>
+            <offset>-0.15</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.4</minSeverity>
+        <label>major</label>
+        <vomitMtbDays>0.5</vomitMtbDays>
+        <painOffset>0.12</painOffset>
         <capMods>
           <li>
             <capacity>Consciousness</capacity>
@@ -68,14 +121,38 @@
             <capacity>Manipulation</capacity>
             <offset>-0.2</offset>
           </li>
+          <li>
+            <capacity>Breathing</capacity>
+            <offset>-0.2</offset>
+          </li>
         </capMods>
       </li>
       <li>
-        <minSeverity>0.9375</minSeverity>
+        <minSeverity>0.6</minSeverity>
+        <label>severe</label>
+        <vomitMtbDays>0.5</vomitMtbDays>
+        <painOffset>0.14</painOffset>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <offset>-0.2</offset>
+          </li>
+          <li>
+            <capacity>Manipulation</capacity>
+            <offset>-0.2</offset>
+          </li>
+          <li>
+            <capacity>Breathing</capacity>
+            <offset>-0.2</offset>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <minSeverity>0.8</minSeverity>
         <label>extreme</label>
         <lifeThreatening>true</lifeThreatening>
-        <vomitMtbDays>1</vomitMtbDays>
-        <painOffset>0.15</painOffset>
+        <vomitMtbDays>0.3</vomitMtbDays>
+        <painOffset>0.16</painOffset>
         <capMods>
           <li>
             <capacity>Consciousness</capacity>
@@ -83,7 +160,11 @@
           </li>
           <li>
             <capacity>Manipulation</capacity>
-            <offset>-0.2</offset>
+            <offset>-0.3</offset>
+          </li>
+          <li>
+            <capacity>Breathing</capacity>
+            <offset>-0.3</offset>
           </li>
         </capMods>
       </li>

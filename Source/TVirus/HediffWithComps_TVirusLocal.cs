@@ -78,9 +78,27 @@ namespace RERimhazard
                 connectedParts.AddRange(this.Part.parent.parts);
             }
 
-            connectedParts.RemoveAll(x => x.def == BodyPartDefOf.Body ||
-                                x.coverageAbs <= 0f ||
-            this.pawn.health.hediffSet.hediffs.Any(y => y.def.defName == "RE_TVirusLocal" && y.Part == x));
+            //---------------------
+            //-- Infection Rules --
+            //---------------------
+            //1. Do not infect the body.
+            //2. Do not infect untouchable parts.
+            //3. Do not infect missing parts.
+            //4. Do not infect already infected parts.
+            connectedParts.RemoveAll(
+                x => 
+                    x.def == BodyPartDefOf.Body ||
+                    x.coverageAbs <= 0f ||
+                    this.pawn.health.hediffSet.hediffs.Any
+                    (
+                        y => 
+                        (
+                            y.def.defName == "RE_TVirusLocal" ||
+                            y is Hediff_MissingPart
+                        )
+                        && y.Part == x
+                    )
+            );
             return connectedParts;
         }
 

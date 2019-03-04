@@ -1,38 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <ThingDef Name="RE_BaseZombiePawn" Abstract="True">
-    <thingClass>RERimhazard.Zombie</thingClass>
-    <category>Pawn</category>
-    <selectable>true</selectable>
-    <tickerType>Normal</tickerType>
-    <altitudeLayer>Pawn</altitudeLayer>
-    <useHitPoints>false</useHitPoints>
-    <hasTooltip>true</hasTooltip>
-    <soundImpactDefault>BulletImpact_Flesh</soundImpactDefault>
-    <statBases>
-      <Mass>70</Mass>
-    </statBases>
-    <inspectorTabs>
-      <li>ITab_Pawn_Health</li>
-      <li>ITab_Pawn_Needs</li>
-      <li>ITab_Pawn_Character</li>
-      <li>ITab_Pawn_Gear</li>
-      <li>ITab_Pawn_Log</li>
-    </inspectorTabs>
-    <comps>
-      <li>
-        <compClass>CompAttachBase</compClass>
-      </li>
-    </comps>
-    <drawGUIOverlay>true</drawGUIOverlay>
-  </ThingDef>
-
   <PawnKindDef>
-    <defName>RE_ZombieKind</defName>
-    <label>Zombie</label>
-    <race>RE_ZombieRace</race>
-    <combatPower>20</combatPower>
+    <defName>RE_CrimsonHeadKind</defName>
+    <label>Crimson Head</label>
+    <race>RE_CrimsonHeadRace</race>
+    <combatPower>120</combatPower>
     <defaultFactionType>RE_Zombies</defaultFactionType>
     <baseRecruitDifficulty>0.99</baseRecruitDifficulty>
     <backstoryCategories><li>Slave</li></backstoryCategories>
@@ -63,12 +36,12 @@
   </PawnKindDef>
 
   <ThingDef ParentName="RE_BaseZombiePawn">
-    <defName>RE_ZombieRace</defName>
-    <label>zombie</label>
-    <description>Human beings infected by the T-virus begin to experience severe flu-like symptoms shortly after infection; these symptoms become worse over time and the infectees' skin will decay and peel, and their cognitive faculties will deteriorate until all that remains is a savage, mindless creature that by all rights should be dead.</description>
+    <defName>RE_CrimsonHeadRace</defName>
+    <label>crimson head</label>
+    <description>These crimson-coloured creatures are the theorized stage of mutation between a Zombie and a Licker. It has razor sharp claws and is capable of running just as fast as you. It doesn't take a long time for a zombie to become "reborn" as a Crimson Head, so it is in your best interests to properly dispose of certain zombies you choose to kill, or face the consequences later on.</description>
     <statBases>
       <MarketValue>1750</MarketValue>
-      <MoveSpeed>3.0</MoveSpeed>
+      <MoveSpeed>4.5</MoveSpeed>
       <Flammability>1.0</Flammability>
       <ComfyTemperatureMin>-128</ComfyTemperatureMin>
       <ComfyTemperatureMax>128</ComfyTemperatureMax>
@@ -80,7 +53,7 @@
         <capacities>
           <li>RE_TVirusScratch</li>
         </capacities>
-        <power>8.2</power>
+        <power>12.2</power>
         <cooldownTime>2</cooldownTime>
         <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
         <surpriseAttack>
@@ -98,7 +71,7 @@
         <capacities>
           <li>RE_TVirusScratch</li>
         </capacities>
-        <power>8.2</power>
+        <power>12.2</power>
         <cooldownTime>2</cooldownTime>
         <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
         <surpriseAttack>

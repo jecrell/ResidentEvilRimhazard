@@ -53,18 +53,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HarmonyPatches.cs" />
-    <Compile Include="Hediffs\HediffWithComps_TVirusLocal.cs" />
-    <Compile Include="Hediffs\HediffWithComps_TVirus.cs" />
-    <Compile Include="IncidentWorker_RefugeeChasedZombies.cs" />
-    <Compile Include="IngestionOutcomeDoer_Herb.cs" />
-    <Compile Include="JobGiver_FindKillEat.cs" />
-    <Compile Include="MapComponent_ZombieTracker.cs" />
-    <Compile Include="MiscUtility.cs" />
+    <Compile Include="Incidents\IncidentWorker_InjuredStranger.cs" />
+    <Compile Include="TVirus\HediffWithComps_TVirusCarrier.cs" />
+    <Compile Include="TVirus\HediffWithComps_TVirusLocal.cs" />
+    <Compile Include="TVirus\HediffWithComps_TVirus.cs" />
+    <Compile Include="Incidents\IncidentWorker_RefugeeChasedZombies.cs" />
+    <Compile Include="Herbs\IngestionOutcomeDoer_Herb.cs" />
+    <Compile Include="Creatures\JobGiver_FindKillEat.cs" />
+    <Compile Include="Creatures\MapComponent_ZombieTracker.cs" />
+    <Compile Include="Utilities\MiscUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RESettings.cs" />
-    <Compile Include="REUtility.cs" />
+    <Compile Include="Utilities\REUtility.cs" />
     <Compile Include="Creatures\Zombie.cs" />
-    <Compile Include="ZombieUtility.cs" />
+    <Compile Include="Utilities\ZombieUtility.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

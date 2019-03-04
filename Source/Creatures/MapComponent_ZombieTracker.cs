@@ -49,9 +49,11 @@ namespace RERimhazard
                     HashSet<Pawn> risen = new HashSet<Pawn>();
                     foreach(var dtr in deadToRise)
                     {
-                        if (dtr.Value > Find.TickManager.TicksGame)
+                        if (dtr.Value < Find.TickManager.TicksGame)
                         {
-                            ResurrectionUtility.Resurrect(dtr.Key);
+                            if (dtr.Key.Dead)
+                                ResurrectionUtility.Resurrect(dtr.Key);
+                            risen.Add(dtr.Key);
                         }
                     }
                     if (risen != null && risen?.Count() > 0)

@@ -156,20 +156,7 @@ namespace RERimhazard
                 }
                 if (base.Downed || this.health.Downed || this.health.InPainShock)
                 {
-                    if (!hadTransformationChance)
-                    {
-                        hadTransformationChance = true;
-                        //if (Rand.Value < RESettings.MUTATION_CHANCE)
-                        //{
-                            var curLoc = this.PositionHeld;
-                            var curMap = this.MapHeld;
-                            this.Destroy();
-                            FilthMaker.MakeFilth(curLoc, curMap, ThingDefOf.Filth_Blood, Rand.Range(5, 8));
-                            Pawn newThing = PawnGenerator.GeneratePawn(PawnKindDef.Named("RE_LickerKind"));
-                            GenSpawn.Spawn(newThing, curLoc, curMap);
-                        return;
-                        //}
-                    }
+                    if (ResolveTransformations()) return;
                     DamageInfo damageInfo = new DamageInfo(DamageDefOf.Blunt, 9999, 1f, -1f, this, null, null);
                     damageInfo.SetHitPart(this.health.hediffSet.GetBrain());
                     //damageInfo.SetPart(new BodyPartDamageInfo(this.health.hediffSet.GetBrain(), false, HediffDefOf.Cut));
@@ -179,6 +166,43 @@ namespace RERimhazard
             catch (Exception)
             {
             }
+        }
+
+        private bool ResolveTransformations()
+        {
+            if (!hadTransformationChance)
+            {
+                hadTransformationChance = true;
+                //if (Rand.Value <= RESettings.MUTATION_CHANCE)
+                //{
+                    var curLoc = this.PositionHeld;
+                    var curMap = this.MapHeld;
+                    var zFaction = Find.FactionManager.FirstFactionOfDef(FactionDef.Named("RE_Zombies"));
+
+                HediffDef zHDef;
+                    PawnKindDef zKind = ResolveTransformationKind(out zHDef);
+                    
+                this.Destroy();
+                    FilthMaker.MakeFilth(curLoc, curMap, ThingDefOf.Filth_Blood, Rand.Range(5, 8));
+                    Pawn newThing = PawnGenerator.GeneratePawn(zKind, zFaction);
+
+                HealthUtility.AdjustSeverity(newThing, zHDef, 1.0f);
+                    GenSpawn.Spawn(newThing, curLoc, curMap);
+                    return true;
+                //}
+            }
+            return false;
+        }
+
+        private PawnKindDef ResolveTransformationKind(out HediffDef zHDef)
+        {
+            if (Rand.Value > 0.5f)
+            {
+                zHDef = HediffDef.Named("RE_TVirusCarrier_Licker");
+                return PawnKindDef.Named("RE_LickerKind");
+            }
+            zHDef = HediffDef.Named("RE_TVirusCarrier_CrimsonHead");
+            return PawnKindDef.Named("RE_CrimsonHeadKind");
         }
     }
 }

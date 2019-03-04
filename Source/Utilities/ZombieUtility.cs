@@ -44,13 +44,19 @@ namespace RERimhazard
                 return false;
             }
             GiveZombieSkinEffect(pawn);
+            GiveTVirusCarrierEffect(pawn);
             return true;
+        }
+
+        private static void GiveTVirusCarrierEffect(Zombie pawn)
+        {
+            HealthUtility.AdjustSeverity(pawn, HediffDef.Named("RE_TVirusCarrier_Zombie"), 1.0f);
         }
 
         public static void GiveZombieSkinEffect(Zombie pawn, Pawn sourcePawn = null)
         {
             if (sourcePawn == null) sourcePawn = pawn;
-            Color newSkin = RESettings.SKINZOMBIE;
+            Color newSkin = ResolveSkinColorFor(pawn);
 
             Graphic nakedBodyGraphic = GraphicDatabase.Get<Graphic_Multi>(sourcePawn.story.bodyType.bodyNakedGraphicPath, ShaderDatabase.CutoutSkin, Vector2.one, newSkin);
             Graphic headGraphic = GraphicDatabase.Get<Graphic_Multi>(sourcePawn.story.HeadGraphicPath, ShaderDatabase.CutoutSkin, Vector2.one, newSkin);
@@ -58,6 +64,19 @@ namespace RERimhazard
             pawn.Drawer.renderer.graphics.headGraphic = headGraphic;
             pawn.Drawer.renderer.graphics.nakedGraphic = nakedBodyGraphic;
             pawn.Drawer.renderer.graphics.hairGraphic = hairGraphic;
+        }
+
+        private static Color ResolveSkinColorFor(Zombie pawn)
+        {
+            var pawnKindDef = pawn?.kindDef?.defName;
+            if (pawnKindDef != null)
+            {
+                if (pawnKindDef == "RE_CrimsonHeadKind")
+                    return RESettings.SKIN_CRIMSONHEAD;
+                else if (pawnKindDef == "RE_TyrantKind")
+                    return RESettings.SKIN_TYRANT;
+            }
+            return RESettings.SKIN_ZOMBIE;
         }
 
 

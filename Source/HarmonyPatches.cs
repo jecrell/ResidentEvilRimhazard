@@ -38,7 +38,8 @@ namespace RERimhazard
         {
             if (pawn is Zombie)
             {
-                var randPct = Rand.Range(0.4f, 3.2f);
+                var cHead = pawn?.kindDef?.defName == "RE_CrimsonHeadKind";
+                var randPct = Rand.Range(0.4f * (cHead ? 0.2f : 1f), 3.2f * (cHead ? 0.5f : 1f));
                 __result = Mathf.Clamp((int)(__result * randPct), 1, int.MaxValue);
             }
         }
