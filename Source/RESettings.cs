@@ -7,10 +7,24 @@ using Verse;
 
 namespace RERimhazard
 {
+    public class ZombieChance
+    {
+        public PawnKindDef zKind = null;
+        public HediffDef zHediff = null;
+        public float weight = 1;
+
+        public ZombieChance(string pawnKind, string hediff, float newWeight)
+        {
+            zKind = PawnKindDef.Named(pawnKind);
+            zHediff = HediffDef.Named(hediff);
+            weight = newWeight;
+        } 
+    }
+
     public static class RESettings
     {
-        public static int RESSURECTION_TIME = 1000; 
-        public static int SPREADTIME_MIN = 4000; 
+        public static int RESSURECTION_TIME = 1000;
+        public static int SPREADTIME_MIN = 4000;
         public static int SPREADTIME_MAX = 6000;
         public static Color SKIN_ZOMBIE = new Color(0.37f, 0.48f, 0.35f, 1f);
         public static Color SKIN_CRIMSONHEAD = new Color(0.48f, 0.3f, 0.3f, 1f);
@@ -21,5 +35,13 @@ namespace RERimhazard
         internal static float MUTATION_CHANCE = 0.15f;
 
         public static IntRange SPREADTIME => new IntRange(SPREADTIME_MIN, SPREADTIME_MAX);
+
+
+        public static List<ZombieChance> ResurrectedZombieTypeChanceTable = new List<ZombieChance>
+            {
+            new ZombieChance("RE_CrimsonHeadKind", "RE_TVirusCarrier_CrimsonHead", 100),
+            new ZombieChance("RE_LickerKind", "RE_TVirusCarrier_Licker", 0),
+            new ZombieChance("RE_TyrantKind", "RE_TVirusCarrier_Tyrant", 100)
+            };
     }
 }

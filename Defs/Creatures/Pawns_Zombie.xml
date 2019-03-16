@@ -15,7 +15,7 @@
     </statBases>
     <inspectorTabs>
       <li>ITab_Pawn_Health</li>
-      <li>ITab_Pawn_Needs</li>
+      <!-- <li>ITab_Pawn_Needs</li> -->
       <li>ITab_Pawn_Character</li>
       <li>ITab_Pawn_Gear</li>
       <li>ITab_Pawn_Log</li>

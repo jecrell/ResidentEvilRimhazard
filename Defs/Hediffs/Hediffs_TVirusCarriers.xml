@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <HediffDef Name="RE_TVirusCarrierBase" Abstract="True">
+    <defaultLabelColor>(0.8, 0.8, 0.35)</defaultLabelColor>
+  </HediffDef>
+
+  <HediffDef ParentName="RE_TVirusCarrierBase">
+    <defName>RE_TVirusCarrier_Zombie</defName>
+    <label>T-Virus Carrier (Zombie)</label>
+    <labelNoun>a T-virus Carrier (Zombie)</labelNoun>
+    <hediffClass>RERimhazard.HediffWithComps_TVirusCarrier</hediffClass>
+    <stages>
+      <li>
+        <restFallFactor>0.0</restFallFactor>
+        <hungerRateFactor>0.0</hungerRateFactor>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <postFactor>0.8</postFactor>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef ParentName="RE_TVirusCarrierBase">
+    <defName>RE_TVirusCarrier_Licker</defName>
+    <label>T-Virus Carrier (Licker)</label>
+    <labelNoun>a T-virus Carrier (Licker)</labelNoun>
+    <hediffClass>RERimhazard.HediffWithComps_TVirusCarrier</hediffClass>
+    <stages>
+      <li>
+        <painFactor>0.7</painFactor>
+        <restFallFactor>0.0</restFallFactor>
+        <hungerRateFactor>0.0</hungerRateFactor>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <postFactor>1.2</postFactor>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef ParentName="RE_TVirusCarrierBase">
+    <defName>RE_TVirusCarrier_CrimsonHead</defName>
+    <label>T-Virus Carrier (V-ACT)</label>
+    <labelNoun>a T-virus Carrier (V-ACT)</labelNoun>
+    <hediffClass>RERimhazard.HediffWithComps_TVirusCarrier</hediffClass>
+    <stages>
+      <li>
+        <painFactor>0.5</painFactor>
+        <restFallFactor>0.0</restFallFactor>
+        <hungerRateFactor>0.0</hungerRateFactor>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <postFactor>1.1</postFactor>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+  <HediffDef ParentName="RE_TVirusCarrierBase">
+    <defName>RE_TVirusCarrier_Tyrant</defName>
+    <label>T-Virus Carrier (Mutated)</label>
+    <labelNoun>a T-virus Carrier (Mutated)</labelNoun>
+    <hediffClass>RERimhazard.HediffWithComps_TVirusCarrier</hediffClass>
+    <stages>
+      <li>
+        <painFactor>0.05</painFactor>
+        <restFallFactor>0.0</restFallFactor>
+        <hungerRateFactor>0.0</hungerRateFactor>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>

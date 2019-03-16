@@ -9,6 +9,23 @@ namespace RERimhazard
 {
     public static class ZombieUtility
     {
+        public static bool IsZombie(Pawn pawn)
+        {
+            if (pawn is Zombie) return true;
+            if (
+                pawn?.def?.defName == "RE_Tyrant" ||
+                pawn?.def?.defName == "RE_Licker"
+                )
+                return true;
+            return false;
+        }
+
+        public static ZombieChance GetPawnKindDefForRandomResurrectedZombie()
+        {
+            return GenCollection.RandomElementByWeight<ZombieChance>(RESettings.ResurrectedZombieTypeChanceTable, x => x.weight);
+        }
+
+
         public static bool Zombify(Zombie pawn)
         {
             if (pawn.Drawer == null)
@@ -153,9 +170,9 @@ namespace RERimhazard
             return pawn;
         }
 
-        public static void CreateZombieAtSourcePawnLocation(Pawn source)
+        public static Pawn CreateZombieAtSourcePawnLocation(Pawn source, string pawnKind = "RE_ZombieKind", string factionName = "AncientsHostile")
         {
-            Zombie newPawn = DoGenerateZombiePawnFromSource(source);
+            Zombie newPawn = DoGenerateZombiePawnFromSource(source, pawnKind, factionName);
             var sourcePos = source.PositionHeld;
             var sourceMap = source.MapHeld;
             if (source?.Corpse is Corpse c)
@@ -163,14 +180,15 @@ namespace RERimhazard
             if (source != null && !source.Destroyed)
                 source.Destroy();
             GenSpawn.Spawn(newPawn, sourcePos, sourceMap);
+            return newPawn;
             
         }
 
 
-        public static Zombie DoGenerateZombiePawnFromSource(Pawn sourcePawn)
+        public static Zombie DoGenerateZombiePawnFromSource(Pawn sourcePawn, string pawnKind, string factionName)
         {
-            PawnKindDef pawnKindDef = PawnKindDef.Named("RE_ZombieKind");
-            Faction factionDirect = Find.FactionManager.FirstFactionOfDef(FactionDefOf.AncientsHostile);
+            PawnKindDef pawnKindDef = PawnKindDef.Named(pawnKind);
+            Faction factionDirect = Find.FactionManager.FirstFactionOfDef(FactionDef.Named(factionName));
             Zombie pawn = (Zombie)ThingMaker.MakeThing(pawnKindDef.race, null);
             try
             {

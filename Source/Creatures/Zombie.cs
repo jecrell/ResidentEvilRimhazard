@@ -38,8 +38,12 @@ namespace RERimhazard
         public override void Kill(DamageInfo? dinfo, Hediff exactCulprit = null)
         {
             base.Kill(dinfo, exactCulprit);
-            Log.Message("Added zombie to resurrection list");
-            this.MapHeld.GetComponent<MapComponent_ZombieTracker>().Notify_ZombieDied(this);
+            if (this.kindDef.defName != "RE_LickerKind" &&
+                this.kindDef.defName != "RE_CrimsonHeadKind")
+            {
+                //Log.Message($"Added zombie, {this.Label}, to resurrection list");
+                this.MapHeld.GetComponent<MapComponent_ZombieTracker>().Notify_ZombieDied(this);
+            }
         }
         
 
@@ -80,6 +84,10 @@ namespace RERimhazard
                 if (DebugSettings.noAnimals && base.RaceProps.Animal)
                 {
                     this.Destroy(0);
+                }
+                if (this.needs != null && this.needs.mood != null)
+                {
+                    this.needs.mood = null;
                 }
                 else if (!base.Downed)
                 {
@@ -175,16 +183,26 @@ namespace RERimhazard
                 hadTransformationChance = true;
                 //if (Rand.Value <= RESettings.MUTATION_CHANCE)
                 //{
-                    var curLoc = this.PositionHeld;
-                    var curMap = this.MapHeld;
-                    var zFaction = Find.FactionManager.FirstFactionOfDef(FactionDef.Named("RE_Zombies"));
+                var curLoc = this.PositionHeld;
+                var curMap = this.MapHeld;
+                var zFaction = Find.FactionManager.FirstFactionOfDef(FactionDef.Named("RE_Zombies"));
 
                 HediffDef zHDef;
-                    PawnKindDef zKind = ResolveTransformationKind(out zHDef);
-                    
-                this.Destroy();
+                PawnKindDef zKind = ResolveTransformationKind(out zHDef);
+
+                Pawn newThing;
+                if (zKind.defName != "RE_CrimsonHeadKind")
+                {
+                    this.Destroy();
                     FilthMaker.MakeFilth(curLoc, curMap, ThingDefOf.Filth_Blood, Rand.Range(5, 8));
-                    Pawn newThing = PawnGenerator.GeneratePawn(zKind, zFaction);
+                    newThing = PawnGenerator.GeneratePawn(zKind, zFaction);
+                }
+                else
+                {
+                    //The function here actually destroys the zombie
+                    var facName = this?.Faction?.def?.defName ?? "RE_Zombies";
+                    newThing = ZombieUtility.CreateZombieAtSourcePawnLocation(this, "RE_CrimsonHeadKind", facName);
+                }
 
                 HealthUtility.AdjustSeverity(newThing, zHDef, 1.0f);
                     GenSpawn.Spawn(newThing, curLoc, curMap);
@@ -196,13 +214,9 @@ namespace RERimhazard
 
         private PawnKindDef ResolveTransformationKind(out HediffDef zHDef)
         {
-            if (Rand.Value > 0.5f)
-            {
-                zHDef = HediffDef.Named("RE_TVirusCarrier_Licker");
-                return PawnKindDef.Named("RE_LickerKind");
-            }
-            zHDef = HediffDef.Named("RE_TVirusCarrier_CrimsonHead");
-            return PawnKindDef.Named("RE_CrimsonHeadKind");
+            var zombieInfo = ZombieUtility.GetPawnKindDefForRandomResurrectedZombie();
+            zHDef = zombieInfo.zHediff;
+            return zombieInfo.zKind;
         }
     }
 }
