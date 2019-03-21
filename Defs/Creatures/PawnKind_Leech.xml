@@ -3,23 +3,22 @@
 
   <ThingDef ParentName="AnimalThingBase">
     <defName>RE_LeechRace</defName>
-    <label>leech</label>
-    <description>.</description>
+    <label>leech (corpse-feeder)</label>
+    <description>Acts much like a traditional leech, except this variety actively prefers corpses to satiate itself. It may also contract and spread diseases after starting to consume from contaminated sources, however.</description>
     <statBases>
       <ComfyTemperatureMax>100</ComfyTemperatureMax>
       <ComfyTemperatureMin>-100</ComfyTemperatureMin>
-      <MoveSpeed>3.0</MoveSpeed>
+      <MoveSpeed>2.0</MoveSpeed>
       <MarketValue>400</MarketValue>
     </statBases>
     <tools>
       <li>
         <capacities>
-          <li>Stab</li>
+          <li>Bite</li>
         </capacities>
         <power>16</power>
         <cooldownTime>2</cooldownTime>
-        <linkedBodyPartsGroup>RE_LickerTongueGroup</linkedBodyPartsGroup>
-        <chanceFactor>0.7</chanceFactor>
+        <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
         <surpriseAttack>
           <extraMeleeDamages>
             <li>
@@ -31,22 +30,21 @@
       </li>
     </tools>
     <race>
-      <thinkTreeMain>RE_Zombielike</thinkTreeMain>
-      <thinkTreeConstant>RE_ZombielikeConstant</thinkTreeConstant>
-      <body>RE_LickerBody</body>
-      <herdAnimal>false</herdAnimal>
-      <predator>true</predator>
-      <maxPreyBodySize>1.0</maxPreyBodySize>
-      <baseBodySize>1.4</baseBodySize>
-      <baseHungerRate>0.3</baseHungerRate>
-      <baseHealthScale>1.3</baseHealthScale>
-      <foodType>CarnivoreAnimal, OvivoreAnimal</foodType>
-      <leatherDef>Leather_Human</leatherDef>
+      <thinkTreeMain>Animal</thinkTreeMain>
+      <thinkTreeConstant>AnimalConstant</thinkTreeConstant>
+      <body>RE_LeechBody</body>
+      <herdAnimal>true</herdAnimal>
+      <predator>false</predator>
+      <baseBodySize>0.5</baseBodySize>
+      <baseHungerRate>0.2</baseHungerRate>
+      <baseHealthScale>1.0</baseHealthScale>
+      <foodType>Corpse</foodType>
+      <leatherDef>Leather_Light</leatherDef>
       <wildness>1</wildness>
       <trainability>None</trainability>
       <manhunterOnTameFailChance>1</manhunterOnTameFailChance>
       <manhunterOnDamageChance>1</manhunterOnDamageChance>
-      <lifeExpectancy>13</lifeExpectancy>
+      <lifeExpectancy>5</lifeExpectancy>
       <lifeStageAges>
         <li>
           <def>AnimalAdult</def>
@@ -63,7 +61,6 @@
 
   <PawnKindDef ParentName="AnimalKindBase">
     <defName>RE_LeechKind</defName>
-    <defaultFactionType>RE_Zombies</defaultFactionType>
     <label>leech</label>
     <race>RE_LeechRace</race>
     <combatPower>160</combatPower>
@@ -72,7 +69,7 @@
       <li>
         <bodyGraphicData>
           <texPath>Things/Pawn/Rimhazard/Leech</texPath>
-          <drawSize>1.0</drawSize>
+          <drawSize>0.5</drawSize>
           <color>(1,1,1)</color>
         </bodyGraphicData>
       </li>

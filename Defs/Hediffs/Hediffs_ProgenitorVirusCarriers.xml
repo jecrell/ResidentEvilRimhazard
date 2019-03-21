@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <HediffDef ParentName="RE_TVirusCarrierBase">
+    <defName>RE_ProgenitorVirusCarrier</defName>
+    <label>Progenitor Virus Carrier</label>
+    <labelNoun>a Progenitor virus Carrier</labelNoun>
+    <hediffClass>RERimhazard.HediffWithComps_TVirusCarrier</hediffClass>
+    <stages>
+      <li>
+        <painFactor>0.05</painFactor>
+        <restFallFactor>0.0</restFallFactor>
+        <hungerRateFactor>0.0</hungerRateFactor>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>

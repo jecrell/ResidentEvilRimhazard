@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="ResidentEvilHerb">
+    <defName>RE_Plant_ResidentEvilProgenitor</defName>
+    <label>progentior plant</label>
+    <description>A plant that is said to possess the key to immortality. Consuming this plant will most likely result in death, however. The corpse will remain contaminated and should be kept away from any creatures that might try to consume it, especially leeches.</description>
+     <graphicData>
+      <texPath>Things/Plant/Progenitor</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>   
+    <plant>
+      <growDays>7</growDays>
+      <sowWork>800</sowWork>
+      <sowMinSkill>8</sowMinSkill>
+      <sowTags>
+				<li>Ground</li>
+				<li>Hydroponic</li>
+			</sowTags>
+      <purpose>Health</purpose>
+      <dieIfLeafless>false</dieIfLeafless>
+      <harvestWork>400</harvestWork>
+      <harvestTag>Standard</harvestTag>
+      <harvestedThingDef>MedicineHerbal</harvestedThingDef>
+      <harvestYield>1</harvestYield>
+      <topWindExposure>0.1</topWindExposure>
+      <visualSizeRange>
+        <min>0.3</min>
+        <max>1.0</max>
+      </visualSizeRange>
+      <wildOrder>2</wildOrder>
+    </plant>
+  </ThingDef>
+
+</Defs>

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <RulePackDef>
+    <defName>RE_ColorfulVocabulary</defName>
+    <rulePack>
+      <rulesStrings>
+
+        <li>RE_horrible->horrible</li>
+        <li>RE_horrible->hideous</li>
+        <li>RE_horrible->heinous</li>
+        <li>RE_horrible->horrendous</li>
+        <li>RE_horrible->horrifying</li>
+        <li>RE_horrible->repulsive</li>
+        <li>RE_horrible->vile</li>
+
+        <li>RE_exposed->exposed</li>
+        <li>RE_exposed->revealed</li>
+        <li>RE_exposed->divulged</li>
+        <li>RE_exposed->laid bare</li>
+        <li>RE_exposed->brought to light</li>
+
+        <li>RE_exposing->exposing</li>
+        <li>RE_exposing->revealing</li>
+        <li>RE_exposing->leaving</li>
+        <li>RE_exposing->divulging</li>
+        <li>RE_exposing->laying bare</li>
+        <li>RE_exposing->bringing to light</li>
+
+        <li>RE_theflesh->the flesh</li>
+        <li>RE_theflesh->the gore</li>
+        <li>RE_theflesh->the innards</li>
+
+        <li>RE_underneath->underneath</li>
+        <li>RE_underneath->below</li>
+        <li>RE_underneath->within</li>
+
+        <li>RE_bloodoozing->blood oozing</li>
+        <li>RE_bloodoozing->blood gushing</li>
+        <li>RE_bloodoozing->blood spewing</li>
+        <li>RE_bloodoozing->blood pooling</li>
+        <li>RE_bloodoozing->blood drooling</li>
+
+        <li>RE_gore->guts</li>
+        <li>RE_gore->entrails</li>
+        <li>RE_gore->viscera</li>
+        <li>RE_gore->gore</li>
+        <li>RE_gore->innards</li>
+        <li>RE_gore->internals</li>
+        <li>RE_gore->flesh</li>
+
+        <li>RE_strips->strips</li>
+        <li>RE_strips->pieces</li>
+        <li>RE_strips->ribbons</li>
+        <li>RE_strips->shreds</li>
+
+        <li>RE_gazing->gazing</li>
+        <li>RE_gazing->peering</li>
+        <li>RE_gazing->looming</li>
+
+        <li>RE_fury->fury</li>
+        <li>RE_fury->hunger</li>
+        <li>RE_fury->desire</li>
+        <li>RE_fury->wrath</li>
+        <li>RE_fury->rage</li>
+
+        <li>RE_timeless->timeless</li>
+        <li>RE_timeless->ancient</li>
+        <li>RE_timeless->eldritch</li>
+        <li>RE_timeless->eldritch</li>
+
+        <li>RE_unspeakable->unspeakable</li>
+        <li>RE_unspeakable->unutterable</li>
+        <li>RE_unspeakable->nameless</li>
+        <li>RE_unspeakable->hellish</li>
+        <li>RE_unspeakable->inhuman</li>
+
+
+        <!-- CARRYING ITS EXPRESSION -->
+        <!-- carrying an expression of madness-->
+        <li>RE_carryinganexpressionofmadness->[RE_carrying] [RE_anexpression] [RE_ofmadness]</li>
+
+        <li>RE_carrying->carrying</li>
+        <li>RE_carrying->freighted with</li>
+        <li>RE_carrying->laden with</li>
+        <li>RE_carrying->imbued with</li>
+        <li>RE_carrying->wielding</li>
+
+        <li>RE_anexpression->an expression</li>
+        <li>RE_anexpression->a visage</li>
+        <li>RE_anexpression->a stare</li>
+        <li>RE_anexpression->a gaze</li>
+        <li>RE_anexpression->a look</li>
+
+        <li>RE_ofmadness->of [RE_madness]</li>
+        <li>RE_ofmadness->that is betwixt the real and unreal</li>
+        <li>RE_ofmadness->that reminds [recipient_objective] of  [RE_thesmallnessoftheirexistence]</li>
+        <li>RE_madness->madness</li>
+        <li>RE_madness->insanity</li>
+        <li>RE_madness->derangement</li>
+        <li>RE_thesmallnessoftheirexistence->the smallness of [recipient_possessive] existence</li>
+        <li>RE_thesmallnessoftheirexistence->[recipient_possessive] feeble mortality</li>
+        <li>RE_thesmallnessoftheirexistence->[recipient_possessive] candle before oblivion</li>
+
+        <!-- CASTING ITS GAZE -->
+        <!-- gazing with eldritch eyes like lanterns from the deep abyss -->
+        <li>RE_gazingwithinhumaneyes->[RE_gazing] with [RE_timeless] eyes like [RE_lanterns] from [RE_thedeepabyss]</li>
+        <li>RE_gazingwithinhumaneyes->[RE_gazing] with [RE_unspeakable] hideousness</li>
+        <li>RE_gazingwithinhumaneyes->[RE_gazing] with maniacal force and [RE_fury]</li>
+        <li>RE_gazingwithinhumaneyes->[RE_gazing] with luminous, expanded eyes</li>
+        <li>RE_gazingwithinhumaneyes->[RE_gazing] with a [RE_unspeakable], [RE_timeless] [RE_fury]</li>
+        <li>RE_lanterns->hellish phosphorescence</li>
+        <li>RE_lanterns->lanterns</li>
+        <li>RE_thedeepabyss->the deep abyss</li>
+        <li>RE_thedeepabyss->beyond understanding</li>
+        <li>RE_thedeepabyss->outside known reality</li>
+
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+
+  <ManeuverDef>
+    <defName>RE_ConstrictMonstrous</defName>
+    <requiredCapacity>RE_ConstrictMonstrous</requiredCapacity>
+    <verb>
+      <verbClass>Verb_MeleeAttackDamage</verbClass>
+      <meleeDamageDef>RE_ConstrictMonstrous</meleeDamageDef>
+    </verb>
+    <logEntryDef>MeleeAttack</logEntryDef>
+    <combatLogRulesHit>RE_Maneuver_ConstrictMonstrous</combatLogRulesHit>
+    <combatLogRulesDeflect>Maneuver_Smash_MeleeDeflect</combatLogRulesDeflect>
+    <combatLogRulesMiss>Maneuver_Smash_MeleeMiss</combatLogRulesMiss>
+    <combatLogRulesDodge>Maneuver_Smash_MeleeDodge</combatLogRulesDodge>
+  </ManeuverDef>
+
+
+  <DamageDef>
+    <defName>RE_ConstrictMonstrous</defName>
+    <label>crushing grip</label>
+    <workerClass>RERimhazard.DamageWorker_Constrict</workerClass>
+    <externalViolence>true</externalViolence>
+    <deathMessage>{0} has been crushed to death.</deathMessage>
+    <hediff>Crush</hediff>
+    <hediffSkin>Bruise</hediffSkin>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Blunt</armorCategory>
+    <bluntInnerHitChance>0.4</bluntInnerHitChance>
+    <bluntInnerHitDamageFractionToConvert>
+      <min>0.1</min>
+      <max>0.2</max>
+    </bluntInnerHitDamageFractionToConvert>
+    <bluntInnerHitDamageFractionToAdd>
+      <min>0.2</min>
+      <max>0.35</max>
+    </bluntInnerHitDamageFractionToAdd>
+  </DamageDef>
+
+  <ToolCapacityDef>
+    <defName>RE_ConstrictMonstrous</defName>
+    <label>constricting</label>
+  </ToolCapacityDef>
+
+  <RulePackDef>
+    <defName>RE_Maneuver_ConstrictMonstrous_Damage</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>damaged_inf(p=2)->constrict</li>
+        <li>damaged_inf->squeeze</li>
+
+        <li>damaged_past(p=2)->constricted</li>
+        <li>damaged_past->squeezed</li>
+
+        <li>damaged_present->constricting</li>
+        <li>damaged_present->squeezing</li>
+
+        <li>destroyed_past->crushed</li>
+        <li>destroyed_past->atomized</li>
+        <li>destroyed_past->powderized</li>
+
+        <li>destroyed_present->crushed</li>
+        <li>destroyed_present->atomizing</li>
+        <li>destroyed_present->powderizing</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+  <RulePackDef>
+    <defName>RE_Maneuver_ConstrictMonstrous</defName>
+    <include>
+      <li>RE_ColorfulVocabulary</li>
+      <li>Combat_Hit</li>
+      <li>RE_Maneuver_ConstrictMonstrous_Damage</li>
+    </include>
+    <rulePack>
+      <rulesStrings>
+        <li>woundname->wound</li>
+        <li>woundname(p=0.3)->contusion</li>
+        <li>flavortext_situation(p=3)->while [RE_gazingwithinhumaneyes]</li>
+        <li>flavortext_situation(p=3)->while [RE_carryinganexpressionofmadness]</li>
+        <li>flavortext_situation(p=2,recipient_flesh!=Mechanoid)->with [RE_bloodoozing] from the [woundname]</li>
+        <li>flavortext_situation(p=2,recipient_flesh!=Mechanoid)->with [RE_gore] [RE_exposed] from the [woundname]</li>
+        <li>flavortext_consequence(p=2,recipient_flesh!=Mechanoid)->and [RE_exposing] [RE_theflesh] [RE_underneath]</li>
+        <li>flavortext_consequence(p=2,recipient_flesh!=Mechanoid)->and [RE_exposing] a [RE_horrible] [woundname]</li>
+        <li>flavortext_consequence(p=2,recipient_flesh==Mechanoid)->and exposing the machinery underneath</li>
+        <li>destroyed_suffix(p=2,recipient_flesh!=Mechanoid)->[to] messy [RE_strips]</li>
+        <li>destroyed_suffix(p=4)->[to] [RE_strips]</li>
+        <li>destroyed_suffix->[to] pieces</li>
+        <li>destroyed_suffix->[to] fragments</li>
+        <li>destroyed_suffix(recipient_flesh!=Mechanoid)->[to] a pile of gore</li>
+      </rulesStrings>
+    </rulePack>
+  </RulePackDef>
+
+
+
+</Defs>
