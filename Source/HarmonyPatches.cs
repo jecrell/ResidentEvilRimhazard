@@ -8,6 +8,7 @@ using Verse;
 using Verse.AI;
 using System.Reflection;
 using UnityEngine;
+using Verse.Sound;
 
 namespace RERimhazard
 {
@@ -43,6 +44,65 @@ namespace RERimhazard
                     nameof(CanGetThought_PreFix)
                     ),
                 null);
+
+            //Play "Resident Evil" sound when starting
+            //  the scenario.
+            harmony.Patch(
+                AccessTools.Method(
+                    typeof(Scenario),
+                    "PostGameStart"
+                    ),
+                new HarmonyMethod(
+                    typeof(HarmonyPatches),
+                    nameof(PostGameStart_Prefix)
+                    ),
+                null);
+            //Use custom names if we're doing the Resident Evil scenario
+            harmony.Patch(
+                AccessTools.Method(
+                    typeof(PawnBioAndNameGenerator),
+                    "GeneratePawnName"
+                    ),
+                null,
+                new HarmonyMethod(
+                    typeof(HarmonyPatches),
+                    nameof(GeneratePawnName)
+                    ),
+                null);
+
+        }
+
+        // RimWorld.PawnBioAndNameGenerator
+        public static void GeneratePawnName(Pawn pawn, NameStyle style, string forcedLastName, ref Name __result)
+        {
+            if (pawn != null && pawn.Faction != null && pawn.Faction.def.defName == "RE_Player")
+            {
+                var ruleMaker = pawn.gender == 
+                    Gender.Female ? 
+                    DefDatabase<RulePackDef>.GetNamed("RE_STARSNamerFemale") 
+                    :
+                    DefDatabase<RulePackDef>.GetNamed("RE_STARSNamerMale");
+
+                string rawName = NameGenerator.GenerateName(ruleMaker, delegate (string x)
+                {
+                    NameTriple nameTriple4 = NameTriple.FromString(x);
+                    nameTriple4.ResolveMissingPieces(forcedLastName);
+                    return !nameTriple4.UsedThisGame;
+                });
+                NameTriple nameTriple = NameTriple.FromString(rawName);
+                nameTriple.CapitalizeNick();
+                nameTriple.ResolveMissingPieces(forcedLastName);
+                __result = nameTriple;
+            }
+        }
+
+            // RimWorld.Scenario
+            public static void PostGameStart_Prefix(Scenario __instance)
+        {
+            if (__instance == null || __instance.name == String.Empty) return;
+            Log.Message("Scenario name: " + __instance.name);
+            if (__instance.name == "Resident Evil")
+                DefDatabase<SoundDef>.GetNamed("RE_Theme").PlayOneShotOnCamera();
         }
 
         //Zombies don't receive thoughts

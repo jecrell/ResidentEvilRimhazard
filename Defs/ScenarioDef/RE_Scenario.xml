@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ScenarioDef>
+    <defName>RE_ResidentEvil</defName>
+    <label>Resident Evil</label>
+    <description>Horrific murders have been occuring in the countryside. Your squad was sent in after the loss of alpha team. Eliminate all threats.</description>
+    <scenario>
+      <summary>Bring a team of armed soldiers to investigate a mansion filled with surprises. Can you survive long enough to eliminate the threats inside?</summary>
+      <playerFaction>
+        <def>PlayerFaction</def>
+        <factionDef>RE_Player</factionDef>
+      </playerFaction>
+      <parts>
+
+        <!-- Config pages -->
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns">
+          <def>ConfigPage_ConfigureStartingPawns</def>
+          <pawnCount>3</pawnCount>
+          <pawnChoiceCount>8</pawnChoiceCount>
+        </li>
+
+        <!-- Player pawns modifiers -->
+        <li Class="ScenPart_ForcedTrait">
+          <def>ForcedTrait</def>
+          <context>PlayerStarter</context>
+          <chance>0.5</chance>
+          <trait>RE_TVirusImmunity</trait>
+          <hideOffMap>false</hideOffMap>
+        </li>
+
+        <!-- Player starting stuff spawn method-->
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <visible>false</visible>
+          <method>Standing</method>
+        </li>
+
+        <!-- Game start dialog -->
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>It was supposed to be a minor surgery. Just an hour under anesthetic. You felt totally safe.\n\nNow you've awoken inside a drop pod punching through the atmosphere of a distant rim world.\n\nAside from a slick of mysterious goo all over your body, you are totally naked. With no preparation, no supplies, and no tools, can you survive?</text>
+          <closeSound>GameStartSting</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+</Defs>

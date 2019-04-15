@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <TraitDef>
+    <defName>RE_TVirusImmunity</defName>
+    <commonality>0.001</commonality>
+    <degreeDatas>
+      <li>
+        <label>T-Virus Immunity</label>
+        <description>{PAWN_nameDef} is immune to the effects of the T-Virus.</description>
+      </li>
+    </degreeDatas>
+  </TraitDef>
+
+</Defs>

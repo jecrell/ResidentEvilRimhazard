@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <JecsTools.BackstoryDef>
+    <defName>RE_CadetOne</defName>
+    <title>Police Cadet (Patrol)</title>
+    <baseDescription>Dot</baseDescription>
+    <slot>Childhood</slot>
+    <requiredWorkTags>
+      <li>Violent</li>
+    </requiredWorkTags>
+    <spawnCategories>
+      <li>RE_Team</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_CadetTwo</defName>
+    <title>Police Cadet (Clerk)</title>
+    <baseDescription>dot</baseDescription>
+    <slot>Childhood</slot>
+    <requiredWorkTags>
+      <li>Violent</li>
+    </requiredWorkTags>
+    <spawnCategories>
+      <li>RE_Team</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_StarsMember</defName>
+    <title>STARS Member</title>
+    <baseDescription>dot</baseDescription>
+    <bodyTypeMale>Male</bodyTypeMale>
+    <bodyTypeFemale>Female</bodyTypeFemale>
+    <slot>Adulthood</slot>
+    <requiredWorkTags>
+      <li>Violent</li>
+    </requiredWorkTags>
+    <spawnCategories>
+      <li>RE_Team</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_CadetThree</defName>
+    <title>Police Cadet (K9)</title>
+    <baseDescription>dot</baseDescription>
+    <slot>Childhood</slot>
+    <requiredWorkTags>
+      <li>Violent</li>
+    </requiredWorkTags>
+    <spawnCategories>
+      <li>RE_Team</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_CadetFour</defName>
+    <title>Police Cadet (SWAT)</title>
+    <baseDescription>dot</baseDescription>
+    <slot>Childhood</slot>
+    <requiredWorkTags>
+      <li>Violent</li>
+    </requiredWorkTags>
+    <spawnCategories>
+      <li>RE_Team</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_ArmyRecruit</defName>
+    <title>Soldier</title>
+    <baseDescription>dot</baseDescription>
+    <slot>Childhood</slot>
+    <requiredWorkTags>
+      <li>Violent</li>
+    </requiredWorkTags>
+    <spawnCategories>
+      <li>RE_Team</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_ArmyMedic</defName>
+    <title>Field Medic</title>
+    <baseDescription>dot</baseDescription>
+    <slot>Childhood</slot>
+    <requiredWorkTags>
+      <li>Violent</li>
+      <li>Caring</li>
+    </requiredWorkTags>
+    <spawnCategories>
+      <li>RE_Team</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_Mercenary</defName>
+    <title>Mercenary</title>
+    <baseDescription>dot</baseDescription>
+    <slot>Childhood</slot>
+    <spawnCategories>
+      <li>RE_Team</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+</Defs>

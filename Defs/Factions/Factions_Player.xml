@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+ <FactionDef ParentName="PlayerFactionBase">
+    <defName>RE_Player</defName>
+    <label>RPD</label>
+    <description>Your squad.</description>
+    <isPlayer>true</isPlayer>
+    <basicMemberKind>RE_STARS</basicMemberKind>
+	<pawnNameMaker>RE_STARSNamerMale</pawnNameMaker>
+    <pawnsPlural>members</pawnsPlural>
+    <techLevel>Industrial</techLevel>
+    <backstoryCategories>
+      <li>RE_Team</li>
+    </backstoryCategories>
+    <expandingIconTexture>World/WorldObjects/Expanding/Town</expandingIconTexture>
+		<settlementNameMaker>NamerSettlementOutlander</settlementNameMaker>
+		<playerInitialSettlementNameMaker>NamerInitialSettlementColony</playerInitialSettlementNameMaker>
+		<factionNameMaker>NamerSettlementOutlander</factionNameMaker>
+		<geneticVariance>1</geneticVariance>
+		<startingResearchTags>
+			<li>TribalStart</li>
+		</startingResearchTags>
+		<hairTags>
+			<li>Urban</li>
+      		<li>Tribal</li>
+		</hairTags>
+		<apparelStuffFilter>
+			<thingDefs>
+				<li>Cloth</li>
+			</thingDefs>
+		</apparelStuffFilter>
+	</FactionDef>
+
+</Defs>
