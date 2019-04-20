@@ -17,7 +17,7 @@
         <li Class="ScenPart_ConfigPage_ConfigureStartingPawns">
           <def>ConfigPage_ConfigureStartingPawns</def>
           <pawnCount>3</pawnCount>
-          <pawnChoiceCount>8</pawnChoiceCount>
+          <pawnChoiceCount>6</pawnChoiceCount>
         </li>
 
         <!-- Player pawns modifiers -->
@@ -39,8 +39,8 @@
         <!-- Game start dialog -->
         <li Class="ScenPart_GameStartDialog">
           <def>GameStartDialog</def>
-          <text>It was supposed to be a minor surgery. Just an hour under anesthetic. You felt totally safe.\n\nNow you've awoken inside a drop pod punching through the atmosphere of a distant rim world.\n\nAside from a slick of mysterious goo all over your body, you are totally naked. With no preparation, no supplies, and no tools, can you survive?</text>
-          <closeSound>GameStartSting</closeSound>
+          <text>You are part of a special operations team that has been assigned to investigate a string of reported murders in the nearby region. Your job is to eliminate this threat to the public and return home safe.</text>
+          <closeSound>RE_Theme</closeSound>
         </li>
 
       </parts>

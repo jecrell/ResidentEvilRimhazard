@@ -35,6 +35,11 @@
                 <li>(100000,10000)</li>
             </points>
         </maxPawnCostPerTotalPointsCurve>
+        <homeIconPath>World/WorldObjects/DefaultSettlement</homeIconPath>
+        <allowedArrivalTemperatureRange>
+            <min>-100</min>
+            <max>200</max>
+        </allowedArrivalTemperatureRange>
         <pawnGroupMakers>
             <li>
                 <!-- All types-->
@@ -44,11 +49,12 @@
                     <RE_ZombieKind>100</RE_ZombieKind>
                 </options>
             </li>
+            <li>
+                <kindDef>Settlement</kindDef>
+                <options>
+                    <RE_ZombieKind>20</RE_ZombieKind>
+                </options>
+            </li>
         </pawnGroupMakers>
-        <homeIconPath>World/WorldObjects/DefaultSettlement</homeIconPath>
-        <allowedArrivalTemperatureRange>
-            <min>-100</min>
-            <max>200</max>
-        </allowedArrivalTemperatureRange>
     </FactionDef>
 </Defs>

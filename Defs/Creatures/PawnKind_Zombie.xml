@@ -65,6 +65,7 @@
   <ThingDef ParentName="RE_BaseZombiePawn">
     <defName>RE_ZombieRace</defName>
     <label>zombie</label>
+    <thingClass>RERimhazard.Zombie</thingClass>
     <description>Human beings infected by the T-virus begin to experience severe flu-like symptoms shortly after infection; these symptoms become worse over time and the infectees' skin will decay and peel, and their cognitive faculties will deteriorate until all that remains is a savage, mindless creature that by all rights should be dead.</description>
     <statBases>
       <MarketValue>1750</MarketValue>

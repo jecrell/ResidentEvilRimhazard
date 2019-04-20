@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?><Defs>
+
+      <!-- A sound def for entry -->
+	  <!-- Make sure this has onCamera -->
+
+  <SoundDef>
+    <defName>TabOpen</defName>  
+    <eventNames />  
+    <maxSimultaneous>1</maxSimultaneous>  
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>      
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>UI/RE_TabOpen</clipPath>
+          </li>
+        </grains>      
+        <volumeRange>
+          <min>15.88235</min>        
+          <max>15.88235</max>
+        </volumeRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
+    <defName>TabClose</defName>  
+    <eventNames />  
+    <maxSimultaneous>1</maxSimultaneous>  
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>      
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>UI/RE_TabClose</clipPath>
+          </li>
+        </grains>      
+        <volumeRange>
+          <min>15.88235</min>        
+          <max>15.88235</max>
+        </volumeRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
+    <defName>Mouseover_ButtonToggle</defName>  
+    <eventNames />  
+    <maxSimultaneous>1</maxSimultaneous>  
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>      
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>UI/RE_Mouseover_ButtonToggle</clipPath>
+          </li>
+        </grains>      
+        <volumeRange>
+          <min>10</min>        
+          <max>10</max>
+        </volumeRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
+    <defName>ArchitectCategorySelect</defName>  
+    <eventNames />  
+    <maxSimultaneous>1</maxSimultaneous>  
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>      
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>UI/RE_ArchitectCategorySelect</clipPath>
+          </li>
+        </grains>      
+        <volumeRange>
+          <min>15</min>        
+          <max>15</max>
+        </volumeRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
+    <defName>Mouseover_Standard</defName>  
+    <eventNames />  
+    <maxSimultaneous>1</maxSimultaneous>  
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>   
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>UI/RE_Mouseover_Standard</clipFolderPath>
+          </li>
+        </grains>
+        <volumeRange>
+          <min>4</min>
+          <max>4</max>
+        </volumeRange>
+        <pitchRange>
+          <min>1.2</min>
+          <max>1.3</max>
+        </pitchRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
+    <defName>Mouseover_Category</defName>  
+    <eventNames />  
+    <maxSimultaneous>4</maxSimultaneous>  
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>      
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>UI/RE_Mouseover_Category</clipFolderPath>
+          </li>
+        </grains>      
+        <volumeRange>
+          <min>5</min>        
+          <max>5</max>
+        </volumeRange>      
+        <pitchRange>
+          <min>0.95</min>        
+          <max>1.05</max>
+        </pitchRange>      
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
+    <defName>Mouseover_Command</defName>  
+    <eventNames />  
+    <maxSimultaneous>4</maxSimultaneous>  
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>      
+        <grains>
+          <li Class="AudioGrain_Folder">
+            <clipFolderPath>UI/RE_Mouseover_Command</clipFolderPath>
+          </li>
+        </grains>      
+        <volumeRange>
+          <min>5</min>        
+          <max>5</max>
+        </volumeRange>      
+        <pitchRange>
+          <min>1</min>        
+          <max>1.091764</max>
+        </pitchRange>      
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
+    <defName>FloatMenu_Open</defName>  
+    <eventNames />  
+    <maxSimultaneous>1</maxSimultaneous>  
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>      
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>UI/RE_FloatMenu_Open</clipPath>
+          </li>
+        </grains>      
+        <volumeRange>
+          <min>5</min>        
+          <max>5</max>
+        </volumeRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+  <SoundDef>
+    <defName>FloatMenu_Cancel</defName>  
+    <eventNames />  
+    <maxSimultaneous>1</maxSimultaneous>  
+    <subSounds>
+      <li>
+        <onCamera>True</onCamera>      
+        <grains>
+          <li Class="AudioGrain_Clip">
+            <clipPath>UI/RE_FloatMenu_Cancel</clipPath>
+          </li>
+        </grains>      
+        <volumeRange>
+          <min>5</min>        
+          <max>5</max>
+        </volumeRange>
+      </li>
+    </subSounds>
+  </SoundDef>
+
+
+</Defs>

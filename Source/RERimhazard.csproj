@@ -57,8 +57,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DamageWorker_Constrict.cs" />
+    <Compile Include="GenStep_ZombiePower.cs" />
+    <Compile Include="GenStep_ZombieSettlement.cs" />
     <Compile Include="HarmonyPatches.cs" />
     <Compile Include="Incidents\IncidentWorker_InjuredStranger.cs" />
+    <Compile Include="SymbolResolver_ZombieSettlement.cs" />
     <Compile Include="TVirus\HediffWithComps_TVirusCarrier.cs" />
     <Compile Include="TVirus\HediffWithComps_TVirusLocal.cs" />
     <Compile Include="TVirus\HediffWithComps_TVirus.cs" />

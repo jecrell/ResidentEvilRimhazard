@@ -9,6 +9,25 @@ namespace RERimhazard
 {
     public class HediffWithComps_TVirusLocal : Hediff_Injury
     {
+        public override bool ShouldRemove => base.ShouldRemove || PawnIsImmune;
+
+
+        private bool? pawnIsImmune = null;
+        public bool PawnIsImmune
+        {
+            get
+            {
+                if (pawnIsImmune == null)
+                {
+                    pawnIsImmune = false;
+                    if (this.pawn != null && this.pawn.story != null &&
+                        this.pawn.story.traits != null &&
+                        this.pawn.story.traits.HasTrait(TraitDef.Named("RE_TVirusImmunity")))
+                        pawnIsImmune = true;
+                }
+                return pawnIsImmune.GetValueOrDefault();
+            }
+        }
 
         /// <summary>
         /// Keeps track of the actual T-Virus controller that

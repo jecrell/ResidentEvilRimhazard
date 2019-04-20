@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <RuleDef>
+    <defName>RE_ZombieSettlement</defName>
+    <symbol>zombiesettlement</symbol>
+    <resolvers>
+      <li Class="RERimhazard.SymbolResolver_ZombieSettlement">
+        <minRectSize>(12, 12)</minRectSize>
+      </li>
+    </resolvers>
+  </RuleDef>
+
+
+  <MapGeneratorDef ParentName="MapCommonBase">
+    <defName>Base_Player</defName>
+    <genSteps>
+      <li>RocksFromGrid</li>
+      <li>ScatterDeepResourceLumps</li>
+      <li>RE_ZombieSettlement</li>
+      <li>RE_ZombieSettlementPower</li>
+    </genSteps>
+  </MapGeneratorDef>
+
+
+  <!-- Generate faction base -->
+  <GenStepDef>
+    <defName>RE_ZombieSettlement</defName>
+    <order>400</order>
+    <genStep Class="RERimhazard.GenStep_ZombieSettlement">
+      <count>1</count>
+      <nearMapCenter>true</nearMapCenter>
+    </genStep>
+  </GenStepDef>
+
+  <!-- Spawn power conduits -->
+  <GenStepDef>
+    <defName>RE_ZombieSettlementPower</defName>
+    <order>401</order>
+    <genStep Class="RERimhazard.GenStep_ZombiePower" />
+  </GenStepDef>
+  
+
+</Defs>

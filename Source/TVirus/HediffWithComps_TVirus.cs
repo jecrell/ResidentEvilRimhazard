@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RimWorld;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,7 +34,24 @@ namespace RERimhazard
         }
         public override bool ShouldRemove 
             => base.ShouldRemove 
-            || NumOfSites <= 0;
+            || NumOfSites <= 0 || PawnIsImmune;
+
+        private bool? pawnIsImmune = null;
+        public bool PawnIsImmune
+        {
+            get
+            {
+                if (pawnIsImmune == null)
+                {
+                    pawnIsImmune = false;
+                    if (this.pawn != null && this.pawn.story != null &&
+                        this.pawn.story.traits != null &&
+                        this.pawn.story.traits.HasTrait(TraitDef.Named("RE_TVirusImmunity")))
+                        pawnIsImmune = true;
+                }
+                return pawnIsImmune.GetValueOrDefault();
+            }
+        }
 
         /// <summary>
         /// A simple variable keeping track of how long between
