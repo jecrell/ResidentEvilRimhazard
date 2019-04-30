@@ -11,6 +11,185 @@
     </resolvers>
   </RuleDef>
 
+  
+  <RuleDef>
+    <defName>RE_BasePart</defName>
+    <symbol>zombieBasePart_indoors</symbol>
+    <resolvers>
+      <li Class="RERimhazard.SymbolResolver_ZombieBasePart_Indoors" />
+    </resolvers>
+  </RuleDef>
+
+  
+  <RuleDef>
+    <defName>RE_BasePart_Indoors_Division</defName>
+    <symbol>zombiebasePart_indoors_division</symbol>
+    <resolvers>
+      <li Class="RERimhazard.SymbolResolver_ZombieBasePart_Indoors_Division_Split">
+        <minRectSize>(3, 3)</minRectSize>
+      </li>
+    </resolvers>
+  </RuleDef>
+
+  <RuleDef>
+    <defName>RE_ZombieBasePart_Indoors_Leaf</defName>
+    <symbol>zombiebasePart_indoors_leaf</symbol>
+    <resolvers>
+      <li Class="RERimhazard.SymbolResolver_BasePart_Indoors_Leaf_ZombieEncounter">
+        <minRectSize>(5, 5)</minRectSize>
+        <selectionWeight>1</selectionWeight>
+      </li>
+      <li Class="RERimhazard.SymbolResolver_BasePart_Indoors_Leaf_LickerEncounter">
+        <minRectSize>(5, 5)</minRectSize>
+        <selectionWeight>0.4</selectionWeight>
+      </li>
+      <li Class="RERimhazard.SymbolResolver_BasePart_Indoors_Leaf_ZombieDogEncounter">
+        <minRectSize>(5, 5)</minRectSize>
+        <selectionWeight>0.2</selectionWeight>
+      </li>
+      <li Class="RERimhazard.SymbolResolver_BasePart_Indoors_Leaf_CrimsonHeadEncounter">
+        <minRectSize>(5, 5)</minRectSize>
+        <selectionWeight>0.05</selectionWeight>
+      </li>
+      <li Class="RERimhazard.SymbolResolver_BasePart_Indoors_Leaf_GEncounter">
+        <minRectSize>(5, 5)</minRectSize>
+        <selectionWeight>0.08</selectionWeight>
+      </li>
+      <li Class="RERimhazard.SymbolResolver_BasePart_Indoors_Leaf_TyrantEncounter">
+        <minRectSize>(5, 5)</minRectSize>
+        <selectionWeight>0.08</selectionWeight>
+      </li>
+    </resolvers>
+  </RuleDef>
+
+
+  <RuleDef>
+    <defName>RE_ZombieEncounter</defName>
+    <symbol>reZombieEncounter</symbol>
+    <resolvers>
+      <li Class="SymbolResolver_GenericRoom">
+        <minRectSize>(5, 5)</minRectSize>
+        <interior>interior_reZombieEncounter</interior>
+      </li>
+    </resolvers>
+  </RuleDef>
+
+  <RuleDef>
+    <defName>RE_LickerEncounter</defName>
+    <symbol>reLickerEncounter</symbol>
+    <resolvers>
+      <li Class="SymbolResolver_GenericRoom">
+        <minRectSize>(5, 5)</minRectSize>
+        <interior>interior_reLickerEncounter</interior>
+      </li>
+    </resolvers>
+  </RuleDef>
+
+  <RuleDef>
+    <defName>RE_ZombieDogEncounter</defName>
+    <symbol>reZombieDogEncounter</symbol>
+    <resolvers>
+      <li Class="SymbolResolver_GenericRoom">
+        <minRectSize>(5, 5)</minRectSize>
+        <interior>interior_reZombieDogEncounter</interior>
+      </li>
+    </resolvers>
+  </RuleDef>
+
+  <RuleDef>
+    <defName>RE_CrimsonHeadEncounter</defName>
+    <symbol>reCrimsonHeadEncounter</symbol>
+    <resolvers>
+      <li Class="SymbolResolver_GenericRoom">
+        <minRectSize>(5, 5)</minRectSize>
+        <interior>interior_reCrimsonHeadEncounter</interior>
+      </li>
+    </resolvers>
+  </RuleDef>
+
+  <RuleDef>
+    <defName>RE_TyrantEncounter</defName>
+    <symbol>reTyrantEncounter</symbol>
+    <resolvers>
+      <li Class="SymbolResolver_GenericRoom">
+        <minRectSize>(5, 5)</minRectSize>
+        <interior>interior_reTyrantEncounter</interior>
+      </li>
+    </resolvers>
+  </RuleDef>
+
+  <RuleDef>
+    <defName>RE_GEncounter</defName>
+    <symbol>reGEncounter</symbol>
+    <resolvers>
+      <li Class="SymbolResolver_GenericRoom">
+        <minRectSize>(5, 5)</minRectSize>
+        <interior>interior_reGEncounter</interior>
+      </li>
+    </resolvers>
+  </RuleDef>
+
+    <RuleDef>
+    <defName>RE_InteriorZombieEncounter</defName>
+    <symbol>interior_reZombieEncounter</symbol>
+    <resolvers>
+      <li Class="RERimhazard.SymbolResolver_Interior_ZombieEncounter">
+        <minRectSize>(3, 3)</minRectSize>
+      </li>
+    </resolvers>
+  </RuleDef>
+
+    <RuleDef>
+    <defName>RE_InteriorLickerEncounter</defName>
+    <symbol>interior_reLickerEncounter</symbol>
+    <resolvers>
+      <li Class="RERimhazard.SymbolResolver_Interior_ZombieEncounter">
+        <minRectSize>(3, 3)</minRectSize>
+      </li>
+    </resolvers>
+  </RuleDef>
+
+    <RuleDef>
+    <defName>RE_InteriorZombieDogEncounter</defName>
+    <symbol>interior_reZombieDogEncounter</symbol>
+    <resolvers>
+      <li Class="RERimhazard.SymbolResolver_Interior_ZombieDogEncounter">
+        <minRectSize>(3, 3)</minRectSize>
+      </li>
+    </resolvers>
+  </RuleDef>
+
+    <RuleDef>
+    <defName>RE_InteriorCrimsonHeadEncounter</defName>
+    <symbol>interior_reCrimsonHeadEncounter</symbol>
+    <resolvers>
+      <li Class="RERimhazard.SymbolResolver_Interior_CrimsonHeadEncounter">
+        <minRectSize>(3, 3)</minRectSize>
+      </li>
+    </resolvers>
+  </RuleDef>
+
+    <RuleDef>
+    <defName>RE_InteriorTyrantEncounter</defName>
+    <symbol>interior_reTyrantEncounter</symbol>
+    <resolvers>
+      <li Class="RERimhazard.SymbolResolver_Interior_TyrantEncounter">
+        <minRectSize>(3, 3)</minRectSize>
+      </li>
+    </resolvers>
+  </RuleDef>
+
+    <RuleDef>
+    <defName>RE_InteriorGEncounter</defName>
+    <symbol>interior_reGEncounter</symbol>
+    <resolvers>
+      <li Class="RERimhazard.SymbolResolver_Interior_GEncounter">
+        <minRectSize>(3, 3)</minRectSize>
+      </li>
+    </resolvers>
+  </RuleDef>
+
+
 
   <MapGeneratorDef ParentName="MapCommonBase">
     <defName>Base_Player</defName>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+
+  <ThingDef ParentName="BaseMeleeWeapon_Sharp_Quality">
+		<defName>RE_StunGun</defName>
+		<label>stun gun</label>
+    <techLevel>Industrial</techLevel>
+		<description>Stuns on hit. Can down targets after multiple successful hits, depending on target size.</description>
+		<graphicData>
+			<texPath>Things/Item/Equipment/WeaponMelee/REStunGun</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+    <weaponTags>
+      <li>STARSMemberMelee</li>
+    </weaponTags>
+		<statBases>
+			<WorkToMake>1800</WorkToMake>
+			<Mass>0.5</Mass>
+		</statBases>
+		<equippedAngleOffset>-65</equippedAngleOffset>
+    <costList>
+      <Steel>70</Steel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+    </costList>
+    <tools>
+      <li>
+        <label>handle</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <power>9</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+      <li>
+        <label>point</label>
+        <capacities>
+          <li>Stab</li>
+        </capacities>
+        <power>13</power>
+        <cooldownTime>2</cooldownTime>
+      </li>
+    </tools>
+		<recipeMaker>
+      <recipeUsers>
+        <li>TableMachining</li>
+      </recipeUsers>
+    </recipeMaker>
+	</ThingDef>
+</Defs>

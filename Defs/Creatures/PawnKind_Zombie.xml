@@ -25,6 +25,7 @@
         <compClass>CompAttachBase</compClass>
       </li>
     </comps>
+    
     <drawGUIOverlay>true</drawGUIOverlay>
   </ThingDef>
 
