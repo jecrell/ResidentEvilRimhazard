@@ -73,7 +73,7 @@ namespace RERimhazard
             ResolveParams resolveParams5 = rp;
             resolveParams5.rect = rp.rect.ContractedBy(num);
             resolveParams5.faction = faction;
-            BaseGen.symbolStack.Push("basePart_outdoors", resolveParams5);
+            BaseGen.symbolStack.Push("zombieBasePart_outdoors", resolveParams5);
             ResolveParams resolveParams6 = rp;
             resolveParams6.floorDef = TerrainDefOf.Bridge;
             bool? floorOnlyIfTerrainSupports = rp.floorOnlyIfTerrainSupports;

@@ -75,6 +75,10 @@
     <Compile Include="SymbolResolver_Interior_ZombieEncounter.cs" />
     <Compile Include="SymbolResolver_ZombieBasepart_Indoors.cs" />
     <Compile Include="SymbolResolver_ZombieBasePart_Indoors_Division_Split.cs" />
+    <Compile Include="SymbolResolver_ZombieBasePart_Outdoors.cs" />
+    <Compile Include="SymbolResolver_ZombieBasePart_Outdoors_LeafDecorated_EdgeStreet.cs" />
+    <Compile Include="SymbolResolver_ZombieBasePart_Outdoors_LeafDecorated_RandomInnerRect.cs" />
+    <Compile Include="SymbolResolver_ZombieBasePart_Outdoors_LeafPossiblyDecorated.cs" />
     <Compile Include="SymbolResolver_ZombieSettlement.cs" />
     <Compile Include="TVirus\HediffWithComps_TVirusCarrier.cs" />
     <Compile Include="TVirus\HediffWithComps_TVirusLocal.cs" />
