@@ -136,6 +136,49 @@ namespace RERimhazard
                     nameof(PawnCanOpenPostfix)
                     ),
                 null);
+
+            //Zombies are not considered colonists
+            harmony.Patch(
+                AccessTools.Method(
+                    typeof(Pawn),
+                    "get_IsColonist"
+                    ),
+                null,
+                new HarmonyMethod(
+                    typeof(HarmonyPatches),
+                    nameof(get_IsColonist_PostFix)
+                    ),
+                null);
+
+
+            //Zombies are considered prisoners
+            harmony.Patch(
+                AccessTools.Method(
+                    typeof(Pawn_GuestTracker),
+                    "get_IsPrisoner"
+                    ),
+                null,
+                new HarmonyMethod(
+                    typeof(HarmonyPatches),
+                    nameof(get_IsPrisoner_PostFix)
+                    ),
+                null);
+            
+        }
+
+        public static void get_IsPrisoner_PostFix(Pawn_GuestTracker __instance, ref bool __result)
+        {
+            Pawn pawn = (Pawn)AccessTools.Field(typeof(Pawn_GuestTracker), "pawn").GetValue(__instance);
+            if (pawn is Zombie && pawn.Faction == Faction.OfPlayer)
+            {
+                __result = true;
+            }
+        }
+
+        public static void get_IsColonist_PostFix(Pawn __instance, ref bool __result)
+        {
+            if (__instance is Zombie)
+                __result = false;
         }
 
         public static void PawnCanOpenPostfix(Pawn p, ref bool __result)

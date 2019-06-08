@@ -61,6 +61,8 @@
     <Compile Include="GenStep_ZombieSettlement.cs" />
     <Compile Include="HarmonyPatches.cs" />
     <Compile Include="Incidents\IncidentWorker_InjuredStranger.cs" />
+    <Compile Include="JobDriver_InstallBrainChip.cs" />
+    <Compile Include="REDataCache.cs" />
     <Compile Include="SymbolResolver_BasePart_Indoors_Leaf_GEncounter.cs" />
     <Compile Include="SymbolResolver_BasePart_Indoors_Leaf_TyrantEncounter.cs" />
     <Compile Include="SymbolResolver_BasePart_Indoors_Leaf_CrimsonHeadEncounter.cs" />
@@ -76,6 +78,8 @@
     <Compile Include="SymbolResolver_ZombieBasepart_Indoors.cs" />
     <Compile Include="SymbolResolver_ZombieBasePart_Indoors_Division_Split.cs" />
     <Compile Include="SymbolResolver_ZombieBasePart_Outdoors.cs" />
+    <Compile Include="SymbolResolver_ZombieBasePart_Outdoors_Division_Grid.cs" />
+    <Compile Include="SymbolResolver_ZombieBasePart_Outdoors_Division_Split.cs" />
     <Compile Include="SymbolResolver_ZombieBasePart_Outdoors_LeafDecorated_EdgeStreet.cs" />
     <Compile Include="SymbolResolver_ZombieBasePart_Outdoors_LeafDecorated_RandomInnerRect.cs" />
     <Compile Include="SymbolResolver_ZombieBasePart_Outdoors_LeafPossiblyDecorated.cs" />
@@ -93,6 +97,7 @@
     <Compile Include="Utilities\REUtility.cs" />
     <Compile Include="Creatures\Zombie.cs" />
     <Compile Include="Utilities\ZombieUtility.cs" />
+    <Compile Include="ZombieFloatMenuPatch.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -3,5 +3,8 @@
 
 <RE_Test>Resident Evil</RE_Test>
 <RE_Zombie>Zombie</RE_Zombie>
+<RE_CannotInstallBrainchip>Cannot install brainchip</RE_CannotInstallBrainchip>
+<RE_InstallBrainChip>Install {0} on {1}.</ROM_ApplySilverTreatment>
+<ROM_NeedsSilver> needs {0} silver</ROM_NeedsSilver>
   
 </LanguageData>

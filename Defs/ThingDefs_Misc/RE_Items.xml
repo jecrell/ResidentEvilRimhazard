@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>RE_BrainChip</defName>
+    <label>brain chip</label>
+    <description>A chip specially designed for interfacing with and controlling the brain of a creature affected by any descendant strains of the progenitor virus.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Chips/Brainchip</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <onGroundRandomRotateAngle>35</onGroundRandomRotateAngle>
+    </graphicData>
+    <resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <soundInteract>Metal_Drop</soundInteract>
+    <soundDrop>Metal_Drop</soundDrop>
+    <stackLimit>100</stackLimit>
+    <useHitPoints>true</useHitPoints>
+    <recipeMaker>
+			<!--<researchPrerequisite>RE_ZombieMindControl</researchPrerequisite>-->
+      <workSpeedStat>SmithingSpeed</workSpeedStat>
+      <workSkill>Crafting</workSkill>
+      <effectWorking>Smith</effectWorking>
+      <soundWorking>Recipe_Smith</soundWorking>
+      <recipeUsers Inherit="False">
+        <li>FabricationBench</li>
+      </recipeUsers>
+    </recipeMaker>
+    <costList>
+      <Steel>5</Steel>
+      <ComponentIndustrial>2</ComponentIndustrial>
+    </costList>
+    <statBases>
+      <MarketValue>100</MarketValue>
+      <MaxHitPoints>100</MaxHitPoints>
+      <Mass>1</Mass>
+    </statBases>
+    <thingCategories>
+      <li>Items</li>
+    </thingCategories>
+    <comps>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
+    </comps>
+    <drawGUIOverlay>true</drawGUIOverlay>
+    <tradeability>None</tradeability>
+    <techLevel>Industrial</techLevel>
+    <tradeTags>
+      <li>RE_UmbrellaCorp</li>
+    </tradeTags>
+  </ThingDef>
+  
+</Defs>
