@@ -16,8 +16,8 @@
         <!-- Config pages -->
         <li Class="ScenPart_ConfigPage_ConfigureStartingPawns">
           <def>ConfigPage_ConfigureStartingPawns</def>
-          <pawnCount>3</pawnCount>
-          <pawnChoiceCount>6</pawnChoiceCount>
+          <pawnCount>5</pawnCount>
+          <pawnChoiceCount>9</pawnChoiceCount>
         </li>
 
         <!-- Player pawns modifiers -->

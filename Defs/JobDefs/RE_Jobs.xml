@@ -7,4 +7,10 @@
     <reportString>installing brainchip on TargetA.</reportString>
   </JobDef>
 
+  <JobDef>
+    <defName>RE_Combine</defName>
+    <driverClass>RERimhazard.JobDriver_CombineItems</driverClass>
+    <reportString>combining TargetA with TargetB.</reportString>
+  </JobDef>
+
 </Defs>

@@ -28,12 +28,18 @@ namespace RERimhazard
 
         private int intervalUntilTransformation = -1;
 
+        private int gunshotsSustained = 0;
+
+        public bool headshotSustained = false;
+        
         public override void ExposeData()
         {
             base.ExposeData();
             Scribe_Values.Look<bool>(ref this.wasColonist, "wasColonist", false, false);
             Scribe_Values.Look<bool>(ref this.installedBrainChip, "installedBrainChip", false, false);
             Scribe_Values.Look<bool>(ref this.hadTransformationChance, "hadTransformationChance", false);
+            Scribe_Values.Look<int>(ref this.gunshotsSustained, "gunshotsSunstained", 0);
+            Scribe_Values.Look<bool>(ref this.headshotSustained, "headshotSustained");
             //if (Scribe.mode == LoadSaveMode.LoadingVars)
             //{
             //    Cthulhu.Utility.GiveZombieSkinEffect(this);
@@ -43,6 +49,13 @@ namespace RERimhazard
         public override void Kill(DamageInfo? dinfo, Hediff exactCulprit = null)
         {
             base.Kill(dinfo, exactCulprit);
+
+            if (dinfo.Value is DamageInfo d && d.Instigator is Pawn p && p.RaceProps.Humanlike)
+            {
+                Thought_Memory newThought = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDef.Named("RE_KilledZombie"));
+                p.needs.mood.thoughts.memories.TryGainMemory(newThought);
+            }
+
             if (this.kindDef.defName != "RE_LickerKind" &&
                 this.kindDef.defName != "RE_CrimsonHeadKind")
             {
@@ -51,12 +64,28 @@ namespace RERimhazard
             }
         }
         
-
-
         public override void PreApplyDamage(ref DamageInfo dinfo, out bool absorbed)
         {
             this.health.PreApplyDamage(dinfo, out absorbed);
-            if (!base.Destroyed && (dinfo.Def == DamageDefOf.Cut || dinfo.Def == DamageDefOf.Stab))
+            if (!base.Destroyed)
+            {
+                if (dinfo.Def == DamageDefOf.Bullet)
+                {
+                    if (dinfo.InstantPermanentInjury && dinfo.HitPart?.groups?.Contains(BodyPartGroupDefOf.FullHead) == true)
+                    {
+                        headshotSustained = true;
+                        this.Kill(dinfo);
+                        return;
+                    }
+
+                    gunshotsSustained++;
+                    if (gunshotsSustained > 2)
+                    {
+                        this.Kill(dinfo);
+                        return;
+                    }
+                }
+                if (dinfo.Def == DamageDefOf.Cut || dinfo.Def == DamageDefOf.Stab)
             {
                 float num = 0f;
                 float num2 = 0f;
@@ -79,6 +108,7 @@ namespace RERimhazard
                     dinfo.SetAmount((int)((float)dinfo.Amount * (1f + num2)));
                 }
             }
+            }
         }
 
 
@@ -98,6 +128,16 @@ namespace RERimhazard
                 {
                     if (Find.TickManager.TicksGame % 250 == 0)
                     {
+                        var zombieDangerMap = this.Map.GetComponent<ZombieDangerMap>();
+                        if (!zombieDangerMap.regionDangers.ContainsKey(this.GetRegion()))
+                            zombieDangerMap.regionDangers.Add(this.GetRegion(), 1000);
+                        zombieDangerMap.regionDangers[this.GetRegion()] += 1000;
+                        foreach (var reg in this.GetRegion().Neighbors)
+                        {
+                            if (!zombieDangerMap.regionDangers.ContainsKey(reg))
+                                zombieDangerMap.regionDangers.Add(reg, 1000);
+                            zombieDangerMap.regionDangers[reg] += 510;
+                        }
                         this.TickRare();
                     }
                     if (base.Spawned)

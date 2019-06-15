@@ -31,7 +31,7 @@
       <dieIfLeafless>false</dieIfLeafless>
       <harvestWork>400</harvestWork>
       <harvestTag>Standard</harvestTag>
-      <harvestedThingDef>MedicineHerbal</harvestedThingDef>
+      <harvestedThingDef>RE_MedicineGreen</harvestedThingDef>
       <harvestYield>1</harvestYield>
       <topWindExposure>0.1</topWindExposure>
       <visualSizeRange>
@@ -62,7 +62,7 @@
       <dieIfLeafless>false</dieIfLeafless>
       <harvestWork>400</harvestWork>
       <harvestTag>Standard</harvestTag>
-      <harvestedThingDef>MedicineHerbal</harvestedThingDef>
+      <harvestedThingDef>RE_MedicineRed</harvestedThingDef>
       <harvestYield>1</harvestYield>
       <topWindExposure>0.1</topWindExposure>
       <visualSizeRange>
@@ -74,7 +74,7 @@
   </ThingDef>
 
   <ThingDef ParentName="ResidentEvilHerb">
-    <defName>RE_Plant_ResidentEvilHerbRed</defName>
+    <defName>RE_Plant_ResidentEvilHerbBlue</defName>
     <label>blue herb</label>
     <description>This herb can be used to neutralize the effect of any toxins and poisons. It can be mixed with other herbs for additional effects.</description>
      <graphicData>
@@ -93,7 +93,7 @@
       <dieIfLeafless>false</dieIfLeafless>
       <harvestWork>400</harvestWork>
       <harvestTag>Standard</harvestTag>
-      <harvestedThingDef>MedicineHerbal</harvestedThingDef>
+      <harvestedThingDef>RE_MedicineBlue</harvestedThingDef>
       <harvestYield>1</harvestYield>
       <topWindExposure>0.1</topWindExposure>
       <visualSizeRange>

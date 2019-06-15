@@ -1,4 +1,5 @@
-﻿using RimWorld.BaseGen;
+﻿using RimWorld;
+using RimWorld.BaseGen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,7 +45,7 @@ namespace RERimhazard
                 }
                 flag = !@bool;
             }
-            TerrainDef floorDef = rp.pathwayFloorDef ?? BaseGenUtility.RandomBasicFloorDef(rp.faction);
+            TerrainDef floorDef = TerrainDefOf.Concrete;
             ResolveParams resolveParams3;
             ResolveParams resolveParams5;
             if (flag)
@@ -77,13 +78,13 @@ namespace RERimhazard
             }
             if (Rand.Bool)
             {
-                BaseGen.symbolStack.Push("basePart_outdoors", resolveParams3);
-                BaseGen.symbolStack.Push("basePart_outdoors", resolveParams5);
-            }
-            else
-            {
-                BaseGen.symbolStack.Push("basePart_outdoors", resolveParams5);
-                BaseGen.symbolStack.Push("basePart_outdoors", resolveParams3);
+                BaseGen.symbolStack.Push("zombieBasePart_outdoors", resolveParams3);
+                BaseGen.symbolStack.Push("zombieBasePart_outdoors", resolveParams5);
+            }                             
+            else                          
+            {                             
+                BaseGen.symbolStack.Push("zombieBasePart_outdoors", resolveParams5);
+                BaseGen.symbolStack.Push("zombieBasePart_outdoors", resolveParams3);
             }
         }
 

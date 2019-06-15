@@ -1,16 +1,40 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <ThingDef ParentName="MedicineBase">
-    <defName>RE_MedicineGreenGreen</defName>
-    <label>Mixed Herbs (G+G)</label>
+
+  <ThingDef ParentName="ResourceBase" Name="RE_IngestibleHerbs" Abstract="True">
+    <thingClass>RERimhazard.CombinableHerb</thingClass>
+    <stackLimit>25</stackLimit>
+    <uiIconForStackCount>1</uiIconForStackCount>
+    <soundInteract>Standard_Drop</soundInteract>
+    <soundDrop>Standard_Drop</soundDrop>
+    <statBases>
+      <MaxHitPoints>60</MaxHitPoints>
+    </statBases>
+    <thingCategories>
+      <li>Medicine</li>
+    </thingCategories>
+    <ingestible>
+      <preferability>NeverForNutrition</preferability>
+      <maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
+      <foodType>Plant, Processed</foodType>
+      <outcomeDoers>
+        <li Class="RERimhazard.IngestionOutcomeDoer_Herb">
+        </li>
+      </outcomeDoers>
+    </ingestible>
+  </ThingDef>
+
+  <ThingDef ParentName="RE_IngestibleHerbs">
+    <defName>RE_MedicineBlueBlueBlue</defName>
+    <label>Mixed Herbs (B+B+B)</label>
     <description>.</description>
     <graphicData>
-      <texPath>Things/Item/Resource/Medicine/MedicineIndustrial</texPath>
-      <graphicClass>Graphic_StackCount</graphicClass>
+      <texPath>Things/Item/Resource/Herbs/BlueBlueBluePowder</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
       <drawSize>0.85</drawSize>
     </graphicData>
-		<techLevel>Industrial</techLevel>
+		<techLevel>Neolithic</techLevel>
 		<statBases>
       <MarketValue>18</MarketValue>
       <Mass>0.50</Mass>
@@ -20,35 +44,160 @@
       <DeteriorationRate>2</DeteriorationRate>
       <WorkToMake>700</WorkToMake>
     </statBases>
-    <costList>
-      <MedicineHerbal>1</MedicineHerbal>
-      <Neutroamine>1</Neutroamine>
-      <Cloth>3</Cloth>
-    </costList>
     <recipeMaker>
-      <workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
-      <workSkill>Intellectual</workSkill>
-      <recipeUsers>
+			<recipeUsers>
+        <li>CraftingSpot</li>
         <li>DrugLab</li>
       </recipeUsers>
-      <researchPrerequisite>MedicineProduction</researchPrerequisite>
-      <skillRequirements>
-				<Crafting>4</Crafting>
-        <Intellectual>4</Intellectual>
-      </skillRequirements>
+      <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+      <workSkill>Cooking</workSkill>
     </recipeMaker>
+    <costList>
+      <RE_MedicineBlue>3</RE_MedicineBlue>
+    </costList>
   </ThingDef>
 
-  <ThingDef ParentName="MedicineBase">
+  <ThingDef ParentName="RE_IngestibleHerbs">
+    <defName>RE_MedicineBlueBlueGreen</defName>
+    <label>Mixed Herbs (B+B+G)</label>
+    <description>.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Herbs/BlueBlueGreenPowder</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.85</drawSize>
+    </graphicData>
+		<techLevel>Neolithic</techLevel>
+		<statBases>
+      <MarketValue>18</MarketValue>
+      <Mass>0.50</Mass>
+      <Flammability>0.7</Flammability>
+      <MedicalPotency>1.00</MedicalPotency>
+      <MedicalQualityMax>1.00</MedicalQualityMax>
+      <DeteriorationRate>2</DeteriorationRate>
+      <WorkToMake>700</WorkToMake>
+    </statBases>
+    <recipeMaker>
+			<recipeUsers>
+        <li>CraftingSpot</li>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+      <workSkill>Cooking</workSkill>
+    </recipeMaker>
+    <costList>
+      <RE_MedicineBlue>2</RE_MedicineBlue>
+      <RE_MedicineGreen>1</RE_MedicineGreen>
+    </costList>
+  </ThingDef>
+
+  <ThingDef ParentName="RE_IngestibleHerbs">
+    <defName>RE_MedicineBlueBlue</defName>
+    <label>Mixed Herbs (B+B)</label>
+    <description>.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Herbs/BlueBluePowder</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.85</drawSize>
+    </graphicData>
+		<techLevel>Neolithic</techLevel>
+		<statBases>
+      <MarketValue>18</MarketValue>
+      <Mass>0.50</Mass>
+      <Flammability>0.7</Flammability>
+      <MedicalPotency>1.00</MedicalPotency>
+      <MedicalQualityMax>1.00</MedicalQualityMax>
+      <DeteriorationRate>2</DeteriorationRate>
+      <WorkToMake>700</WorkToMake>
+    </statBases>
+    <recipeMaker>
+			<recipeUsers>
+        <li>CraftingSpot</li>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+      <workSkill>Cooking</workSkill>
+    </recipeMaker>
+    <costList>
+      <RE_MedicineBlue>2</RE_MedicineBlue>
+    </costList>
+  </ThingDef>
+
+  <ThingDef ParentName="RE_IngestibleHerbs">
+    <defName>RE_MedicineBlueBlueRed</defName>
+    <label>Mixed Herbs (B+B+R)</label>
+    <description>.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Herbs/BlueBlueRedPowder</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.85</drawSize>
+    </graphicData>
+		<techLevel>Neolithic</techLevel>
+		<statBases>
+      <MarketValue>18</MarketValue>
+      <Mass>0.50</Mass>
+      <Flammability>0.7</Flammability>
+      <MedicalPotency>1.00</MedicalPotency>
+      <MedicalQualityMax>1.00</MedicalQualityMax>
+      <DeteriorationRate>2</DeteriorationRate>
+      <WorkToMake>700</WorkToMake>
+    </statBases>
+    <recipeMaker>
+			<recipeUsers>
+        <li>CraftingSpot</li>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+      <workSkill>Cooking</workSkill>
+    </recipeMaker>
+    <costList>
+      <RE_MedicineBlue>2</RE_MedicineBlue>
+      <RE_MedicineRed>1</RE_MedicineRed>
+    </costList>
+  </ThingDef>
+
+  <ThingDef ParentName="RE_IngestibleHerbs">
+    <defName>RE_MedicineGreenBlue</defName>
+    <label>Mixed Herbs (G+B)</label>
+    <description>.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Herbs/GreenBluePowder</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.85</drawSize>
+    </graphicData>
+		<techLevel>Neolithic</techLevel>
+		<statBases>
+      <MarketValue>18</MarketValue>
+      <Mass>0.50</Mass>
+      <Flammability>0.7</Flammability>
+      <MedicalPotency>1.00</MedicalPotency>
+      <MedicalQualityMax>1.00</MedicalQualityMax>
+      <DeteriorationRate>2</DeteriorationRate>
+      <WorkToMake>700</WorkToMake>
+    </statBases>
+    <recipeMaker>
+			<recipeUsers>
+        <li>CraftingSpot</li>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+      <workSkill>Cooking</workSkill>
+    </recipeMaker>
+    <costList>
+      <RE_MedicineGreen>1</RE_MedicineGreen>
+      <RE_MedicineBlue>1</RE_MedicineBlue>
+    </costList>
+  </ThingDef>
+
+  <ThingDef ParentName="RE_IngestibleHerbs">
     <defName>RE_MedicineGreenGreenGreen</defName>
     <label>Mixed Herbs (G+G+G)</label>
     <description>.</description>
     <graphicData>
-      <texPath>Things/Item/Resource/Medicine/MedicineIndustrial</texPath>
-      <graphicClass>Graphic_StackCount</graphicClass>
+      <texPath>Things/Item/Resource/Herbs/GreenGreenGreenPowder</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
       <drawSize>0.85</drawSize>
     </graphicData>
-		<techLevel>Industrial</techLevel>
+		<techLevel>Neolithic</techLevel>
 		<statBases>
       <MarketValue>18</MarketValue>
       <Mass>0.50</Mass>
@@ -58,35 +207,161 @@
       <DeteriorationRate>2</DeteriorationRate>
       <WorkToMake>700</WorkToMake>
     </statBases>
-    <costList>
-      <MedicineHerbal>1</MedicineHerbal>
-      <Neutroamine>1</Neutroamine>
-      <Cloth>3</Cloth>
-    </costList>
     <recipeMaker>
-      <workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
-      <workSkill>Intellectual</workSkill>
-      <recipeUsers>
+			<recipeUsers>
+        <li>CraftingSpot</li>
         <li>DrugLab</li>
       </recipeUsers>
-      <researchPrerequisite>MedicineProduction</researchPrerequisite>
-      <skillRequirements>
-				<Crafting>4</Crafting>
-        <Intellectual>4</Intellectual>
-      </skillRequirements>
+      <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+      <workSkill>Cooking</workSkill>
     </recipeMaker>
+    <costList>
+      <RE_MedicineGreen>3</RE_MedicineGreen>
+    </costList>
   </ThingDef>
 
-  <ThingDef ParentName="MedicineBase">
+  <ThingDef ParentName="RE_IngestibleHerbs">
+    <defName>RE_MedicineGreenGreen</defName>
+    <label>Mixed Herbs (G+G)</label>
+    <description>.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Herbs/GreenGreenPowder</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.85</drawSize>
+    </graphicData>
+		<techLevel>Neolithic</techLevel>
+		<statBases>
+      <MarketValue>18</MarketValue>
+      <Mass>0.50</Mass>
+      <Flammability>0.7</Flammability>
+      <MedicalPotency>1.00</MedicalPotency>
+      <MedicalQualityMax>1.00</MedicalQualityMax>
+      <DeteriorationRate>2</DeteriorationRate>
+      <WorkToMake>700</WorkToMake>
+    </statBases>
+    <recipeMaker>
+			<recipeUsers>
+        <li>CraftingSpot</li>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+      <workSkill>Cooking</workSkill>
+    </recipeMaker>
+    <costList>
+      <RE_MedicineGreen>2</RE_MedicineGreen>
+    </costList>
+  </ThingDef>
+
+  <ThingDef ParentName="RE_IngestibleHerbs">
+    <defName>RE_MedicineGreenGreenRed</defName>
+    <label>Mixed Herbs (G+G+R)</label>
+    <description>.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Herbs/GreenGreenRedPowder</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.85</drawSize>
+    </graphicData>
+		<techLevel>Neolithic</techLevel>
+		<statBases>
+      <MarketValue>18</MarketValue>
+      <Mass>0.50</Mass>
+      <Flammability>0.7</Flammability>
+      <MedicalPotency>1.00</MedicalPotency>
+      <MedicalQualityMax>1.00</MedicalQualityMax>
+      <DeteriorationRate>2</DeteriorationRate>
+      <WorkToMake>700</WorkToMake>
+    </statBases>
+    <recipeMaker>
+			<recipeUsers>
+        <li>CraftingSpot</li>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+      <workSkill>Cooking</workSkill>
+    </recipeMaker>
+    <costList>
+      <RE_MedicineGreen>2</RE_MedicineGreen>
+      <RE_MedicineRed>1</RE_MedicineRed>
+    </costList>
+  </ThingDef>
+
+  <ThingDef ParentName="RE_IngestibleHerbs">
+    <defName>RE_MedicineGreenGreenBlue</defName>
+    <label>Mixed Herbs (G+G+B)</label>
+    <description>.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Herbs/GreenGreenBluePowder</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.85</drawSize>
+    </graphicData>
+		<techLevel>Neolithic</techLevel>
+		<statBases>
+      <MarketValue>18</MarketValue>
+      <Mass>0.50</Mass>
+      <Flammability>0.7</Flammability>
+      <MedicalPotency>1.00</MedicalPotency>
+      <MedicalQualityMax>1.00</MedicalQualityMax>
+      <DeteriorationRate>2</DeteriorationRate>
+      <WorkToMake>700</WorkToMake>
+    </statBases>
+    <recipeMaker>
+			<recipeUsers>
+        <li>CraftingSpot</li>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+      <workSkill>Cooking</workSkill>
+    </recipeMaker>
+    <costList>
+      <RE_MedicineGreen>2</RE_MedicineGreen>
+      <RE_MedicineBlue>1</RE_MedicineBlue>
+    </costList>
+  </ThingDef>
+
+  <ThingDef ParentName="RE_IngestibleHerbs">
+    <defName>RE_MedicineGreenRedBlue</defName>
+    <label>Mixed Herbs (G+R+B)</label>
+    <description>.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Herbs/GreenRedBluePowder</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.85</drawSize>
+    </graphicData>
+		<techLevel>Neolithic</techLevel>
+		<statBases>
+      <MarketValue>18</MarketValue>
+      <Mass>0.50</Mass>
+      <Flammability>0.7</Flammability>
+      <MedicalPotency>1.60</MedicalPotency>
+      <MedicalQualityMax>1.60</MedicalQualityMax>
+      <DeteriorationRate>2</DeteriorationRate>
+      <WorkToMake>700</WorkToMake>
+    </statBases>
+    <recipeMaker>
+			<recipeUsers>
+        <li>CraftingSpot</li>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+      <workSkill>Cooking</workSkill>
+    </recipeMaker>
+    <costList>
+      <RE_MedicineGreen>1</RE_MedicineGreen>
+      <RE_MedicineRed>1</RE_MedicineRed>
+      <RE_MedicineBlue>1</RE_MedicineBlue>
+    </costList>
+  </ThingDef>
+
+  <ThingDef ParentName="RE_IngestibleHerbs">
     <defName>RE_MedicineGreenRed</defName>
     <label>Mixed Herbs (G+R)</label>
     <description>.</description>
     <graphicData>
-      <texPath>Things/Item/Resource/Medicine/MedicineIndustrial</texPath>
-      <graphicClass>Graphic_StackCount</graphicClass>
+      <texPath>Things/Item/Resource/Herbs/GreenRedPowder</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
       <drawSize>0.85</drawSize>
     </graphicData>
-		<techLevel>Industrial</techLevel>
+		<techLevel>Neolithic</techLevel>
 		<statBases>
       <MarketValue>18</MarketValue>
       <Mass>0.50</Mass>
@@ -96,23 +371,116 @@
       <DeteriorationRate>2</DeteriorationRate>
       <WorkToMake>700</WorkToMake>
     </statBases>
-    <costList>
-      <MedicineHerbal>1</MedicineHerbal>
-      <Neutroamine>1</Neutroamine>
-      <Cloth>3</Cloth>
-    </costList>
     <recipeMaker>
-      <workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
-      <workSkill>Intellectual</workSkill>
-      <recipeUsers>
+			<recipeUsers>
+        <li>CraftingSpot</li>
         <li>DrugLab</li>
       </recipeUsers>
-      <researchPrerequisite>MedicineProduction</researchPrerequisite>
-      <skillRequirements>
-				<Crafting>4</Crafting>
-        <Intellectual>4</Intellectual>
-      </skillRequirements>
+      <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+      <workSkill>Cooking</workSkill>
     </recipeMaker>
+    <costList>
+      <RE_MedicineGreen>1</RE_MedicineGreen>
+      <RE_MedicineRed>1</RE_MedicineRed>
+    </costList>
+  </ThingDef>
+
+  <ThingDef ParentName="RE_IngestibleHerbs">
+    <defName>RE_MedicineRedRedBlue</defName>
+    <label>Mixed Herbs (R+R+B)</label>
+    <description>.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Herbs/RedRedBluePowder</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.85</drawSize>
+    </graphicData>
+		<techLevel>Neolithic</techLevel>
+		<statBases>
+      <MarketValue>18</MarketValue>
+      <Mass>0.50</Mass>
+      <Flammability>0.7</Flammability>
+      <MedicalPotency>1.60</MedicalPotency>
+      <MedicalQualityMax>1.60</MedicalQualityMax>
+      <DeteriorationRate>2</DeteriorationRate>
+      <WorkToMake>700</WorkToMake>
+    </statBases>
+    <recipeMaker>
+			<recipeUsers>
+        <li>CraftingSpot</li>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+      <workSkill>Cooking</workSkill>
+    </recipeMaker>
+    <costList>
+      <RE_MedicineBlue>1</RE_MedicineBlue>
+      <RE_MedicineRed>2</RE_MedicineRed>
+    </costList>
+  </ThingDef>
+
+  <ThingDef ParentName="RE_IngestibleHerbs">
+    <defName>RE_MedicineRedRedGreen</defName>
+    <label>Mixed Herbs (R+R+G)</label>
+    <description>.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Herbs/RedRedGreenPowder</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.85</drawSize>
+    </graphicData>
+		<techLevel>Neolithic</techLevel>
+		<statBases>
+      <MarketValue>18</MarketValue>
+      <Mass>0.50</Mass>
+      <Flammability>0.7</Flammability>
+      <MedicalPotency>1.60</MedicalPotency>
+      <MedicalQualityMax>1.60</MedicalQualityMax>
+      <DeteriorationRate>2</DeteriorationRate>
+      <WorkToMake>700</WorkToMake>
+    </statBases>
+    <recipeMaker>
+			<recipeUsers>
+        <li>CraftingSpot</li>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+      <workSkill>Cooking</workSkill>
+    </recipeMaker>
+    <costList>
+      <RE_MedicineGreen>1</RE_MedicineGreen>
+      <RE_MedicineRed>2</RE_MedicineRed>
+    </costList>
+  </ThingDef>
+
+  <ThingDef ParentName="RE_IngestibleHerbs">
+    <defName>RE_MedicineRedRed</defName>
+    <label>Mixed Herbs (R+R)</label>
+    <description>.</description>
+    <graphicData>
+      <texPath>Things/Item/Resource/Herbs/RedRedPowder</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>0.85</drawSize>
+    </graphicData>
+		<techLevel>Neolithic</techLevel>
+		<statBases>
+      <MarketValue>18</MarketValue>
+      <Mass>0.50</Mass>
+      <Flammability>0.7</Flammability>
+      <MedicalPotency>1.60</MedicalPotency>
+      <MedicalQualityMax>1.60</MedicalQualityMax>
+      <DeteriorationRate>2</DeteriorationRate>
+      <WorkToMake>700</WorkToMake>
+    </statBases>
+    <recipeMaker>
+			<recipeUsers>
+        <li>CraftingSpot</li>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+      <workSkill>Cooking</workSkill>
+    </recipeMaker>
+    <costList>
+      <RE_MedicineRed>2</RE_MedicineRed>
+    </costList>
   </ThingDef>
 
 </Defs>

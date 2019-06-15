@@ -1,4 +1,5 @@
-﻿using RimWorld.BaseGen;
+﻿using RimWorld;
+using RimWorld.BaseGen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,7 @@ namespace RERimhazard
     {
         public override bool CanResolve(ResolveParams rp)
         {
-            if (!base.CanResolve(rp))
-            {
-                return false;
-            }
-            if (BaseGen.globalSettings.basePart_barracksResolved < BaseGen.globalSettings.minBarracks)
+            if (!base.CanResolve(rp) || REDataCache.ZombieDogEncounterGenerated)
             {
                 return false;
             }
@@ -23,6 +20,8 @@ namespace RERimhazard
 
         public override void Resolve(ResolveParams rp)
         {
+            rp.floorDef = TerrainDefOf.PavedTile;
+            REDataCache.ZombieDogEncounterGenerated = true;
             BaseGen.symbolStack.Push("reZombieDogEncounter", rp);
         }
     }

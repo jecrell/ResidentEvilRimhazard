@@ -78,6 +78,22 @@ namespace RERimhazard
                 return this.MeleeAttackJob(pawn, buildingDoor);
             }
 
+            if (pawn.CurJobDef != JobDefOf.Goto &&
+                pawn.CurJobDef != JobDefOf.Wait &&
+                pawn.CurJobDef != JobDefOf.Wait_MaintainPosture &&
+                pawn.CurJobDef != JobDefOf.Wait_Combat &&
+                pawn.CurJobDef != JobDefOf.Wait_Downed &&
+                pawn.CurJobDef != JobDefOf.Wait_Wander &&
+                pawn.CurJobDef != JobDefOf.Wait_SafeTemperature)
+            {
+                IntVec3 randomCell = CellFinder.RandomRegionNear(pawn.PositionHeld.GetRegion(pawn.Map, RegionType.Set_Passable), 9, TraverseParms.For(pawn, Danger.Deadly, TraverseMode.ByPawn, false), null, null, RegionType.Set_Passable).RandomCell;
+                if (randomCell == pawn.Position)
+                {
+                    return new Job(JobDefOf.Wait, 30, false);
+                }
+                return new Job(JobDefOf.Goto, randomCell) { locomotionUrgency = LocomotionUrgency.Amble };
+            }
+
             return null;
         }
 
@@ -106,19 +122,19 @@ namespace RERimhazard
 
         private Corpse FindCorpseTarget(Pawn pawn)
         {
-            return (Corpse)AttackTargetFinder.BestAttackTarget(pawn, TargetScanFlags.NeedLOSToNonPawns | TargetScanFlags.NeedReachable, (Thing x) => x is Corpse c && c?.InnerPawn?.def?.race?.intelligence >= Intelligence.ToolUser, 0f, 9999f, default(IntVec3), 3.40282347E+38f, true);
+            return (Corpse)AttackTargetFinder.BestAttackTarget(pawn, TargetScanFlags.NeedLOSToNonPawns | TargetScanFlags.NeedReachable, (Thing x) => x is Corpse c && c?.InnerPawn?.def?.race?.intelligence >= Intelligence.ToolUser, 0f, 20, default(IntVec3), 3.40282347E+38f, true);
         }
 
 
         private Pawn FindPawnTarget(Pawn pawn)
         {
-            return (Pawn)AttackTargetFinder.BestAttackTarget(pawn, TargetScanFlags.NeedLOSToPawns | TargetScanFlags.NeedReachable, (Thing x) => x is Pawn p && !p.Dead && x.def.race.intelligence >= Intelligence.ToolUser, 0f, 9999f, default(IntVec3), 3.40282347E+38f, true);
+            return (Pawn)AttackTargetFinder.BestAttackTarget(pawn, TargetScanFlags.NeedLOSToPawns | TargetScanFlags.NeedReachable, (Thing x) => x is Pawn p && !p.Dead && x.def.race.intelligence >= Intelligence.ToolUser, 0f, 15f, default(IntVec3), 3.40282347E+38f, true);
         }
 
 
         private Building FindTurretTarget(Pawn pawn)
         {
-            return (Building)AttackTargetFinder.BestAttackTarget(pawn, TargetScanFlags.NeedLOSToPawns | TargetScanFlags.NeedLOSToNonPawns | TargetScanFlags.NeedReachable | TargetScanFlags.NeedThreat, (Thing t) => t is Building, 0f, 70f, default(IntVec3), 3.40282347E+38f, false);
+            return (Building)AttackTargetFinder.BestAttackTarget(pawn, TargetScanFlags.NeedLOSToPawns | TargetScanFlags.NeedLOSToNonPawns | TargetScanFlags.NeedReachable | TargetScanFlags.NeedThreat, (Thing t) => t is Building, 0f, 30, default(IntVec3), 3.40282347E+38f, false);
         }
 
         private Building_Door FindDoorTarget(Pawn pawn)

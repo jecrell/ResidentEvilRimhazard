@@ -11,6 +11,7 @@
     <label>T-Virus Biohazard</label>
     <hediffClass>RERimhazard.HediffWithComps_TVirus</hediffClass>
     <scenarioCanAdd>true</scenarioCanAdd>
+    <isBad>true</isBad>
     <stages>
       <li>
         <label>insignificant</label>

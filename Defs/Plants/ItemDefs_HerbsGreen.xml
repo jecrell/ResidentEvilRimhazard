@@ -24,7 +24,7 @@
       </stages>
   </HediffDef>
 
-  <ThingDef ParentName="MedicineBase">
+  <ThingDef ParentName="RE_IngestibleHerbs">
     <defName>RE_MedicineGreen</defName>
     <label>green herb (powder)</label>
     <description>Powder extracted from the Green Herb. More potent than standard herbal medicine, but less potent than industrial pharmaceuticals.</description>
@@ -42,16 +42,18 @@
       <MedicalQualityMax>0.70</MedicalQualityMax>
       <DeteriorationRate>6</DeteriorationRate>
     </statBases>
-    <ingestible>
-      <preferability>NeverForNutrition</preferability>
-      <maxNumToIngestAtOnce>1</maxNumToIngestAtOnce>
-      <foodType>Plant, Processed</foodType>
-      <outcomeDoers>
-        <li Class="RERimhazard.IngestionOutcomeDoer_Herb">
-        </li>
-      </outcomeDoers>
-    </ingestible>
     <tickerType>Rare</tickerType>
+    <recipeMaker>
+			<recipeUsers>
+        <li>CraftingSpot</li>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+      <workSkill>Cooking</workSkill>
+    </recipeMaker>
+    <costList>
+      <RE_Plant_ResidentEvilHerbGreen>1</RE_Plant_ResidentEvilHerbGreen>
+    </costList>
     <comps>
       <li Class="CompProperties_Rottable">
         <daysToRotStart>150</daysToRotStart>

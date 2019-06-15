@@ -1,8 +1,10 @@
-﻿using RimWorld.BaseGen;
+﻿using RimWorld;
+using RimWorld.BaseGen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Verse;
 
 namespace RERimhazard
 {
@@ -10,11 +12,7 @@ namespace RERimhazard
     {
         public override bool CanResolve(ResolveParams rp)
         {
-            if (!base.CanResolve(rp))
-            {
-                return false;
-            }
-            if (BaseGen.globalSettings.basePart_barracksResolved < BaseGen.globalSettings.minBarracks)
+            if (!base.CanResolve(rp) || REDataCache.GEncounterGenerated)
             {
                 return false;
             }
@@ -23,7 +21,9 @@ namespace RERimhazard
 
         public override void Resolve(ResolveParams rp)
         {
+            rp.floorDef = TerrainDef.Named("SterileTile");
             BaseGen.symbolStack.Push("reGEncounter", rp);
+            REDataCache.GEncounterGenerated = true;
         }
     }
 

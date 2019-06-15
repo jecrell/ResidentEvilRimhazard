@@ -1,8 +1,10 @@
-﻿using RimWorld.BaseGen;
+﻿using RimWorld;
+using RimWorld.BaseGen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Verse;
 
 namespace RERimhazard
 {
@@ -11,7 +13,8 @@ namespace RERimhazard
         public override void Resolve(ResolveParams rp)
         {
             ResolveParams resolveParams = rp;
-            resolveParams.floorDef = (rp.pathwayFloorDef ?? BaseGenUtility.RandomBasicFloorDef(rp.faction));
+            //TerrainDef floorDef = TerrainDefOf.Concrete;
+            //resolveParams.floorDef = floorDef;
             BaseGen.symbolStack.Push("edgeStreet", resolveParams);
             ResolveParams resolveParams2 = rp;
             resolveParams2.rect = rp.rect.ContractedBy(1);

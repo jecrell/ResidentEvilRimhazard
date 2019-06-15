@@ -56,12 +56,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Buttons.cs" />
+    <Compile Include="Combinable.cs" />
+    <Compile Include="Creatures\BOW.cs" />
+    <Compile Include="Herbs\CombinableHerb.cs" />
     <Compile Include="DamageWorker_Constrict.cs" />
     <Compile Include="GenStep_ZombiePower.cs" />
     <Compile Include="GenStep_ZombieSettlement.cs" />
     <Compile Include="HarmonyPatches.cs" />
     <Compile Include="Incidents\IncidentWorker_InjuredStranger.cs" />
+    <Compile Include="JobDriver_CombineItems.cs" />
     <Compile Include="JobDriver_InstallBrainChip.cs" />
+    <Compile Include="LordJob_DefendZombieBase.cs" />
     <Compile Include="REDataCache.cs" />
     <Compile Include="SymbolResolver_BasePart_Indoors_Leaf_GEncounter.cs" />
     <Compile Include="SymbolResolver_BasePart_Indoors_Leaf_TyrantEncounter.cs" />
@@ -83,6 +89,7 @@
     <Compile Include="SymbolResolver_ZombieBasePart_Outdoors_LeafDecorated_EdgeStreet.cs" />
     <Compile Include="SymbolResolver_ZombieBasePart_Outdoors_LeafDecorated_RandomInnerRect.cs" />
     <Compile Include="SymbolResolver_ZombieBasePart_Outdoors_LeafPossiblyDecorated.cs" />
+    <Compile Include="SymbolResolver_ZombieBasePart_Outdoors_Leaf_Building.cs" />
     <Compile Include="SymbolResolver_ZombieSettlement.cs" />
     <Compile Include="TVirus\HediffWithComps_TVirusCarrier.cs" />
     <Compile Include="TVirus\HediffWithComps_TVirusLocal.cs" />
@@ -97,6 +104,7 @@
     <Compile Include="Utilities\REUtility.cs" />
     <Compile Include="Creatures\Zombie.cs" />
     <Compile Include="Utilities\ZombieUtility.cs" />
+    <Compile Include="ZombieDangerMap.cs" />
     <Compile Include="ZombieFloatMenuPatch.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

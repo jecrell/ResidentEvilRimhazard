@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <ThingDef ParentName="MedicineBase">
+  <ThingDef ParentName="RE_IngestibleHerbs">
     <defName>RE_MedicineRed</defName>
     <label>red herb (powder)</label>
     <description>Powder extracted from the Red Herb. Provides no benefits alone. Can be mixed with other herbs.</description>
@@ -18,6 +18,17 @@
       <DeteriorationRate>6</DeteriorationRate>
     </statBases>
     <tickerType>Rare</tickerType>
+    <recipeMaker>
+			<recipeUsers>
+        <li>CraftingSpot</li>
+        <li>DrugLab</li>
+      </recipeUsers>
+      <workSpeedStat>DrugCookingSpeed</workSpeedStat>
+      <workSkill>Cooking</workSkill>
+    </recipeMaker>
+    <costList>
+      <RE_Plant_ResidentEvilHerbRed>1</RE_Plant_ResidentEvilHerbRed>
+    </costList>
     <comps>
       <li Class="CompProperties_Rottable">
         <daysToRotStart>150</daysToRotStart>

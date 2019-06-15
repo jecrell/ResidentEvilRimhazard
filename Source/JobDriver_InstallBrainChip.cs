@@ -61,8 +61,8 @@ namespace RERimhazard
                 initAction = delegate
                 {
                     //this.customString = "ChthonianPitSacrificeFinished".Translate();
-                    IntVec3 position = this.BrainChip.Position;
-                    this.pawn.carryTracker.TryDropCarriedThing(position, ThingPlaceMode.Direct, out Thing thing, null);
+                    IntVec3 position = this.Zombie.Position;
+                    this.pawn.carryTracker.TryDropCarriedThing(position, ThingPlaceMode.Near, out Thing thing, null);
                     InstallBrainChip(thing, Zombie);
                 },
                 defaultCompleteMode = ToilCompleteMode.Instant
@@ -109,7 +109,7 @@ namespace RERimhazard
                 brainChip.Destroy();
             zombie.installedBrainChip = true;
             zombie.guest.SetGuestStatus(Faction.OfPlayer, true);
-            Messages.Message("Brainchip Successfully Installed", zombie, MessageTypeDefOf.PositiveEvent);
+            Messages.Message("RE_BrainChipInstalled".Translate(zombie.KindLabel), zombie, MessageTypeDefOf.PositiveEvent);
         }
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)

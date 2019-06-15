@@ -1,4 +1,5 @@
 ﻿using RimWorld;
+using RimWorld.BaseGen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,24 @@ namespace RERimhazard
 {
     public static class MiscUtility
     {
-
+        static public void SpawnHerbsAtRect(CellRect rect, Map map, int minRange = 0, int maxRange = 3)
+        {
+            var randomRange = new IntRange(minRange, maxRange).RandomInRange;
+            for (int i = 0; i < randomRange; i++)
+            {
+                ThingDef thingDef =
+                    Rand.Value > 0.5f ? ThingDef.Named("RE_Plant_ResidentEvilHerbGreen") :
+                        Rand.Value > 0.5f ? ThingDef.Named("RE_Plant_ResidentEvilHerbRed") :
+                                            ThingDef.Named("RE_Plant_ResidentEvilHerbBlue");
+                int age = thingDef.plant.LimitedLifespan ? Rand.Range(0, Mathf.Max(thingDef.plant.LifespanTicks - 2500, 0)) : 0;
+                Plant plant = (Plant)GenSpawn.Spawn(thingDef, rect.RandomCell, map);
+                plant.Growth = 1f;
+                if (plant.def.plant.LimitedLifespan)
+                {
+                    plant.Age = age;
+                }
+            }
+        }
         static public void GenerateRandomAge(Pawn pawn, Map map)
         {
             int num = 0;

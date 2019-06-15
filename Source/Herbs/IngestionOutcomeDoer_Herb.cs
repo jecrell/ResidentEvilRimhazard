@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using Verse;
 
 namespace RERimhazard
@@ -39,29 +40,23 @@ namespace RERimhazard
                 case 0:
                     return;
                 case 1:
-                    REUtility.HealAddedPercentage(pawn, 0.15f * (redHerbFactor + blueHerbFactor));
+                    REUtility.HealAddedPercentage(pawn, 0.15f * ((redHerbFactor * 3) + blueHerbFactor));
                     break;
                 case 2:
-                    REUtility.HealAddedPercentage(pawn, 0.3f * (redHerbFactor + blueHerbFactor));
+                    REUtility.HealAddedPercentage(pawn, 0.3f * ((redHerbFactor * 3) + blueHerbFactor));
                     break;
                 case 3:
-                    REUtility.HealAddedPercentage(pawn, 0.9f * (redHerbFactor + blueHerbFactor));
+                    REUtility.HealAddedPercentage(pawn, 0.9f * ((redHerbFactor * 3) + blueHerbFactor));
                     break;
                 default:
-                    REUtility.HealAddedPercentage(pawn, 0.15f * (redHerbFactor + blueHerbFactor));
+                    REUtility.HealAddedPercentage(pawn, 0.15f * ((redHerbFactor * 3) + blueHerbFactor));
                     break;
             }
         }
 
-        private static int FindNumberOfSubstrings(string mainString, string subString)
+        public static int FindNumberOfSubstrings(string mainString, string subString, int maxIterations = 99)
         {
-            int numOfSubstrings = 0;
-            while (mainString.Contains(subString))
-            {
-                mainString.ReplaceFirst(subString, "");
-                numOfSubstrings++;
-            }
-            return numOfSubstrings;
+            return Regex.Matches(mainString, subString).Count;
         }
     }
 }

@@ -10,6 +10,10 @@ namespace RERimhazard
     {
         public static Dictionary<Map, Thing> brainChips = new Dictionary<Map, Thing>();
 
+        public static bool GEncounterGenerated = false;
+        public static bool TyrantEncounterGenerated = false;
+        public static bool ZombieDogEncounterGenerated = false;
+
         public static Thing GetFirstBrainChip(Map map)
         {
             if (!brainChips.ContainsKey(map))

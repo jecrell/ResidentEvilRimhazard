@@ -10,11 +10,11 @@ namespace RERimhazard
         {
             if (rp.rect.Width > 13 || rp.rect.Height > 13 || ((rp.rect.Width >= 9 || rp.rect.Height >= 9) && Rand.Chance(0.3f)))
             {
-                BaseGen.symbolStack.Push("zombiebasePart_indoors_division", rp);
+                BaseGen.symbolStack.Push("zombieBasePart_indoors_division", rp);
             }
             else
             {
-                BaseGen.symbolStack.Push("zombiebasePart_indoors_leaf", rp);
+                BaseGen.symbolStack.Push("zombieBasePart_indoors_leaf", rp);
             }
         }
     }

@@ -14,8 +14,14 @@ namespace RERimhazard
 
         public override void Resolve(ResolveParams rp)
         {
+            REDataCache.TyrantEncounterGenerated = false;
+            REDataCache.ZombieDogEncounterGenerated = false;
+            REDataCache.GEncounterGenerated = false;
+
             Map map = BaseGen.globalSettings.map;
             Faction faction = rp.faction ?? Find.FactionManager.RandomEnemyFaction();
+            rp.wallStuff = ThingDefOf.Steel;
+            rp.floorDef = TerrainDef.Named("BrokenAsphalt");
             int num = 0;
             int? edgeDefenseWidth = rp.edgeDefenseWidth;
             if (edgeDefenseWidth.HasValue)
@@ -28,8 +34,10 @@ namespace RERimhazard
             }
             float num2 = (float)rp.rect.Area / 144f * 0.17f;
             BaseGen.globalSettings.minEmptyNodes = ((!(num2 < 1f)) ? GenMath.RoundRandom(num2) : 0);
-            Lord singlePawnLord = rp.singlePawnLord ?? LordMaker.MakeNewLord(faction, new LordJob_DefendPoint(rp.rect.CenterCell), map);
+            Lord singlePawnLord = rp.singlePawnLord ?? LordMaker.MakeNewLord(faction, new LordJob_DefendZombieBase(faction, map.Center), map);
             TraverseParms traverseParms = TraverseParms.For(TraverseMode.PassDoors);
+
+            
             ResolveParams resolveParams = rp;
             resolveParams.rect = rp.rect;
             resolveParams.faction = faction;
@@ -49,23 +57,6 @@ namespace RERimhazard
             }
             BaseGen.symbolStack.Push("pawnGroup", resolveParams);
             BaseGen.symbolStack.Push("outdoorLighting", rp);
-            if ((int)faction.def.techLevel >= 4)
-            {
-                int num3 = Rand.Chance(0.75f) ? GenMath.RoundRandom((float)rp.rect.Area / 400f) : 0;
-                for (int i = 0; i < num3; i++)
-                {
-                    ResolveParams resolveParams2 = rp;
-                    resolveParams2.faction = faction;
-                    BaseGen.symbolStack.Push("firefoamPopper", resolveParams2);
-                }
-            }
-            if (num > 0)
-            {
-                ResolveParams resolveParams3 = rp;
-                resolveParams3.faction = faction;
-                resolveParams3.edgeDefenseWidth = num;
-                BaseGen.symbolStack.Push("edgeDefense", resolveParams3);
-            }
             ResolveParams resolveParams4 = rp;
             resolveParams4.rect = rp.rect.ContractedBy(num);
             resolveParams4.faction = faction;
@@ -75,10 +66,16 @@ namespace RERimhazard
             resolveParams5.faction = faction;
             BaseGen.symbolStack.Push("zombieBasePart_outdoors", resolveParams5);
             ResolveParams resolveParams6 = rp;
-            resolveParams6.floorDef = TerrainDefOf.Bridge;
-            bool? floorOnlyIfTerrainSupports = rp.floorOnlyIfTerrainSupports;
-            resolveParams6.floorOnlyIfTerrainSupports = (!floorOnlyIfTerrainSupports.HasValue || floorOnlyIfTerrainSupports.Value);
-            BaseGen.symbolStack.Push("floor", resolveParams6);
+            //resolveParams6.rect = rp.rect.ExpandedBy(3);
+            //resolveParams6.floorDef = TerrainDef.Named("BrokenAsphalt");
+            //bool? floorOnlyIfTerrainSupports = rp.floorOnlyIfTerrainSupports;
+            //resolveParams6.floorOnlyIfTerrainSupports = false;
+            //BaseGen.symbolStack.Push("floor", resolveParams6);
+            //Clear the land...
+            ResolveParams clearParams = rp;
+            clearParams.rect = rp.rect;
+            BaseGen.symbolStack.Push("clear", clearParams);
+
         }
     }
 }

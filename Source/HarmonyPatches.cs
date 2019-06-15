@@ -163,8 +163,105 @@ namespace RERimhazard
                     nameof(get_IsPrisoner_PostFix)
                     ),
                 null);
-            
+
+
+
+            //Everywhere zombies are in are dangerous
+            //harmony.Patch(
+            //    AccessTools.Method(
+            //        typeof(Region),
+            //        "DangerFor"
+            //        ),
+            //    null,
+            //    new HarmonyMethod(
+            //        typeof(HarmonyPatches),
+            //        nameof(DangerForPostFix)
+            //        ),
+            //    null);
+
+            //We can't wander where the zombies are
+            harmony.Patch(
+                AccessTools.Method(
+                    typeof(JobGiver_WanderColony),
+                    "GetWanderRoot"
+                    ),
+                null,
+                new HarmonyMethod(
+                    typeof(HarmonyPatches),
+                    nameof(GetWanderRoot_PostFix)
+                    ),
+                null);
+
+            //Zombies shouldn't count towards social opinions
+            harmony.Patch(
+                AccessTools.Method(
+                    typeof(Pawn_RelationsTracker),
+                    "OpinionOf"
+                    ),
+                new HarmonyMethod(
+                    typeof(HarmonyPatches),
+                    nameof(OpinionOf_PreFix)
+                    ),
+                null);
         }
+
+        public static bool OpinionOf_PreFix(Pawn_RelationsTracker __instance, Pawn other, ref int __result)
+        {
+            Pawn pawn = (Pawn)AccessTools.Field(typeof(Pawn_RelationsTracker), "pawn").GetValue(__instance);
+            if (other is Zombie || other is BOW || pawn is Zombie || pawn is BOW)
+            {
+                __result = 0;
+                return false;
+            }
+            return true;
+        }
+
+        public static void GetWanderRoot_PostFix(JobGiver_WanderColony __instance, Pawn pawn, ref IntVec3 __result)
+        {
+            if (Find.Scenario.name == "Resident Evil")
+            {
+                if (pawn is Zombie) return;
+                if (pawn.Spawned)
+                {
+                    var map = pawn.Map;
+                    var ZombieDangerMap = map.GetComponent<ZombieDangerMap>();
+                    if (!ZombieDangerMap.regionDangers.ContainsKey(__result.GetRegion(map)))
+                    {
+                        ZombieDangerMap.regionDangers.Add(__result.GetRegion(map), 1000);
+                    }
+                    if (ZombieDangerMap.regionDangers[__result.GetRegion(map)] > 0 || __result.Fogged(map))
+                    {
+                        __result = pawn.GetRegion().Cells.InRandomOrder().First(x => x.Standable(map));
+                    }
+                }
+            }
+        }
+
+        ////// Verse.Region
+        ////public static void DangerForPostFix(Region __instance, Pawn p, ref Danger __result)
+        ////{
+        ////    if (Current.ProgramState == ProgramState.Playing)
+        ////    {
+        ////        if (Find.Scenario.name == "Resident Evil")
+        ////        {
+        ////            if (p is Zombie) return;
+
+        ////            Pawn pawn = (Pawn)AccessTools.Field(typeof(PawnUIOverlay), "pawn").GetValue(__instance);
+
+        ////            if (p.RaceProps.Humanlike)
+        ////            {
+        ////                var zombieDangerMap = p.Map.GetComponent<ZombieDangerMap>();
+        ////                if (zombieDangerMap == null) return;
+        ////                if (!zombieDangerMap.regionDangers.ContainsKey(__instance))
+        ////                {
+        ////                    zombieDangerMap.regionDangers.Add(__instance, 1000);
+        ////                }
+        ////                if (zombieDangerMap.regionDangers[__instance] > 0)
+        ////                    __result = Danger.Deadly;
+        ////            }
+        ////        }
+        ////    }
+        ////}
 
         public static void get_IsPrisoner_PostFix(Pawn_GuestTracker __instance, ref bool __result)
         {
@@ -230,27 +327,131 @@ namespace RERimhazard
         {
             if (Find.GameInitData != null)
             {
-                foreach (Pawn startingAndOptionalPawn in Find.GameInitData.startingAndOptionalPawns)
+                if (Find.Scenario.name == "Resident Evil")
                 {
-                    //Give K9 backstory characters a Doberman.
-                    if (startingAndOptionalPawn.Spawned &&
-                        startingAndOptionalPawn.story != null &&
-                        startingAndOptionalPawn.story.childhood != null &&
-                        startingAndOptionalPawn.story.childhood.title == "Police Cadet (K9)")
+                    bool miniBaseCreated = false;
+                    foreach (Pawn startingAndOptionalPawn in Find.GameInitData.startingAndOptionalPawns)
                     {
-                        var pawn = PawnGenerator.GeneratePawn(PawnKindDef.Named("RE_DobermanPinscherKind"), startingAndOptionalPawn.Faction);
+                        if (startingAndOptionalPawn.Spawned)
+                        {
+                            //Give K9 backstory characters a Doberman.
+                            if (startingAndOptionalPawn.Spawned &&
+                            startingAndOptionalPawn.story != null &&
+                            startingAndOptionalPawn.story.childhood != null &&
+                            startingAndOptionalPawn.story.childhood.title == "Police Cadet (K9)")
+                            {
+                                var pawn = PawnGenerator.GeneratePawn(PawnKindDef.Named("RE_DobermanPinscherKind"), startingAndOptionalPawn.Faction);
 
-                        GenPlace.TryPlaceThing(pawn, startingAndOptionalPawn.PositionHeld, startingAndOptionalPawn.MapHeld, ThingPlaceMode.Near);
+                                GenPlace.TryPlaceThing(pawn, startingAndOptionalPawn.PositionHeld, startingAndOptionalPawn.MapHeld, ThingPlaceMode.Near);
 
-                        pawn.training.Train(TrainableDefOf.Obedience, startingAndOptionalPawn, true);
-                        pawn.playerSettings.Master = startingAndOptionalPawn;
-                    }
-                    //Spawn dead bodies of other STARS members in the map.
-                    if (!startingAndOptionalPawn.Spawned)
-                    {
-                        CellFinder.TryFindBestPawnStandCell(startingAndOptionalPawn, out IntVec3 spot);
-                        GenPlace.TryPlaceThing(startingAndOptionalPawn, spot, Find.AnyPlayerHomeMap, ThingPlaceMode.Near );
-                        startingAndOptionalPawn.Kill(null);
+                                pawn.training.Train(TrainableDefOf.Obedience, startingAndOptionalPawn, true);
+                                pawn.playerSettings.Master = startingAndOptionalPawn;
+                            }
+
+                            //Place a sleeping bag on the ground near them.
+                            Thing sleepingBag = ThingMaker.MakeThing(ThingDefOf.Bedroll, ThingDefOf.Cloth);
+                            sleepingBag.Rotation = Rot4.Random;
+                            sleepingBag.SetFaction(startingAndOptionalPawn.Faction);
+                            for (int i = 0; i < 30; i++)
+                            {
+                                var randomLocation = startingAndOptionalPawn.GetRegion().RandomCell;
+                                if (GenPlace.TryPlaceThing(sleepingBag, randomLocation, startingAndOptionalPawn.MapHeld, ThingPlaceMode.Near, out Thing bedThing))
+                                {
+                                    break;
+                                }
+                            }
+
+                            
+                            //Create a minibase
+                            if (miniBaseCreated)
+                                continue;
+                            miniBaseCreated = true;
+
+
+                            //Place a table
+                            Thing spawnedTable = null;
+                            Thing table = ThingMaker.MakeThing(ThingDefOf.Table2x2c, ThingDefOf.WoodLog);
+                            table.SetFaction(startingAndOptionalPawn.Faction);
+                            for (int i = 0; i < 30; i++)
+                            {
+                                var randomLocation = startingAndOptionalPawn.GetRegion().RandomCell;
+                                if (GenPlace.TryPlaceThing(table, randomLocation, startingAndOptionalPawn.MapHeld, ThingPlaceMode.Near, out spawnedTable))
+                                {
+                                    break;
+                                }
+                            }
+
+                            //Spawn a table and stools
+                            CellRect tableRect = spawnedTable.OccupiedRect().ExpandedBy(1);
+                            bool randomFlag = false;
+                            foreach (IntVec3 stoolSpot in tableRect.EdgeCells.InRandomOrder())
+                            {
+                                Thing spawnedStool = null;
+                                if (!tableRect.IsCorner(stoolSpot) && stoolSpot.Standable(map) && stoolSpot.GetEdifice(map) == null && (!randomFlag || !Rand.Bool)
+                                    )
+                                {
+                                    Thing stool = ThingMaker.MakeThing(ThingDef.Named("Stool"), ThingDefOf.WoodLog);
+                                    GenPlace.TryPlaceThing(stool, stoolSpot, map, ThingPlaceMode.Direct, out spawnedStool);
+                                    if (spawnedStool != null)
+                                        spawnedStool.Rotation =
+                                            (stoolSpot.x == tableRect.minX) ?
+                                            Rot4.East
+                                            :
+                                            ((stoolSpot.x == tableRect.maxX) ?
+                                            Rot4.West :
+                                            ((stoolSpot.z != tableRect.minZ) ?
+                                            Rot4.South : Rot4.North));
+                                }
+                            }
+
+                            //Campfire
+                            Thing campfire = ThingMaker.MakeThing(ThingDefOf.Campfire);
+                            campfire.SetFaction(startingAndOptionalPawn.Faction);
+                            GenPlace.TryPlaceThing(campfire, startingAndOptionalPawn.GetRegion().RandomCell, startingAndOptionalPawn.MapHeld, ThingPlaceMode.Near);
+
+                            //Food
+                            var foodStartPoint = startingAndOptionalPawn.GetRegion().RandomCell;
+                            for (int i = 0; i < 2; i++)
+                            {
+                                Thing foodToEat = ThingMaker.MakeThing(ThingDefOf.MealSurvivalPack);
+                                if (GenPlace.TryPlaceThing(foodToEat, foodStartPoint, startingAndOptionalPawn.MapHeld, ThingPlaceMode.Near, out Thing foodSpawned))
+                                {
+                                    foodSpawned.stackCount = 10;
+                                }
+                            }
+
+                            //Some green herbs
+                            var greenHerbStartPoint = startingAndOptionalPawn.GetRegion().RandomCell;
+                            for (int i = 0; i < 3; i++)
+                            {
+                                Plant herb = (Plant)ThingMaker.MakeThing(ThingDef.Named("RE_Plant_ResidentEvilHerbGreen"));
+                                if (GenPlace.TryPlaceThing(herb, greenHerbStartPoint, startingAndOptionalPawn.MapHeld, ThingPlaceMode.Near, out Thing herbSpawned))
+                                {
+                                    var plantHerb = (Plant)herbSpawned;
+                                    plantHerb.Growth = 1.0f;
+                                }
+                            }
+
+                            //Some other herbs.
+                            var otherHerbStartPoint = startingAndOptionalPawn.GetRegion().RandomCell;
+                            for (int i = 0; i < 2; i++)
+                            {
+                                Plant herb = (Plant)ThingMaker.MakeThing(Rand.Value > 0.5f ? ThingDef.Named("RE_Plant_ResidentEvilHerbBlue") : ThingDef.Named("RE_Plant_ResidentEvilHerbRed"));
+                                if (GenPlace.TryPlaceThing(herb, otherHerbStartPoint, startingAndOptionalPawn.MapHeld, ThingPlaceMode.Near, out Thing herbSpawned))
+                                {
+                                    var plantHerb = (Plant)herbSpawned;
+                                    plantHerb.Growth = 1.0f;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            //Spawn dead bodies of other STARS members in the map.
+                            CellFinder.TryFindBestPawnStandCell(startingAndOptionalPawn, out IntVec3 spot);
+                            GenPlace.TryPlaceThing(startingAndOptionalPawn, spot, Find.AnyPlayerHomeMap, ThingPlaceMode.Near);
+                            startingAndOptionalPawn.Kill(null);
+                        }
+
                     }
                 }
             }

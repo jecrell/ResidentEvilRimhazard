@@ -10,11 +10,7 @@ namespace RERimhazard
     {
         public override bool CanResolve(ResolveParams rp)
         {
-            if (!base.CanResolve(rp))
-            {
-                return false;
-            }
-            if (BaseGen.globalSettings.basePart_barracksResolved < BaseGen.globalSettings.minBarracks)
+            if (!base.CanResolve(rp) || !REDataCache.GEncounterGenerated || !REDataCache.ZombieDogEncounterGenerated || !REDataCache.TyrantEncounterGenerated)
             {
                 return false;
             }

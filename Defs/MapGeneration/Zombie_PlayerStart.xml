@@ -69,7 +69,7 @@
         <selectionWeight>0.3</selectionWeight>
       </li>
       <!-- Indoors -->
-      <li Class="SymbolResolver_BasePart_Outdoors_Leaf_Building">
+      <li Class="RERimhazard.SymbolResolver_ZombieBasePart_Outdoors_Leaf_Building">
         <minRectSize>(4, 4)</minRectSize>
       </li>
     </resolvers>
@@ -88,7 +88,7 @@
   
   <RuleDef>
     <defName>RE_BasePart_Indoors_Division</defName>
-    <symbol>zombiebasePart_indoors_division</symbol>
+    <symbol>zombieBasePart_indoors_division</symbol>
     <resolvers>
       <li Class="RERimhazard.SymbolResolver_ZombieBasePart_Indoors_Division_Split">
         <minRectSize>(3, 3)</minRectSize>
@@ -98,31 +98,31 @@
 
   <RuleDef>
     <defName>RE_ZombieBasePart_Indoors_Leaf</defName>
-    <symbol>zombiebasePart_indoors_leaf</symbol>
+    <symbol>zombieBasePart_indoors_leaf</symbol>
     <resolvers>
+      <li Class="RERimhazard.SymbolResolver_BasePart_Indoors_Leaf_GEncounter">
+        <minRectSize>(8, 8)</minRectSize>
+        <selectionWeight>1</selectionWeight>
+      </li>
+      <li Class="RERimhazard.SymbolResolver_BasePart_Indoors_Leaf_TyrantEncounter">
+        <minRectSize>(8, 8)</minRectSize>
+        <selectionWeight>1</selectionWeight>
+      </li>
+      <li Class="RERimhazard.SymbolResolver_BasePart_Indoors_Leaf_ZombieDogEncounter">
+        <minRectSize>(6, 4)</minRectSize>
+        <selectionWeight>1</selectionWeight>
+      </li>
       <li Class="RERimhazard.SymbolResolver_BasePart_Indoors_Leaf_ZombieEncounter">
-        <minRectSize>(5, 5)</minRectSize>
+        <minRectSize>(3, 3)</minRectSize>
         <selectionWeight>1</selectionWeight>
       </li>
       <li Class="RERimhazard.SymbolResolver_BasePart_Indoors_Leaf_LickerEncounter">
         <minRectSize>(5, 5)</minRectSize>
         <selectionWeight>0.4</selectionWeight>
       </li>
-      <li Class="RERimhazard.SymbolResolver_BasePart_Indoors_Leaf_ZombieDogEncounter">
-        <minRectSize>(5, 5)</minRectSize>
-        <selectionWeight>0.2</selectionWeight>
-      </li>
       <li Class="RERimhazard.SymbolResolver_BasePart_Indoors_Leaf_CrimsonHeadEncounter">
         <minRectSize>(5, 5)</minRectSize>
         <selectionWeight>0.05</selectionWeight>
-      </li>
-      <li Class="RERimhazard.SymbolResolver_BasePart_Indoors_Leaf_GEncounter">
-        <minRectSize>(5, 5)</minRectSize>
-        <selectionWeight>0.08</selectionWeight>
-      </li>
-      <li Class="RERimhazard.SymbolResolver_BasePart_Indoors_Leaf_TyrantEncounter">
-        <minRectSize>(5, 5)</minRectSize>
-        <selectionWeight>0.08</selectionWeight>
       </li>
     </resolvers>
   </RuleDef>

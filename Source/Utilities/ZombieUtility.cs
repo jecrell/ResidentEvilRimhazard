@@ -12,6 +12,7 @@ namespace RERimhazard
         public static bool IsZombie(Pawn pawn)
         {
             if (pawn is Zombie) return true;
+            if (pawn is BOW) return true;
             if (
                 pawn?.def?.defName == "RE_Tyrant" ||
                 pawn?.def?.defName == "RE_Licker"
@@ -62,7 +63,33 @@ namespace RERimhazard
             }
             GiveZombieSkinEffect(pawn);
             GiveTVirusCarrierEffect(pawn);
+            DressNakedZombie(pawn);
             return true;
+        }
+
+        private static void DressNakedZombie(Zombie pawn)
+        {
+            if (pawn.apparel.WornApparelCount == 0)
+            {
+                //90% chance of a top
+                if (Rand.Value > 0.1f)
+                {
+                    ThingDef top = Rand.Value > 0.3f ? ThingDef.Named("Apparel_BasicShirt") : ThingDef.Named("Apparel_CollarShirt");
+                    Apparel topApparel = (Apparel)ThingMaker.MakeThing(top, ThingDefOf.Cloth);
+                    topApparel.HitPoints = Rand.Range((topApparel.MaxHitPoints / 6), (topApparel.MaxHitPoints / 2));
+                    topApparel.SetColor(GenColor.FromBytes(Rand.Range(98, 155), Rand.Range(106, 129), Rand.Range(90, 129)));
+                    pawn.apparel.Wear(topApparel, false);
+
+                }
+                //95% chance of having pants
+                if (Rand.Value > 0.05f)
+                {
+                    ThingDef bottom = Rand.Value > 0.05f ? ThingDef.Named("Apparel_Pants") : ThingDef.Named("Apparel_FlakPants");
+                    Apparel bottomApparel = (Apparel)ThingMaker.MakeThing(bottom, bottom == ThingDef.Named("Apparel_Pants") ? ThingDefOf.Cloth : null);
+                    bottomApparel.HitPoints = Rand.Range((bottomApparel.MaxHitPoints / 6), (bottomApparel.MaxHitPoints / 2));
+                    pawn.apparel.Wear(bottomApparel, false);
+                }
+            }
         }
 
         private static void GiveTVirusCarrierEffect(Zombie pawn)

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
 
+<RE_Combine>Combine</RE_Combine>
+<RE_CombineDesc>Combine appropriate items into new items.</RE_CombineDesc>
 <RE_Test>Resident Evil</RE_Test>
 <RE_Zombie>Zombie</RE_Zombie>
 <RE_CannotInstallBrainchip>Cannot install brainchip</RE_CannotInstallBrainchip>
-<RE_InstallBrainChip>Install {0} on {1}.</ROM_ApplySilverTreatment>
-<ROM_NeedsSilver> needs {0} silver</ROM_NeedsSilver>
+<RE_InstallBrainChip>Install {0} on {1}.</RE_InstallBrainChip>
+<RE_BrainChipInstalled>Brainchip installed successfully on {0}</RE_BrainChipInstalled>
   
 </LanguageData>

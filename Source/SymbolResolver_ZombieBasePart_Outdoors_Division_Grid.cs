@@ -145,14 +145,14 @@ namespace RERimhazard
             {
                 thingDef = ((rp.faction != null && (int)rp.faction.def.techLevel < 4) ? ThingDefOf.TorchLamp : ThingDefOf.StandingLamp);
             }
-            TerrainDef floorDef = rp.pathwayFloorDef ?? BaseGenUtility.RandomBasicFloorDef(rp.faction);
+            //TerrainDef floorDef = TerrainDef.Named("BrokenAsphalt");
             int num = roomSize;
             for (int i = 0; i < roomsPerRowX - 1; i++)
             {
                 CellRect rect = new CellRect(rp.rect.minX + num, rp.rect.minZ, pathwayWidthX, rp.rect.Height);
                 ResolveParams resolveParams = rp;
                 resolveParams.rect = rect;
-                resolveParams.floorDef = floorDef;
+                //resolveParams.floorDef = floorDef;
                 resolveParams.streetHorizontal = false;
                 BaseGen.symbolStack.Push("street", resolveParams);
                 num += roomSize + pathwayWidthX;
@@ -163,7 +163,7 @@ namespace RERimhazard
                 CellRect rect2 = new CellRect(rp.rect.minX, rp.rect.minZ + num2, rp.rect.Width, pathwayWidthZ);
                 ResolveParams resolveParams2 = rp;
                 resolveParams2.rect = rect2;
-                resolveParams2.floorDef = floorDef;
+                //resolveParams2.floorDef = floorDef;
                 resolveParams2.streetHorizontal = true;
                 BaseGen.symbolStack.Push("street", resolveParams2);
                 num2 += roomSize2 + pathwayWidthZ;
