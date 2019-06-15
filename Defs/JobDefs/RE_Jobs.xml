@@ -13,4 +13,11 @@
     <reportString>combining TargetA with TargetB.</reportString>
   </JobDef>
 
+
+  <JobDef>
+    <defName>RE_Inject</defName>
+    <driverClass>RERimhazard.JobDriver_InjectWithSyringe</driverClass>
+    <reportString>injecting TargetA with TargetB.</reportString>
+  </JobDef>
+
 </Defs>

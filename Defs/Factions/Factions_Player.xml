@@ -32,4 +32,37 @@
 		</apparelStuffFilter>
 	</FactionDef>
 
+
+ <FactionDef ParentName="PlayerFactionBase">
+    <defName>RE_PlayerUmbrella</defName>
+    <label>Umbrella Corp</label>
+    <description>Your team.</description>
+    <isPlayer>true</isPlayer>
+    <basicMemberKind>RE_UmbrellaCorp</basicMemberKind>
+	  <pawnNameMaker>RE_STARSNamerMale</pawnNameMaker>
+    <pawnsPlural>members</pawnsPlural>
+    <techLevel>Industrial</techLevel>
+    <backstoryCategories>
+      <li>RE_Umbrella</li>
+    </backstoryCategories>
+    <expandingIconTexture>World/WorldObjects/Expanding/Town</expandingIconTexture>
+		<settlementNameMaker>NamerSettlementOutlander</settlementNameMaker>
+		<playerInitialSettlementNameMaker>NamerInitialSettlementColony</playerInitialSettlementNameMaker>
+		<factionNameMaker>NamerSettlementOutlander</factionNameMaker>
+		<geneticVariance>1</geneticVariance>
+		<startingResearchTags>
+			<li>TribalStart</li>
+		</startingResearchTags>
+		<hairTags>
+			<li>Urban</li>
+      		<li>Tribal</li>
+		</hairTags>
+		<apparelStuffFilter>
+			<thingDefs>
+				<li>Cloth</li>
+			</thingDefs>
+		</apparelStuffFilter>
+	</FactionDef>
+
+
 </Defs>

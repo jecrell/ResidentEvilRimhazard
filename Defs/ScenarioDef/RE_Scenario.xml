@@ -47,4 +47,104 @@
     </scenario>
   </ScenarioDef>
 
+  <ScenarioDef>
+    <defName>RE_ResidentEvilUmbrellaCorp</defName>
+    <label>Resident Evil - Umbrella Corp</label>
+    <description>The experiment has gone far better than expected. However, your team has met the unfortunate realization that the higher-ups have evacuated long before the virus has spread throughout the city. With a handful of scientists and mercenaries, you are subjected to a scenario wherein your team must utilize Umbrella technology. Will you take control of the zombie hordes in this horrific scenario?</description>
+    <scenario>
+      <summary>Using a team of scientists and mercenaries, fight to control the zombie horde or destroy them.</summary>
+      <playerFaction>
+        <def>PlayerFaction</def>
+        <factionDef>RE_Player</factionDef>
+      </playerFaction>
+      <parts>
+
+        <!-- Config pages -->
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns">
+          <def>ConfigPage_ConfigureStartingPawns</def>
+          <pawnCount>5</pawnCount>
+          <pawnChoiceCount>9</pawnChoiceCount>
+        </li>
+
+        <!-- Player pawns modifiers -->
+        <li Class="ScenPart_ForcedTrait">
+          <def>ForcedTrait</def>
+          <context>PlayerStarter</context>
+          <chance>0.5</chance>
+          <trait>RE_TVirusImmunity</trait>
+          <hideOffMap>false</hideOffMap>
+        </li>
+
+        <!-- Player starting stuff spawn method-->
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <visible>false</visible>
+          <method>Standing</method>
+        </li>
+
+        <!-- Game start dialog -->
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>You are part of a special operations team that has been assigned to investigate a string of reported murders in the nearby region. Your job is to eliminate this threat to the public and return home safe.</text>
+          <closeSound>RE_Theme</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
+  <ScenarioDef>
+    <defName>RE_ResidentEvilNakedBrutality</defName>
+    <label>Resident Evil - Naked Brutality</label>
+    <description>A true nightmare scenario! Starting naked, alone, and utterly unprepared, face an entire city of zombies.</description>
+    <scenario>
+      <summary>Naked, alone, and utterly unprepared. Can you survive long enough to eliminate the threats inside?</summary>
+      <playerFaction>
+        <def>PlayerFaction</def>
+        <factionDef>RE_Player</factionDef>
+      </playerFaction>
+      <parts>
+
+        <!-- Config pages -->
+        <li Class="ScenPart_ConfigPage_ConfigureStartingPawns">
+          <def>ConfigPage_ConfigureStartingPawns</def>
+          <pawnCount>1</pawnCount>
+          <pawnChoiceCount>8</pawnChoiceCount>
+        </li>
+
+        <!-- Player pawns modifiers -->
+        <li Class="ScenPart_ForcedTrait">
+          <def>ForcedTrait</def>
+          <context>PlayerStarter</context>
+          <chance>0.5</chance>
+          <trait>RE_TVirusImmunity</trait>
+          <hideOffMap>false</hideOffMap>
+        </li>
+
+
+        <!-- Player starting stuff spawn method-->
+        <li Class="ScenPart_Naked">
+          <def>Naked</def>
+          <context>PlayerStarter</context>
+        </li>
+
+
+        <!-- Player starting stuff spawn method-->
+        <li Class="ScenPart_PlayerPawnsArriveMethod">
+          <def>PlayerPawnsArriveMethod</def>
+          <visible>false</visible>
+          <method>Standing</method>
+        </li>
+
+        <!-- Game start dialog -->
+        <li Class="ScenPart_GameStartDialog">
+          <def>GameStartDialog</def>
+          <text>You are startled to find yourself naked in the outskirts of the city. Your friends have left the campsite. The air seems unsettling, and in the distance you can hear the crunching of leaves under stumbling feet. With your heart caught in your throat, you feel you are about to be thrown into a true nightmare. What fate awaits you now?</text>
+          <closeSound>RE_Theme</closeSound>
+        </li>
+
+      </parts>
+    </scenario>
+  </ScenarioDef>
+
 </Defs>

@@ -89,14 +89,19 @@ namespace RERimhazard
         private void CombineItems(Thing thingB, Thing thingA)
         {
             Combinable c = thingA as Combinable;
+            Combinable cTwo = thingB as Combinable;
             ThingDef result = c.GetCombineResult(thingA.def.defName, thingB.def.defName);
             var newThing = ThingMaker.MakeThing(result);
             GenPlace.TryPlaceThing(newThing, GetActor().Position, GetActor().Map, ThingPlaceMode.Near);
-            if (thingA.stackCount > 1)
-                thingA.stackCount -= 1;
-            else
-                thingA.Destroy();
-            thingB.Destroy();
+            if (c == null || c.DestroysSelf())
+            {
+                if (thingA.stackCount > 1)
+                    thingA.stackCount -= 1;
+                else
+                    thingA.Destroy();
+            }
+            if (cTwo == null || cTwo.DestroysSelf())
+                thingB.Destroy();
         }
 
         public override bool TryMakePreToilReservations(bool errorOnFailed)

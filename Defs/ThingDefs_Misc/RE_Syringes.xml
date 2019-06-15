@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="ResourceBase">
+    <defName>RE_SyringeRE_TVirus</defName>
+    <label>T-Virus Syringe</label>
+    <thingClass>RERimhazard.CombinableSyringe</thingClass>
+    <description>A one-use T-virus syringe. This causes the slow death of the subject, and it is followed by a frightening reanimation. Brain matter no longer performs as it previously did, however, as the subject becomes zombified.</description>
+    <graphicData>
+      <texPath>Things/Item/Artifact/PsychicInsanityLance</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <stackLimit>1</stackLimit>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+    <statBases>
+      <MarketValue>650</MarketValue>
+      <MaxHitPoints>80</MaxHitPoints>
+    </statBases>
+    <drawGUIOverlay>false</drawGUIOverlay>
+  </ThingDef>
+
+</Defs>

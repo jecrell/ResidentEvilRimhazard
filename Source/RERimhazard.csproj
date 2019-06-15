@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Buttons.cs" />
     <Compile Include="Combinable.cs" />
+    <Compile Include="CombinableSyringe.cs" />
     <Compile Include="Creatures\BOW.cs" />
     <Compile Include="Herbs\CombinableHerb.cs" />
     <Compile Include="DamageWorker_Constrict.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="HarmonyPatches.cs" />
     <Compile Include="Incidents\IncidentWorker_InjuredStranger.cs" />
     <Compile Include="JobDriver_CombineItems.cs" />
+    <Compile Include="JobDriver_InjectWithSyringe.cs" />
     <Compile Include="JobDriver_InstallBrainChip.cs" />
     <Compile Include="LordJob_DefendZombieBase.cs" />
     <Compile Include="REDataCache.cs" />
