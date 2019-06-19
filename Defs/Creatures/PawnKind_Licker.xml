@@ -4,6 +4,7 @@
   <ThingDef ParentName="AnimalThingBase">
     <defName>RE_LickerRace</defName>
     <label>licker</label>
+    <thingClass>RERimhazard.BOW</thingClass>
     <description>.</description>
     <statBases>
       <ComfyTemperatureMax>100</ComfyTemperatureMax>

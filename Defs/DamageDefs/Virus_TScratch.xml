@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <ToolCapacityDef>
+        <defName>RE_TVirusScratch</defName>
+    </ToolCapacityDef>
+
+    <ManeuverDef>
+        <defName>RE_TVirusScratch</defName>
+        <requiredCapacity>RE_TVirusScratch</requiredCapacity>
+        <verb>
+            <verbClass>Verb_MeleeAttackDamage</verbClass>
+            <meleeDamageDef>RE_TVirusScratch</meleeDamageDef>
+        </verb>
+        <logEntryDef>MeleeAttack</logEntryDef>
+        <combatLogRulesHit>Maneuver_Scratch_MeleeHit</combatLogRulesHit>
+        <combatLogRulesDeflect>Maneuver_Scratch_MeleeDeflect</combatLogRulesDeflect>
+        <combatLogRulesMiss>Maneuver_Scratch_MeleeMiss</combatLogRulesMiss>
+        <combatLogRulesDodge>Maneuver_Scratch_MeleeDodge</combatLogRulesDodge>
+    </ManeuverDef>
+
+    <DamageDef>
+        <defName>RE_TVirusScratch</defName>
+        <label>infected scratch</label>
+        <workerClass>DamageWorker_Scratch</workerClass>
+        <externalViolence>true</externalViolence>
+        <deathMessage>{0} has been torn to death.</deathMessage>
+        <hediff>RE_TVirusScratchHediff</hediff>
+        <hediffSolid>Crack</hediffSolid>
+        <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+        <impactSoundType>Slice</impactSoundType>
+        <armorCategory>Sharp</armorCategory>
+        <overkillPctToDestroyPart>0~0.7</overkillPctToDestroyPart>
+        <scratchSplitPercentage>0.67</scratchSplitPercentage>
+    </DamageDef>
+
+</Defs>

@@ -16,7 +16,7 @@
       <li>
         <label>left claw</label>
         <capacities>
-          <li>Scratch</li>
+          <li>RE_GVirusScratch</li>
         </capacities>
         <power>25</power>
         <cooldownTime>3</cooldownTime>

@@ -61,11 +61,25 @@ namespace RERimhazard
             resolveParams4.rect = rp.rect.ContractedBy(num);
             resolveParams4.faction = faction;
             BaseGen.symbolStack.Push("ensureCanReachMapEdge", resolveParams4);
+
+            if (Find.Scenario.name == "Resident Evil - Umbrella Corp")
+            {
+                ResolveParams umbrellaCorp = rp;
+                umbrellaCorp.rect = new CellRect(map.Center.x - 9, map.Center.z - 9, 18, 18);
+                umbrellaCorp.wallStuff = ThingDefOf.Plasteel;
+                umbrellaCorp.floorDef = TerrainDef.Named("SterileTile");
+                umbrellaCorp.faction = Faction.OfPlayer;
+                BaseGen.symbolStack.Push("emptyRoom", umbrellaCorp);
+                BaseGen.symbolStack.Push("floor", umbrellaCorp);
+                BaseGen.symbolStack.Push("clear", umbrellaCorp);
+            }
+
             ResolveParams resolveParams5 = rp;
             resolveParams5.rect = rp.rect.ContractedBy(num);
             resolveParams5.faction = faction;
             BaseGen.symbolStack.Push("zombieBasePart_outdoors", resolveParams5);
             ResolveParams resolveParams6 = rp;
+
             //resolveParams6.rect = rp.rect.ExpandedBy(3);
             //resolveParams6.floorDef = TerrainDef.Named("BrokenAsphalt");
             //bool? floorOnlyIfTerrainSupports = rp.floorOnlyIfTerrainSupports;

@@ -30,11 +30,11 @@ namespace RERimhazard
             return new TargetingParameters() { canTargetPawns = true, canTargetSelf = false, canTargetBuildings = false, canTargetItems = false };
         }
 
-        public void InjectionEffect(Pawn target)
+        public virtual void InjectionEffect(Pawn target)
         {
-            var hediffString = this.def.defName.Replace("RE_Syringe", "");
-            Log.Message(hediffString);
-            target.TakeDamage(new DamageInfo(DefDatabase<DamageDef>.GetNamed("RE_TVirusScratch"), 3, 1.0f, -1, null, target.health.hediffSet.GetNotMissingParts().Where(x => x.def.alive).RandomElement()));
+            var damageDefString = this.def.defName.Replace("RE_Syringe", "");
+            Log.Message(damageDefString);
+            target.TakeDamage(new DamageInfo(DefDatabase<DamageDef>.GetNamed(damageDefString), 3, 1.0f, -1, null, target.health.hediffSet.GetNotMissingParts().Where(x => x.def.alive).RandomElement()));
             //HealthUtility.AdjustSeverity(target, HediffDef.Named(hediffString), 0.1f);
             //HediffGiverUtility.TryApply(target, HediffDef.Named(hediffString), new List<BodyPartDef> { BodyPartDefOf.Body });
         }

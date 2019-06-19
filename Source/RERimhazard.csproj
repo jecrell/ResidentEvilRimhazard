@@ -59,6 +59,7 @@
     <Compile Include="Buttons.cs" />
     <Compile Include="Combinable.cs" />
     <Compile Include="CombinableSyringe.cs" />
+    <Compile Include="CombinableSyringeEmpty.cs" />
     <Compile Include="Creatures\BOW.cs" />
     <Compile Include="Herbs\CombinableHerb.cs" />
     <Compile Include="DamageWorker_Constrict.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="JobDriver_InstallBrainChip.cs" />
     <Compile Include="LordJob_DefendZombieBase.cs" />
     <Compile Include="REDataCache.cs" />
+    <Compile Include="ScenarioGen.cs" />
     <Compile Include="SymbolResolver_BasePart_Indoors_Leaf_GEncounter.cs" />
     <Compile Include="SymbolResolver_BasePart_Indoors_Leaf_TyrantEncounter.cs" />
     <Compile Include="SymbolResolver_BasePart_Indoors_Leaf_CrimsonHeadEncounter.cs" />
@@ -93,7 +95,10 @@
     <Compile Include="SymbolResolver_ZombieBasePart_Outdoors_LeafPossiblyDecorated.cs" />
     <Compile Include="SymbolResolver_ZombieBasePart_Outdoors_Leaf_Building.cs" />
     <Compile Include="SymbolResolver_ZombieSettlement.cs" />
+    <Compile Include="TVirus\HediffWithComps_GVirus.cs" />
+    <Compile Include="TVirus\HediffWithComps_GVirusCarrier.cs" />
     <Compile Include="TVirus\HediffWithComps_TVirusCarrier.cs" />
+    <Compile Include="TVirus\HediffWithComps_GVirusLocal.cs" />
     <Compile Include="TVirus\HediffWithComps_TVirusLocal.cs" />
     <Compile Include="TVirus\HediffWithComps_TVirus.cs" />
     <Compile Include="Incidents\IncidentWorker_RefugeeChasedZombies.cs" />

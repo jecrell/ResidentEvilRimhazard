@@ -5,6 +5,7 @@
   <ThingDef ParentName="AnimalThingBase">
     <defName>RE_TyrantOneZeroThreeRace</defName>
     <label>tyrant (T-103 Model)</label>
+    <thingClass>RERimhazard.BOW</thingClass>
     <description>Produced through experimentation or strange virus behavior, these tyrants are truly monstrous, often greatly disfigured with massive claws, and, unfortunately for those who encounter them, mostly without loyalties.</description>
     <statBases>
       <ComfyTemperatureMax>100</ComfyTemperatureMax>

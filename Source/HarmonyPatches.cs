@@ -24,7 +24,7 @@ namespace RERimhazard
                 AccessTools.Method(
                     typeof(Pawn_PathFollower),
                     "CostToMoveIntoCell",
-                    new Type[] {typeof(Pawn), typeof(IntVec3)}
+                    new Type[] { typeof(Pawn), typeof(IntVec3) }
                     ),
                 null,
                 new HarmonyMethod(
@@ -84,7 +84,7 @@ namespace RERimhazard
                     ),
                 null);
 
-            
+
             harmony.Patch(
                 AccessTools.Method(
                     typeof(ScenPart_PlayerPawnsArriveMethod),
@@ -280,7 +280,11 @@ namespace RERimhazard
 
         public static void PawnCanOpenPostfix(Pawn p, ref bool __result)
         {
-            if (Find.Scenario.name == "Resident Evil")
+            var REScenarios = new List<string>
+            { "Resident Evil",
+            "Resident Evil - Umbrella Corp",
+            "Resident Evil - Naked Brutality"};
+            if (REScenarios.Any(x => x == Find.Scenario.name))
             {
                 if (p.Faction == Faction.OfPlayer && p.MapHeld is Map m && m.IsPlayerHome)
                 {
@@ -300,8 +304,8 @@ namespace RERimhazard
             return true;
         }
 
-            // Verse.PawnUIOverlay
-            public static bool DrawPawnGUIOverlayPrefix(PawnUIOverlay __instance)
+        // Verse.PawnUIOverlay
+        public static bool DrawPawnGUIOverlayPrefix(PawnUIOverlay __instance)
         {
             Pawn pawn = (Pawn)AccessTools.Field(typeof(PawnUIOverlay), "pawn").GetValue(__instance);
             if (pawn is Zombie)
@@ -311,23 +315,36 @@ namespace RERimhazard
             return true;
         }
 
-            //GenStep_FindPlayerStartSpot
-            public static void GeneratePostFix(Map map, GenStepParams parms)
-    {
-            if (Find.Scenario.name == "Resident Evil")
+        //GenStep_FindPlayerStartSpot
+        public static void GeneratePostFix(Map map, GenStepParams parms)
+        {
+            var REScenarios = new List<string>
+            { "Resident Evil",
+            "Resident Evil - Naked Brutality"};
+            if (REScenarios.Any(x => x == Find.Scenario.name))
             {
                 CellFinder.TryFindRandomEdgeCellWith((IntVec3 c) => map.reachability.CanReachColony(c) && !c.Fogged(map), map, CellFinder.EdgeRoadChance_Neutral, out IntVec3 cell);
                 MapGenerator.PlayerStartSpot = cell;
             }
-    }
+            if (Find.Scenario.name == "Resident Evil - Umbrella Corp")
+            {
+                MapGenerator.PlayerStartSpot = map.Center;
+            }
+        }
 
 
-    // RimWorld.ScenPart_PlayerPawnsArriveMethod
-    public static void GenerateIntoMap(ScenPart_PlayerPawnsArriveMethod __instance, Map map)
+        // RimWorld.ScenPart_PlayerPawnsArriveMethod
+        public static void GenerateIntoMap(ScenPart_PlayerPawnsArriveMethod __instance, Map map)
         {
             if (Find.GameInitData != null)
             {
-                if (Find.Scenario.name == "Resident Evil")
+                var REScenarios = new List<string>
+                {
+                    "Resident Evil",
+                    "Resident Evil - Umbrella Corp",
+                    "Resident Evil - Naked Brutality"
+                };
+                if (REScenarios.Any(x => x == Find.Scenario.name))
                 {
                     bool miniBaseCreated = false;
                     foreach (Pawn startingAndOptionalPawn in Find.GameInitData.startingAndOptionalPawns)
@@ -348,101 +365,42 @@ namespace RERimhazard
                                 pawn.playerSettings.Master = startingAndOptionalPawn;
                             }
 
-                            //Place a sleeping bag on the ground near them.
-                            Thing sleepingBag = ThingMaker.MakeThing(ThingDefOf.Bedroll, ThingDefOf.Cloth);
-                            sleepingBag.Rotation = Rot4.Random;
-                            sleepingBag.SetFaction(startingAndOptionalPawn.Faction);
-                            for (int i = 0; i < 30; i++)
+
+                            //No zombies at spawnpoint
+                            var zombiesNearby = map.mapPawns.AllPawnsSpawned.FindAll(p => (p is Zombie || p is BOW) && p.PositionHeld.DistanceToSquared(startingAndOptionalPawn.PositionHeld) < 10);
+                            foreach (var zombie in zombiesNearby)
                             {
-                                var randomLocation = startingAndOptionalPawn.GetRegion().RandomCell;
-                                if (GenPlace.TryPlaceThing(sleepingBag, randomLocation, startingAndOptionalPawn.MapHeld, ThingPlaceMode.Near, out Thing bedThing))
-                                {
-                                    break;
-                                }
+                                zombie.Destroy();
                             }
 
-                            
+                            //All characters start off aggressive
+                            startingAndOptionalPawn.playerSettings.hostilityResponse = HostilityResponseMode.Attack;
+
+                            if (Find.Scenario.name == "Resident Evil")
+                                ScenarioGen.CreateBeds(startingAndOptionalPawn, map, ThingDefOf.Bedroll, ThingDefOf.Cloth);
+                            else if (Find.Scenario.name == "Resident Evil - Umbrella Corp")
+                                ScenarioGen.CreateBeds(startingAndOptionalPawn, map, ThingDefOf.Bed, ThingDefOf.Steel);
+
+                            //Unfog
+                            try
+                            {
+                                AccessTools.Method(typeof(FogGrid), "FloodUnfogAdjacent").Invoke(map.fogGrid, new object[] { startingAndOptionalPawn.PositionHeld });
+                            }
+                            catch
+                            {
+
+                            }
+
                             //Create a minibase
                             if (miniBaseCreated)
                                 continue;
                             miniBaseCreated = true;
+                            
+                            if (Find.Scenario.name == "Resident Evil - Umbrella Corp")
+                                ScenarioGen.CreateBase(startingAndOptionalPawn, map);
+                            else if (Find.Scenario.name == "Resident Evil")
+                                ScenarioGen.CreateOutpost(startingAndOptionalPawn, map);
 
-
-                            //Place a table
-                            Thing spawnedTable = null;
-                            Thing table = ThingMaker.MakeThing(ThingDefOf.Table2x2c, ThingDefOf.WoodLog);
-                            table.SetFaction(startingAndOptionalPawn.Faction);
-                            for (int i = 0; i < 30; i++)
-                            {
-                                var randomLocation = startingAndOptionalPawn.GetRegion().RandomCell;
-                                if (GenPlace.TryPlaceThing(table, randomLocation, startingAndOptionalPawn.MapHeld, ThingPlaceMode.Near, out spawnedTable))
-                                {
-                                    break;
-                                }
-                            }
-
-                            //Spawn a table and stools
-                            CellRect tableRect = spawnedTable.OccupiedRect().ExpandedBy(1);
-                            bool randomFlag = false;
-                            foreach (IntVec3 stoolSpot in tableRect.EdgeCells.InRandomOrder())
-                            {
-                                Thing spawnedStool = null;
-                                if (!tableRect.IsCorner(stoolSpot) && stoolSpot.Standable(map) && stoolSpot.GetEdifice(map) == null && (!randomFlag || !Rand.Bool)
-                                    )
-                                {
-                                    Thing stool = ThingMaker.MakeThing(ThingDef.Named("Stool"), ThingDefOf.WoodLog);
-                                    GenPlace.TryPlaceThing(stool, stoolSpot, map, ThingPlaceMode.Direct, out spawnedStool);
-                                    if (spawnedStool != null)
-                                        spawnedStool.Rotation =
-                                            (stoolSpot.x == tableRect.minX) ?
-                                            Rot4.East
-                                            :
-                                            ((stoolSpot.x == tableRect.maxX) ?
-                                            Rot4.West :
-                                            ((stoolSpot.z != tableRect.minZ) ?
-                                            Rot4.South : Rot4.North));
-                                }
-                            }
-
-                            //Campfire
-                            Thing campfire = ThingMaker.MakeThing(ThingDefOf.Campfire);
-                            campfire.SetFaction(startingAndOptionalPawn.Faction);
-                            GenPlace.TryPlaceThing(campfire, startingAndOptionalPawn.GetRegion().RandomCell, startingAndOptionalPawn.MapHeld, ThingPlaceMode.Near);
-
-                            //Food
-                            var foodStartPoint = startingAndOptionalPawn.GetRegion().RandomCell;
-                            for (int i = 0; i < 2; i++)
-                            {
-                                Thing foodToEat = ThingMaker.MakeThing(ThingDefOf.MealSurvivalPack);
-                                if (GenPlace.TryPlaceThing(foodToEat, foodStartPoint, startingAndOptionalPawn.MapHeld, ThingPlaceMode.Near, out Thing foodSpawned))
-                                {
-                                    foodSpawned.stackCount = 10;
-                                }
-                            }
-
-                            //Some green herbs
-                            var greenHerbStartPoint = startingAndOptionalPawn.GetRegion().RandomCell;
-                            for (int i = 0; i < 3; i++)
-                            {
-                                Plant herb = (Plant)ThingMaker.MakeThing(ThingDef.Named("RE_Plant_ResidentEvilHerbGreen"));
-                                if (GenPlace.TryPlaceThing(herb, greenHerbStartPoint, startingAndOptionalPawn.MapHeld, ThingPlaceMode.Near, out Thing herbSpawned))
-                                {
-                                    var plantHerb = (Plant)herbSpawned;
-                                    plantHerb.Growth = 1.0f;
-                                }
-                            }
-
-                            //Some other herbs.
-                            var otherHerbStartPoint = startingAndOptionalPawn.GetRegion().RandomCell;
-                            for (int i = 0; i < 2; i++)
-                            {
-                                Plant herb = (Plant)ThingMaker.MakeThing(Rand.Value > 0.5f ? ThingDef.Named("RE_Plant_ResidentEvilHerbBlue") : ThingDef.Named("RE_Plant_ResidentEvilHerbRed"));
-                                if (GenPlace.TryPlaceThing(herb, otherHerbStartPoint, startingAndOptionalPawn.MapHeld, ThingPlaceMode.Near, out Thing herbSpawned))
-                                {
-                                    var plantHerb = (Plant)herbSpawned;
-                                    plantHerb.Growth = 1.0f;
-                                }
-                            }
                         }
                         else
                         {
@@ -458,13 +416,13 @@ namespace RERimhazard
         }
 
         // RimWorld.PawnBioAndNameGenerator
-    public static void GeneratePawnName(Pawn pawn, NameStyle style, string forcedLastName, ref Name __result)
+        public static void GeneratePawnName(Pawn pawn, NameStyle style, string forcedLastName, ref Name __result)
         {
             if (pawn != null && pawn.Faction != null && pawn.Faction.def.defName == "RE_Player")
             {
-                var ruleMaker = pawn.gender == 
-                    Gender.Female ? 
-                    DefDatabase<RulePackDef>.GetNamed("RE_STARSNamerFemale") 
+                var ruleMaker = pawn.gender ==
+                    Gender.Female ?
+                    DefDatabase<RulePackDef>.GetNamed("RE_STARSNamerFemale")
                     :
                     DefDatabase<RulePackDef>.GetNamed("RE_STARSNamerMale");
 
@@ -481,8 +439,8 @@ namespace RERimhazard
             }
         }
 
-            // RimWorld.Scenario
-            public static void PostGameStart_Prefix(Scenario __instance)
+        // RimWorld.Scenario
+        public static void PostGameStart_Prefix(Scenario __instance)
         {
             if (__instance == null || __instance.name == String.Empty) return;
             //Log.Message("Scenario name: " + __instance.name);
@@ -513,3 +471,4 @@ namespace RERimhazard
         }
     }
 }
+
