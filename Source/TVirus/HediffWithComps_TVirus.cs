@@ -32,8 +32,8 @@ namespace RERimhazard
                 return numOfSites.Value;
             }
         }
-        public override bool ShouldRemove 
-            => base.ShouldRemove 
+        public override bool ShouldRemove
+            => base.ShouldRemove
             || NumOfSites <= 0 || PawnIsImmune;
 
         private bool? pawnIsImmune = null;
@@ -76,36 +76,45 @@ namespace RERimhazard
         /// </summary>
         private void TVirusTick()
         {
-            if (GenTicks.TicksGame % nextSpreadTicks == 0)
+            try
             {
-                nextSpreadTicks = RESettings.SPREADTIME.RandomInRange;
-                if (pawn.Spawned && !pawn.Dead)
+
+                if (GenTicks.TicksGame % nextSpreadTicks == 0)
                 {
-                    var hediffs = pawn?.health?.hediffSet?.GetHediffs<HediffWithComps_TVirusLocal>();
-                    if (hediffs != null)
+                    nextSpreadTicks = RESettings.SPREADTIME.RandomInRange;
+                    if (pawn.Spawned && !pawn.Dead)
                     {
-                        var sites =
-                            from s in hediffs
-                            where 
-                                s?.GetInfectableParts()?.Count() > 0
-                            select s;
-
-                        if (sites != null)
+                        var hediffs = pawn?.health?.hediffSet?.GetHediffs<HediffWithComps_TVirusLocal>();
+                        if (hediffs != null)
                         {
+                            var sites =
+                                from s in hediffs
+                                where
+                                    s?.GetInfectableParts()?.Count() > 0
+                                select s;
 
-                            var site = sites.RandomElement();
-
-                            site.Notify_SpreadToNextUninfectedPart();
-                            numOfSites = null;
-                            this.Severity = 0.1f * NumOfSites;
+                            if (sites != null)
+                            {
+                                var site = sites?.InRandomOrder().FirstOrDefault();
+                                if (site != null)
+                                {
+                                    site.Notify_SpreadToNextUninfectedPart();
+                                    numOfSites = null;
+                                    this.Severity = 0.1f * NumOfSites;
+                                }
+                            }
                         }
                     }
-                }
 
-                if (this.Severity > 0.95f)
-                {
-                    CreateZombie();
+                    if (this.Severity > 0.95f)
+                    {
+                        CreateZombie();
+                    }
                 }
+            }
+            catch
+            {
+                
             }
         }
 

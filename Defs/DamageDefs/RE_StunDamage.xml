@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+    <ToolCapacityDef>
+        <defName>RE_StunShock</defName>
+    </ToolCapacityDef>
+
+    <ManeuverDef>
+        <defName>RE_StunShock</defName>
+        <requiredCapacity>RE_StunShock</requiredCapacity>
+        <verb>
+            <verbClass>Verb_MeleeAttackDamage</verbClass>
+            <meleeDamageDef>RE_StunShock</meleeDamageDef>
+        </verb>
+        <logEntryDef>MeleeAttack</logEntryDef>
+        <combatLogRulesHit>Maneuver_Scratch_MeleeHit</combatLogRulesHit>
+        <combatLogRulesDeflect>Maneuver_Scratch_MeleeDeflect</combatLogRulesDeflect>
+        <combatLogRulesMiss>Maneuver_Scratch_MeleeMiss</combatLogRulesMiss>
+        <combatLogRulesDodge>Maneuver_Scratch_MeleeDodge</combatLogRulesDodge>
+    </ManeuverDef>
+
+    <DamageDef>
+        <defName>RE_StunShock</defName>
+        <label>shock</label>
+        <makesBlood>false</makesBlood>
+        <workerClass>DamageWorker_Scratch</workerClass>
+        <externalViolence>true</externalViolence>
+        <deathMessage>{0} has been shocked to death.</deathMessage>
+        <hediff>RE_StunShockHediff</hediff>
+        <defaultDamage>1</defaultDamage>
+        <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+        <defaultArmorPenetration>0</defaultArmorPenetration>
+        <impactSoundType>Electric</impactSoundType>
+        <armorCategory>Heat</armorCategory>
+        <additionalHediffs>
+        <li>
+            <hediff>RE_ShockBuildup</hediff>
+            <severityPerDamageDealt>1</severityPerDamageDealt>
+        </li>
+        </additionalHediffs>
+    </DamageDef>
+
+
+  <HediffDef ParentName="InjuryBase">
+    <defName>RE_StunShockHediff</defName>
+    <label>electric burn</label>
+    <labelNoun>an electric burn</labelNoun>
+    <comps>
+      <li Class="HediffCompProperties_TendDuration">
+        <labelTendedWell>bandaged</labelTendedWell>
+        <labelTendedWellInner>sutured</labelTendedWellInner>
+        <labelSolidTendedWell>set</labelSolidTendedWell>
+      </li>
+      <li Class="HediffCompProperties_Infecter">
+        <infectionChance>0.30</infectionChance>
+      </li>
+      <li Class="HediffCompProperties_GetsPermanent">
+        <permanentLabel>electric burn scar</permanentLabel>
+      </li>
+    </comps>
+    <injuryProps>
+      <painPerSeverity>0.01875</painPerSeverity>
+      <averagePainPerSeverityPermanent>0.00625</averagePainPerSeverityPermanent>
+      <canMerge>true</canMerge>
+      <destroyedLabel>Burned off</destroyedLabel>
+      <destroyedOutLabel>Burned out</destroyedOutLabel>
+    </injuryProps>
+  </HediffDef>
+
+  <HediffDef>
+    <defName>RE_ShockBuildup</defName>
+    <hediffClass>HediffWithComps</hediffClass>
+    <defaultLabelColor>(0.7, 1.0, 0.7)</defaultLabelColor>
+    <label>shock buildup</label>
+    <makesSickThought>true</makesSickThought>
+    <scenarioCanAdd>true</scenarioCanAdd>
+    <comps>
+      <li Class="HediffCompProperties_Immunizable">
+        <severityPerDayNotImmune>-20</severityPerDayNotImmune>
+      </li>
+    </comps>
+    <stages>
+      <li>
+        <label>initial</label>
+        <becomeVisible>false</becomeVisible>
+      </li>
+      <li>
+        <label>initial</label>
+        <minSeverity>0.04</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.10</setMax>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <label>minor</label>
+        <minSeverity>0.2</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.10</setMax>
+                      </li>
+        </capMods>
+      </li>
+      <li>
+        <label>moderate</label>
+        <minSeverity>0.40</minSeverity>
+        <vomitMtbDays>5</vomitMtbDays>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.10</setMax>
+          </li>
+        </capMods>
+      </li>
+      <li>
+        <label>serious</label>
+        <minSeverity>0.60</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.10</setMax>          </li>
+        </capMods>
+      </li>
+      <li>
+        <label>extreme</label>
+        <minSeverity>0.80</minSeverity>
+        <capMods>
+          <li>
+            <capacity>Consciousness</capacity>
+            <setMax>0.10</setMax>
+          </li>
+        </capMods>
+      </li>
+    </stages>
+  </HediffDef>
+
+</Defs>

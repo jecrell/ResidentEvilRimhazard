@@ -65,7 +65,7 @@ namespace RERimhazard
             if (Find.Scenario.name == "Resident Evil - Umbrella Corp")
             {
                 ResolveParams umbrellaCorp = rp;
-                umbrellaCorp.rect = new CellRect(map.Center.x - 9, map.Center.z - 9, 18, 18);
+                umbrellaCorp.rect = new CellRect(map.Center.x - 12, map.Center.z - 12, 24, 24);
                 umbrellaCorp.wallStuff = ThingDefOf.Plasteel;
                 umbrellaCorp.floorDef = TerrainDef.Named("SterileTile");
                 umbrellaCorp.faction = Faction.OfPlayer;

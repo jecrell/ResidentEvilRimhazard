@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <PawnKindDef Name="STARSBase" Abstract="True">
+  <PawnKindDef Name="UmbrellaBase" Abstract="True">
     <race>Human</race>
-    <defaultFactionType>RE_Player</defaultFactionType>
+    <defaultFactionType>RE_PlayerUmbrella</defaultFactionType>
     <baseRecruitDifficulty>0.99</baseRecruitDifficulty>
-    <backstoryCategories><li>RE_Team</li></backstoryCategories>
+    <backstoryCategories><li>RE_Umbrella</li></backstoryCategories>
     <chemicalAddictionChance>0.1</chemicalAddictionChance>
     <invNutrition>2.55</invNutrition>
     <itemQuality>Normal</itemQuality>
     <backstoryCryptosleepCommonality>0</backstoryCryptosleepCommonality>
   </PawnKindDef>
 
-  <PawnKindDef Name="STARS" ParentName="STARSBase">
-    <defName>RE_STARS</defName>
-    <label>S.T.A.R.S. Member</label>
-	<description>STARS stands for Special Tactics and Rescue Service.</description>
+  <PawnKindDef ParentName="UmbrellaBase">
+    <defName>RE_UmbrellaScientist</defName>
+    <label>Umbrella Scientist</label>
+	<description>Scientist serving the Umbrella Corporation.</description>
     <race>Human</race>
     <combatPower>1000</combatPower>
     <itemQuality>Normal</itemQuality>
@@ -28,14 +28,80 @@
     </gearHealthRange>
 	<apparelTags>
       <li>RE_LightRPD</li>
-      <li>RE_HeavyRPD</li>
 	</apparelTags>
 	<apparelRequired>
-		<li>RE_Apparel_RPD_Armor</li>
+		<li>RE_Apparel_UmbrellaLabCoat</li>
     </apparelRequired>
     <apparelMoney>
       <min>8500</min>
       <max>12500</max>
+    </apparelMoney>
+    <apparelAllowHeadgearChance>0.25</apparelAllowHeadgearChance>
+    <weaponMoney>
+      <min>200</min>
+      <max>300</max>
+    </weaponMoney>
+    <weaponTags>
+      <li>Gun</li>
+    </weaponTags>
+    <techHediffsMoney>
+      <min>2500</min>
+      <max>3500</max>
+    </techHediffsMoney>
+    <techHediffsTags>
+      <li>AdvancedGun</li>
+    </techHediffsTags>
+    <techHediffsChance>0.08</techHediffsChance>
+    <invNutrition>2.55</invNutrition>
+    <inventoryOptions>
+      <skipChance>0.75</skipChance>
+      <subOptionsChooseOne>
+        <li>
+          <choiceChance>90</choiceChance>
+          <thingDef>Silver</thingDef>
+          <countRange>
+            <min>25</min>
+            <max>70</max>
+          </countRange>
+        </li>
+        <li>
+          <choiceChance>10</choiceChance>
+          <thingDef>Silver</thingDef>
+          <countRange>
+            <min>700</min>
+            <max>1000</max>
+          </countRange>
+        </li>
+      </subOptionsChooseOne>
+    </inventoryOptions>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="UmbrellaBase">
+    <defName>RE_UmbrellaSecurity</defName>
+    <label>Umbrella Security</label>
+	<description>Security team member serving the Umbrella Corporation.</description>
+    <race>Human</race>
+    <combatPower>1000</combatPower>
+    <itemQuality>Normal</itemQuality>
+    <backstoryCategories Inherit="False"><li>RE_UmbrellaSec</li></backstoryCategories>
+    <isFighter>true</isFighter>
+    <minGenerationAge>19</minGenerationAge>
+    <maxGenerationAge>40</maxGenerationAge>
+    <gearHealthRange>
+      <min>0.2</min>
+      <max>2.0</max>
+    </gearHealthRange>
+	<apparelTags Inherit="False">
+      <li>Military</li>
+	</apparelTags>
+	<apparelRequired Inherit="False">
+		<li>RE_Apparel_BulletVest</li>
+		<li>RE_Apparel_Gasmask</li>
+    <li>RE_Apparel_USSUniform</li>
+    </apparelRequired>
+    <apparelMoney>
+      <min>12500</min>
+      <max>14500</max>
     </apparelMoney>
     <apparelAllowHeadgearChance>0.25</apparelAllowHeadgearChance>
     <weaponMoney>

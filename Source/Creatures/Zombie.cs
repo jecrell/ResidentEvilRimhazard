@@ -12,7 +12,7 @@ namespace RERimhazard
     /// <summary>
     /// Originally ZombePawn from JustinC
     /// </summary>
-    public class Zombie : Pawn
+    public class Zombie : PawnRelocatable
     {
         public bool installedBrainChip = false;
 

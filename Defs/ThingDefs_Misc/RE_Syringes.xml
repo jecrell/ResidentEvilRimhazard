@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <ThingDef ParentName="ResourceBase">
+  <ThingDef ParentName="ResourceBase" Name="SyringeBase" Abstract="True">
+    <resourceReadoutPriority>Middle</resourceReadoutPriority>
+    <stackLimit>100</stackLimit>
+    <tradeNeverStack>true</tradeNeverStack>
+    <useHitPoints>true</useHitPoints>
+    <statBases>
+      <Mass>0.01</Mass>
+    </statBases>
+  </ThingDef>
+
+  <ThingDef ParentName="SyringeBase">
     <defName>RE_Syringe</defName>
     <label>Empty Syringe</label>
     <thingClass>RERimhazard.CombinableSyringeEmpty</thingClass>
@@ -10,18 +20,13 @@
       <texPath>Things/Item/Special/RE_SyringeEmpty</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <stackLimit>100</stackLimit>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
     <statBases>
       <MarketValue>10</MarketValue>
       <MaxHitPoints>80</MaxHitPoints>
     </statBases>
-    <drawGUIOverlay>false</drawGUIOverlay>
   </ThingDef>
 
-  <ThingDef ParentName="ResourceBase">
+  <ThingDef ParentName="SyringeBase">
     <defName>RE_SyringeRE_TVirusScratch</defName>
     <label>T-Virus Syringe</label>
     <thingClass>RERimhazard.CombinableSyringe</thingClass>
@@ -30,18 +35,13 @@
       <texPath>Things/Item/Special/RE_SyringeT</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <stackLimit>1</stackLimit>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
     <statBases>
       <MarketValue>20</MarketValue>
       <MaxHitPoints>80</MaxHitPoints>
     </statBases>
-    <drawGUIOverlay>false</drawGUIOverlay>
   </ThingDef>
 
-  <ThingDef ParentName="ResourceBase">
+  <ThingDef ParentName="SyringeBase">
     <defName>RE_SyringeRE_GVirusScratch</defName>
     <label>G-Virus Syringe</label>
     <thingClass>RERimhazard.CombinableSyringe</thingClass>
@@ -50,15 +50,10 @@
       <texPath>Things/Item/Special/RE_SyringeG</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
-    <resourceReadoutPriority>Middle</resourceReadoutPriority>
-    <stackLimit>1</stackLimit>
-    <tradeNeverStack>true</tradeNeverStack>
-    <useHitPoints>true</useHitPoints>
     <statBases>
       <MarketValue>20</MarketValue>
       <MaxHitPoints>80</MaxHitPoints>
     </statBases>
-    <drawGUIOverlay>false</drawGUIOverlay>
   </ThingDef>
 
 </Defs>

@@ -6,7 +6,7 @@ using Verse;
 
 namespace RERimhazard
 {
-    public class BOW : Pawn
+    public class BOW : PawnRelocatable
     {
     }
 }

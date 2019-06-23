@@ -1,0 +1,714 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <JecsTools.BackstoryDef>
+    <defName>RE_UmbrellaChildhoodOne</defName>
+    <title>Junior Researcher</title>
+    <titleShort>Jr Researcher</titleShort>
+    <baseDescription>Dot</baseDescription>
+    <slot>Childhood</slot>
+    <workDisables />
+    <requiredWorkTags />
+    <forcedTraits />
+    <disallowedTraits />
+    <skillGains>
+      <li>
+        <defName>Intellectual</defName>
+        <amount>3</amount>
+      </li>
+      <li>
+        <defName>Cooking</defName>
+        <amount>3</amount>
+      </li>
+      <li>
+        <defName>Plants</defName>
+        <amount>2</amount>
+      </li>
+      <li>
+        <defName>Artistic</defName>
+        <amount>1</amount>
+      </li>
+    </skillGains>
+    <spawnCategories>
+      <li>RE_Umbrella</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_UmbrellaChildhoodTwo</defName>
+    <title>Nurse</title>
+    <baseDescription>dot</baseDescription>
+    <slot>Childhood</slot>
+    <workDisables />
+    <requiredWorkTags>
+      <li>Violent</li>
+    </requiredWorkTags>
+    <forcedTraits />
+    <disallowedTraits />
+    <skillGains>
+      <li>
+        <defName>Medicine</defName>
+        <amount>6</amount>
+      </li>
+      <li>
+        <defName>Crafting</defName>
+        <amount>3</amount>
+      </li>
+      <li>
+        <defName>Intellectual</defName>
+        <amount>2</amount>
+      </li>
+    </skillGains>
+    <spawnCategories>
+      <li>RE_Umbrella</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_UmbrellaVirologist</defName>
+    <title>Virologist</title>
+    <baseDescription>dot</baseDescription>
+    <bodyTypeMale>Male</bodyTypeMale>
+    <bodyTypeFemale>Female</bodyTypeFemale>
+    <slot>Adulthood</slot>
+    <workDisables />
+    <requiredWorkTags>
+      <li>Intellectual</li>
+    </requiredWorkTags>
+    <forcedTraits />
+    <disallowedTraits />
+    <skillGains>
+      <li>
+        <defName>Intellectual</defName>
+        <amount>8</amount>
+      </li>
+      <li>
+        <defName>Crafting</defName>
+        <amount>4</amount>
+      </li>
+      <li>
+        <defName>Cooking</defName>
+        <amount>3</amount>
+      </li>
+    </skillGains>
+    <spawnCategories>
+      <li>RE_Umbrella</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_UmbrellaChildhoodThree</defName>
+    <title>Intern</title>
+    <baseDescription>dot</baseDescription>
+    <slot>Childhood</slot>
+    <workDisables />
+    <requiredWorkTags>
+      <li>Violent</li>
+    </requiredWorkTags>
+    <forcedTraits />
+    <disallowedTraits />
+    <skillGains>
+      <li>
+        <defName>Social</defName>
+        <amount>3</amount>
+      </li>
+      <li>
+        <defName>Intellectual</defName>
+        <amount>2</amount>
+      </li>
+      <li>
+        <defName>Construction</defName>
+        <amount>3</amount>
+      </li>
+      <li>
+        <defName>Crafting</defName>
+        <amount>3</amount>
+      </li>
+    </skillGains>
+    <spawnCategories>
+      <li>RE_Umbrella</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_UmbrellaChildhoodFour</defName>
+    <title>Overachiever</title>
+    <baseDescription>dot</baseDescription>
+    <slot>Childhood</slot>
+    <workDisables />
+    <requiredWorkTags>
+      <li>Violent</li>
+    </requiredWorkTags>
+    <forcedTraits />
+    <disallowedTraits />
+    <skillGains>
+      <li>
+        <defName>Animals</defName>
+        <amount>2</amount>
+      </li>
+      <li>
+        <defName>Artistic</defName>
+        <amount>2</amount>
+      </li>
+      <li>
+        <defName>Construction</defName>
+        <amount>2</amount>
+      </li>
+      <li>
+        <defName>Cooking</defName>
+        <amount>2</amount>
+      </li>
+      <li>
+        <defName>Crafting</defName>
+        <amount>2</amount>
+      </li>
+      <li>
+        <defName>Intellectual</defName>
+        <amount>4</amount>
+      </li>
+      <li>
+        <defName>Medicine</defName>
+        <amount>2</amount>
+      </li>
+      <li>
+        <defName>Melee</defName>
+        <amount>2</amount>
+      </li>
+      <li>
+        <defName>Mining</defName>
+        <amount>2</amount>
+      </li>
+      <li>
+        <defName>Plants</defName>
+        <amount>2</amount>
+      </li>
+      <li>
+        <defName>Shooting</defName>
+        <amount>2</amount>
+      </li>
+      <li>
+        <defName>Social</defName>
+        <amount>-4</amount>
+      </li>
+    </skillGains>
+    <spawnCategories>
+      <li>RE_Umbrella</li>
+      <li>RE_UmbrellaSec</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_UmbrellaChildhoodFive</defName>
+    <title>Social outcast</title>
+    <titleShort>Outcast</titleShort>
+    <baseDescription>dot</baseDescription>
+    <slot>Childhood</slot>
+    <workDisables />
+    <requiredWorkTags />
+    <forcedTraits>
+      <li>
+        <defName>AnnoyingVoice</defName>
+        <degree>0</degree>
+      </li>
+      <li>
+        <defName>CreepyBreathing</defName>
+        <degree>0</degree>
+      </li>
+    </forcedTraits>
+    <disallowedTraits />
+    <skillGains>
+      <li>
+        <defName>Social</defName>
+        <amount>-10</amount>
+      </li>
+      <li>
+        <defName>Intellectual</defName>
+        <amount>5</amount>
+      </li>
+      <li>
+        <defName>Artistic</defName>
+        <amount>10</amount>
+      </li>
+    </skillGains>
+    <spawnCategories>
+      <li>RE_Umbrella</li>
+      <li>RE_UmbrellaSec</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_UmbrellaChildhoodSix</defName>
+    <title>Bio-engineered</title>
+    <baseDescription>dot</baseDescription>
+    <bodyTypeMale>Hulk</bodyTypeMale>
+    <bodyTypeFemale>Hulk</bodyTypeFemale>
+    <slot>Childhood</slot>
+    <workDisables />
+    <requiredWorkTags>
+      <li>Violent</li>
+      <li>Hauling</li>
+    </requiredWorkTags>
+    <forcedTraits>
+      <li>
+        <defName>Tough</defName>
+        <degree>0</degree>
+      </li>
+      <li>
+        <defName>Nerves</defName>
+        <degree>2</degree>
+      </li>
+    </forcedTraits>
+    <disallowedTraits />
+    <skillGains>
+      <li>
+        <defName>Melee</defName>
+        <amount>8</amount>
+      </li>
+      <li>
+        <defName>Shooting</defName>
+        <amount>4</amount>
+      </li>
+      <li>
+        <defName>Social</defName>
+        <amount>-4</amount>
+      </li>
+    </skillGains>
+    <spawnCategories>
+      <li>RE_Umbrella</li>
+      <li>RE_UmbrellaSec</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_UmbrellaChildhoodSeven</defName>
+    <title>Trainee</title>
+    <baseDescription>dot</baseDescription>
+    <slot>Childhood</slot>
+    <workDisables />
+    <requiredWorkTags />
+    <forcedTraits>
+      <li>
+        <defName>Wimp</defName>
+        <degree>0</degree>
+      </li>
+    </forcedTraits>
+    <disallowedTraits />
+    <skillGains>
+      <li>
+        <defName>Shooting</defName>
+        <amount>4</amount>
+      </li>
+      <li>
+        <defName>Melee</defName>
+        <amount>4</amount>
+      </li>
+      <li>
+        <defName>Intellectual</defName>
+        <amount>4</amount>
+      </li>
+      <li>
+        <defName>Medicine</defName>
+        <amount>4</amount>
+      </li>
+    </skillGains>
+    <spawnCategories>
+      <li>RE_Umbrella</li>
+      <li>RE_UmbrellaSec</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_UmbrellaHeadResearcher</defName>
+    <title>Head of Research</title>
+    <baseDescription>dot</baseDescription>
+    <bodyTypeMale>Hulk</bodyTypeMale>
+    <bodyTypeFemale>Hulk</bodyTypeFemale>
+    <slot>Adulthood</slot>
+    <workDisables />
+    <requiredWorkTags>
+      <li>Intellectual</li>
+    </requiredWorkTags>
+    <forcedTraits />
+    <disallowedTraits />
+    <skillGains>
+      <li>
+        <defName>Intellectual</defName>
+        <amount>7</amount>
+      </li>
+      <li>
+        <defName>Social</defName>
+        <amount>7</amount>
+      </li>
+    </skillGains>
+    <spawnCategories>
+      <li>RE_Umbrella</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_UmbrellaResearcher</defName>
+    <title>Researcher</title>
+    <baseDescription>dot</baseDescription>
+    <bodyTypeMale>Male</bodyTypeMale>
+    <bodyTypeFemale>Female</bodyTypeFemale>
+    <slot>Adulthood</slot>
+    <workDisables />
+    <requiredWorkTags>
+      <li>Intellectual</li>
+    </requiredWorkTags>
+    <forcedTraits />
+    <disallowedTraits />
+    <skillGains>
+      <li>
+        <defName>Intellectual</defName>
+        <amount>12</amount>
+      </li>
+    </skillGains>
+    <spawnCategories>
+      <li>RE_Umbrella</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_UmbrellaGeneticEngineer</defName>
+    <title>Genetic Engineer</title>
+    <baseDescription>dot</baseDescription>
+    <bodyTypeMale>Male</bodyTypeMale>
+    <bodyTypeFemale>Female</bodyTypeFemale>
+    <slot>Adulthood</slot>
+    <workDisables />
+    <requiredWorkTags>
+      <li>Crafting</li>
+      <li>Artistic</li>
+      <li>Intellectual</li>
+    </requiredWorkTags>
+    <forcedTraits />
+    <disallowedTraits />
+    <skillGains>
+      <li>
+        <defName>Intellectual</defName>
+        <amount>7</amount>
+      </li>
+      <li>
+        <defName>Medicine</defName>
+        <amount>7</amount>
+      </li>
+      <li>
+        <defName>Artistic</defName>
+        <amount>7</amount>
+      </li>
+    </skillGains>
+    <spawnCategories>
+      <li>RE_Umbrella</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_UmbrellaBiologist</defName>
+    <title>Biologist</title>
+    <baseDescription>dot</baseDescription>
+    <bodyTypeMale>Male</bodyTypeMale>
+    <bodyTypeFemale>Female</bodyTypeFemale>
+    <slot>Adulthood</slot>
+    <workDisables />
+    <requiredWorkTags>
+      <li>Intellectual</li>
+      <li>Caring</li>
+    </requiredWorkTags>
+    <forcedTraits />
+    <disallowedTraits />
+    <skillGains>
+      <li>
+        <defName>Medicine</defName>
+        <amount>10</amount>
+      </li>
+      <li>
+        <defName>Intellectual</defName>
+        <amount>4</amount>
+      </li>
+    </skillGains>
+    <spawnCategories>
+      <li>RE_Umbrella</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_UmbrellaBotanist</defName>
+    <title>Botanist</title>
+    <baseDescription>dot</baseDescription>
+    <bodyTypeMale>Male</bodyTypeMale>
+    <bodyTypeFemale>Female</bodyTypeFemale>
+    <slot>Adulthood</slot>
+    <workDisables />
+    <requiredWorkTags>
+      <li>Intellectual</li>
+      <li>PlantWork</li>
+    </requiredWorkTags>
+    <forcedTraits />
+    <disallowedTraits />
+    <skillGains>
+      <li>
+        <defName>Intellectual</defName>
+        <amount>5</amount>
+      </li>
+      <li>
+        <defName>Plants</defName>
+        <amount>12</amount>
+      </li>
+    </skillGains>
+    <spawnCategories>
+      <li>RE_Umbrella</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_UmbrellaAgent</defName>
+    <title>U.S.S. Agent</title>
+    <baseDescription>dot</baseDescription>
+    <bodyTypeMale>Thin</bodyTypeMale>
+    <bodyTypeFemale>Thin</bodyTypeFemale>
+    <slot>Adulthood</slot>
+    <workDisables />
+    <requiredWorkTags>
+      <li>Violent</li>
+    </requiredWorkTags>
+    <forcedTraits />
+    <disallowedTraits />
+    <skillGains>
+      <li>
+        <defName>Shooting</defName>
+        <amount>5</amount>
+      </li>
+      <li>
+        <defName>Social</defName>
+        <amount>7</amount>
+      </li>
+      <li>
+        <defName>Melee</defName>
+        <amount>3</amount>
+      </li>
+    </skillGains>
+    <spawnCategories>
+      <li>RE_UmbrellaSec</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_UmbrellaPilot</defName>
+    <title>U.S.S. Pilot</title>
+    <baseDescription>dot</baseDescription>
+    <bodyTypeMale>Thin</bodyTypeMale>
+    <bodyTypeFemale>Thin</bodyTypeFemale>
+    <slot>Adulthood</slot>
+    <workDisables />
+    <requiredWorkTags>
+      <li>Violent</li>
+    </requiredWorkTags>
+    <forcedTraits>
+      <li>
+        <defName>Nimble</defName>
+        <degree>0</degree>
+      </li>
+    </forcedTraits>
+    <disallowedTraits />
+    <skillGains>
+      <li>
+        <defName>Construction</defName>
+        <amount>6</amount>
+      </li>
+      <li>
+        <defName>Crafting</defName>
+        <amount>4</amount>
+      </li>
+      <li>
+        <defName>Shooting</defName>
+        <amount>6</amount>
+      </li>
+    </skillGains>
+    <spawnCategories>
+      <li>RE_UmbrellaSec</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_UmbrellaTeamLeader</defName>
+    <title>U.S.S. Squad Captain</title>
+    <baseDescription>dot</baseDescription>
+    <bodyTypeMale>Male</bodyTypeMale>
+    <bodyTypeFemale>Female</bodyTypeFemale>
+    <slot>Adulthood</slot>
+    <workDisables />
+    <requiredWorkTags>
+      <li>Violent</li>
+    </requiredWorkTags>
+    <forcedTraits />
+    <disallowedTraits />
+    <skillGains>
+      <li>
+        <defName>Shooting</defName>
+        <amount>7</amount>
+      </li>
+      <li>
+        <defName>Medicine</defName>
+        <amount>4</amount>
+      </li>
+      <li>
+        <defName>Intellectual</defName>
+        <amount>3</amount>
+      </li>
+      <li>
+        <defName>Social</defName>
+        <amount>5</amount>
+      </li>
+    </skillGains>
+    <spawnCategories>
+      <li>RE_UmbrellaSec</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_UmbrellaInvestigator</defName>
+    <title>U.S.S. Investigator</title>
+    <baseDescription>dot</baseDescription>
+    <bodyTypeMale>Thin</bodyTypeMale>
+    <bodyTypeFemale>Thin</bodyTypeFemale>
+    <slot>Adulthood</slot>
+    <workDisables />
+    <requiredWorkTags>
+      <li>Violent</li>
+    </requiredWorkTags>
+    <forcedTraits />
+    <disallowedTraits />
+    <skillGains>
+      <li>
+        <defName>Intellectual</defName>
+        <amount>6</amount>
+      </li>
+      <li>
+        <defName>Shooting</defName>
+        <amount>5</amount>
+      </li>
+    </skillGains>
+    <spawnCategories>
+      <li>RE_UmbrellaSec</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_UmbrellaTeamMember</defName>
+    <title>U.S.S. Squad Member</title>
+    <baseDescription>dot</baseDescription>
+    <bodyTypeMale>Male</bodyTypeMale>
+    <bodyTypeFemale>Female</bodyTypeFemale>
+    <slot>Adulthood</slot>
+    <workDisables />
+    <requiredWorkTags>
+      <li>Violent</li>
+    </requiredWorkTags>
+    <forcedTraits />
+    <disallowedTraits />
+    <skillGains>
+      <li>
+        <defName>Melee</defName>
+        <amount>4</amount>
+      </li>
+      <li>
+        <defName>Shooting</defName>
+        <amount>6</amount>
+      </li>
+      <li>
+        <defName>Medicine</defName>
+        <amount>3</amount>
+      </li>
+    </skillGains>
+    <spawnCategories>
+      <li>RE_UmbrellaSec</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_UmbrellaHeavyWeapons</defName>
+    <title>U.S.S. Heavy Weapons</title>
+    <baseDescription>dot</baseDescription>
+    <bodyTypeMale>Hulk</bodyTypeMale>
+    <bodyTypeFemale>Hulk</bodyTypeFemale>
+    <slot>Adulthood</slot>
+    <workDisables />
+    <requiredWorkTags>
+      <li>Violent</li>
+      <li>Hauling</li>
+    </requiredWorkTags>
+    <forcedTraits />
+    <disallowedTraits />
+    <skillGains>
+      <li>
+        <defName>Shooting</defName>
+        <amount>10</amount>
+      </li>
+      <li>
+        <defName>Intellectual</defName>
+        <amount>-4</amount>
+      </li>
+    </skillGains>
+    <spawnCategories>
+      <li>RE_UmbrellaSec</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_UmbrellaSniper</defName>
+    <title>U.S.S. Sharpshooter</title>
+    <baseDescription>dot</baseDescription>
+    <bodyTypeMale>Thin</bodyTypeMale>
+    <bodyTypeFemale>Thin</bodyTypeFemale>
+    <slot>Adulthood</slot>
+    <workDisables />
+    <requiredWorkTags>
+      <li>Violent</li>
+    </requiredWorkTags>
+    <forcedTraits />
+    <disallowedTraits />
+    <skillGains>
+      <li>
+        <defName>Shooting</defName>
+        <amount>12</amount>
+      </li>
+    </skillGains>
+    <spawnCategories>
+      <li>RE_UmbrellaSec</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_UmbrellaAnimalTester</defName>
+    <title>Animal Tester</title>
+    <baseDescription>dot</baseDescription>
+    <bodyTypeMale>Male</bodyTypeMale>
+    <bodyTypeFemale>Female</bodyTypeFemale>
+    <slot>Adulthood</slot>
+    <requiredWorkTags>
+      <li>Animals</li>
+    </requiredWorkTags>
+    <skillGains>
+      <li>
+        <defName>Medicine</defName>
+        <amount>4</amount>
+      </li>
+      <li>
+        <defName>Intellectual</defName>
+        <amount>4</amount>
+      </li>
+      <li>
+        <defName>Animals</defName>
+        <amount>8</amount>
+      </li>
+    </skillGains>
+    <spawnCategories>
+      <li>RE_Umbrella</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+  <JecsTools.BackstoryDef>
+    <defName>RE_UmbrellaDoctor</defName>
+    <title>Doctor</title>
+    <baseDescription>dot</baseDescription>
+    <bodyTypeMale>Male</bodyTypeMale>
+    <bodyTypeFemale>Female</bodyTypeFemale>
+    <slot>Adulthood</slot>
+    <requiredWorkTags>
+      <li>Caring</li>
+      <li>Intellectual</li>
+    </requiredWorkTags>
+    <skillGains>
+      <li>
+        <defName>Intellectual</defName>
+        <amount>4</amount>
+      </li>
+      <li>
+        <defName>Medicine</defName>
+        <amount>8</amount>
+      </li>
+    </skillGains>
+    <spawnCategories>
+      <li>RE_Umbrella</li>
+    </spawnCategories>
+  </JecsTools.BackstoryDef>
+</Defs>

@@ -4,8 +4,10 @@ Chris
 Barry
 Brad
 Leon
-HUNK
 Carlos
+HUNK
+GOBLIN
+Nighthawk
 Mikhail
 Nikolai
 Steve

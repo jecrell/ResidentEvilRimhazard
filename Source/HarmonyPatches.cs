@@ -203,9 +203,149 @@ namespace RERimhazard
                     nameof(OpinionOf_PreFix)
                     ),
                 null);
+
+            //Umbrella scenario demands umbrella characters
+            harmony.Patch(
+                AccessTools.Method(
+                    typeof(StartingPawnUtility),
+                    "NewGeneratedStartingPawn"
+                    ),
+                new HarmonyMethod(
+                    typeof(HarmonyPatches),
+                    nameof(NewGeneratedStartingPawn_Prefix)
+                    ),
+                null);
+
+            //Stun guns need an electric effect
+            harmony.Patch(AccessTools.Method(typeof(Verb_MeleeAttack), "SoundHitPawn"), null,
+    new HarmonyMethod(typeof(HarmonyPatches), "SoundHitPawnPrefix"));
+            
+
+            //Stun gun gizmos should show up
+            harmony.Patch(
+                AccessTools.Method(
+                    typeof(Pawn_EquipmentTracker),
+                    "GetGizmos"
+                    ),null,
+                new HarmonyMethod(
+                    typeof(HarmonyPatches),
+                    nameof(GetGizmos_PostFix)
+                    ),
+                null);
+
+            //Stun gun should charge
+            harmony.Patch(
+    AccessTools.Method(
+        typeof(Pawn),
+        "Tick"
+        ), null,
+    new HarmonyMethod(
+        typeof(HarmonyPatches),
+        nameof(PawnTick_PostFix)
+        ),
+    null);
         }
 
-        public static bool OpinionOf_PreFix(Pawn_RelationsTracker __instance, Pawn other, ref int __result)
+        public static void PawnTick_PostFix(Pawn __instance)
+        {
+            if (__instance?.equipment?.Primary?.def?.defName == "RE_StunGun")
+            {
+                __instance.equipment.Primary.GetComp<CompStunCharge>().CompTick();
+            }
+        }
+
+        public static void GetGizmos_PostFix(Pawn_EquipmentTracker __instance, ref IEnumerable<Gizmo> __result)
+        {
+            if (PawnAttackGizmoUtility.CanShowEquipmentGizmos())
+            {
+                if (__instance?.Primary?.def?.defName == "RE_StunGun")
+                {
+                    __result = __result.Concat(__instance.Primary.GetComp<CompStunCharge>().CompGetGizmosExtra());
+                }
+            }
+        }
+
+        public static void SoundHitPawnPrefix(ref SoundDef __result, Verb_MeleeAttack __instance)
+        {
+            if (__instance.caster is Pawn pawn)
+            {
+                var pawn_EquipmentTracker = pawn.equipment;
+                if (pawn_EquipmentTracker != null)
+                {
+                    //Log.Message("2");
+                    var thingWithComps =
+                        pawn_EquipmentTracker
+                            .Primary; // (ThingWithComps)AccessTools.Field(typeof(Pawn_EquipmentTracker), "primaryInt").GetValue(pawn_EquipmentTracker);
+
+                    if (thingWithComps?.def?.defName == "RE_StunGun")
+                    {
+                        if (thingWithComps.TryGetComp<CompStunCharge>() is CompStunCharge charge)
+                        {
+                            if (charge.StoredEnergy == charge.StoredEnergyMax)
+                            {
+                                charge.DrainEnergy();
+                                SoundDef.Named("RE_StunGun").PlayOneShot(pawn);
+                                if (pawn.LastAttackedTarget.HasThing)
+                                {
+                                    if (pawn.LastAttackedTarget.Thing is Pawn targetPawn)
+                                    {
+                                        HealthUtility.AdjustSeverity(targetPawn, HediffDef.Named("RE_ShockBuildup"), 1.0f);
+                                        MoteMaker.ThrowLightningGlow(targetPawn.DrawPos, pawn.Map, 5);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+            public static bool NewGeneratedStartingPawn_Prefix(ref Pawn __result)
+    {
+            if (Find.Scenario.name == "Resident Evil - Umbrella Corp")
+            {
+                var kindDef = (Rand.Value > 0.5f) ? PawnKindDef.Named("RE_UmbrellaScientist") : PawnKindDef.Named("RE_UmbrellaSecurity");
+                PawnGenerationRequest request = new PawnGenerationRequest(kindDef, Faction.OfPlayer, PawnGenerationContext.PlayerStarter, -1, true, false, false, false, true, TutorSystem.TutorialMode, 20f);
+                Pawn pawn = null;
+                try
+                {
+                    pawn = PawnGenerator.GeneratePawn(request);
+                    if (pawn.kindDef.defName == "RE_UmbrellaScientist")
+                    {
+                        if (pawn?.story?.adulthood?.spawnCategories.Contains("RE_UmbrellaSec") == true)
+                        {
+                            var properScienceBackstories = BackstoryDatabase.allBackstories.Values.Where(x => x.slot == BackstorySlot.Adulthood && x.spawnCategories.Contains("RE_Umbrella"));
+                            pawn.story.adulthood = properScienceBackstories.RandomElement();
+                            AccessTools.Method(typeof(PawnGenerator), "GenerateBodyType").Invoke(null, new object[] { pawn });
+                            AccessTools.Method(typeof(PawnGenerator), "GenerateSkills").Invoke(null, new object[] { pawn });
+                            //pawn.Drawer.renderer.graphics.ResolveAllGraphics();
+                        }
+                    }
+                    else
+                    {
+                        if (pawn?.story?.adulthood?.spawnCategories.Contains("RE_Umbrella") == true)
+                        {
+                            var properSecurityBackstories = BackstoryDatabase.allBackstories.Values.Where(x => x.slot == BackstorySlot.Adulthood && x.spawnCategories.Contains("RE_UmbrellaSec"));
+                            pawn.story.adulthood = properSecurityBackstories.RandomElement();
+                            AccessTools.Method(typeof(PawnGenerator), "GenerateBodyType").Invoke(null, new object[] { pawn });
+                            AccessTools.Method(typeof(PawnGenerator), "GenerateSkills").Invoke(null, new object[] { pawn });
+                        }
+                    }
+                }
+                catch (Exception arg)
+                {
+                    Log.Error("There was an exception thrown by the PawnGenerator during generating a starting pawn. Trying one more time...\nException: " + arg);
+                    pawn = PawnGenerator.GeneratePawn(request);
+                }
+                pawn.relations.everSeenByPlayer = true;
+                PawnComponentsUtility.AddComponentsForSpawn(pawn);
+                __result = pawn;
+                return false;
+            }
+            return true;
+    }
+
+    public static bool OpinionOf_PreFix(Pawn_RelationsTracker __instance, Pawn other, ref int __result)
         {
             Pawn pawn = (Pawn)AccessTools.Field(typeof(Pawn_RelationsTracker), "pawn").GetValue(__instance);
             if (other is Zombie || other is BOW || pawn is Zombie || pawn is BOW)
@@ -378,8 +518,6 @@ namespace RERimhazard
 
                             if (Find.Scenario.name == "Resident Evil")
                                 ScenarioGen.CreateBeds(startingAndOptionalPawn, map, ThingDefOf.Bedroll, ThingDefOf.Cloth);
-                            else if (Find.Scenario.name == "Resident Evil - Umbrella Corp")
-                                ScenarioGen.CreateBeds(startingAndOptionalPawn, map, ThingDefOf.Bed, ThingDefOf.Steel);
 
                             //Unfog
                             try

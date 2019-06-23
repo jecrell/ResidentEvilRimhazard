@@ -29,15 +29,16 @@
         <capacities>
           <li>Blunt</li>
         </capacities>
-        <power>9</power>
+        <power>1</power>
         <cooldownTime>2</cooldownTime>
+        <chanceFactor>0.01</chanceFactor>
       </li>
       <li>
-        <label>point</label>
+        <label>shocker</label>
         <capacities>
-          <li>Stab</li>
+          <li>Blunt</li>
         </capacities>
-        <power>13</power>
+        <power>1</power>
         <cooldownTime>2</cooldownTime>
       </li>
     </tools>
@@ -46,5 +47,10 @@
         <li>TableMachining</li>
       </recipeUsers>
     </recipeMaker>
+    <comps>
+      <li>
+        <compClass>RERimhazard.CompStunCharge</compClass>
+      </li>
+    </comps>
 	</ThingDef>
 </Defs>

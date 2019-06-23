@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
 
+<RE_CancelRelocation>Cancelling relocation. {0}</RE_CancelRelocation>
+<RE_Unavailable>Unavailable</RE_Unavailable>
+<RE_ColonistUnavailable>Character unavailable</RE_ColonistUnavailable>
+<RE_CannotFindActor>No actor(s) available</RE_CannotFindActor>
+<RE_RelocateZombie>Relocate {0}</RE_RelocateZombie>
+<RE_RelocateZombieDesc>Selects a colonist to attempt physical relocation of {0}.</RE_RelocateZombieDesc>
+<RE_CommandCancelRelocation>Cancel relocation</RE_CommandCancelRelocation>
+
 <RE_Combine>Combine</RE_Combine>
 <RE_CombineDesc>Combine appropriate items into new items.</RE_CombineDesc>
 <RE_Test>Resident Evil</RE_Test>

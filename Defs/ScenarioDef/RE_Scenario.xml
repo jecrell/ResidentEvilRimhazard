@@ -55,7 +55,7 @@
       <summary>Using a team of scientists and mercenaries, fight to control the zombie horde or destroy them.</summary>
       <playerFaction>
         <def>PlayerFaction</def>
-        <factionDef>RE_Player</factionDef>
+        <factionDef>RE_PlayerUmbrella</factionDef>
       </playerFaction>
       <parts>
 
