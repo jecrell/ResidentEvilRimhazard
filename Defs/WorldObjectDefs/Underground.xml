@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <WorldObjectDef>
+    <defName>RE_Underground</defName>
+    <label>Underground</label>
+    <description>Underground layer.</description>
+    <worldObjectClass>RERimhazard.MapParent_ZLevel</worldObjectClass>
+    <texture>World/WorldObjects/JourneyDestination</texture>
+    <expandingIcon>true</expandingIcon>
+    <expandingIconTexture>World/WorldObjects/Expanding/JourneyDestination</expandingIconTexture>
+    <expandingIconPriority>50</expandingIconPriority>
+    <expandMore>true</expandMore>
+    <mapGenerator>RE_Underground</mapGenerator>
+    <canBePlayerHome>false</canBePlayerHome>
+  </WorldObjectDef>
+
+
+  <MapGeneratorDef>
+    <defName>RE_Underground</defName>
+    <genSteps>
+      <li>ElevationFertility</li>
+      <li>Caves</li>
+      <li>Terrain</li>
+      <li>CavesTerrain</li>
+      <li>RE_Underground</li>
+      <li>FindPlayerStartSpot</li>
+      <li>ScenParts</li>
+      <li>Fog</li>
+    </genSteps>
+  </MapGeneratorDef>
+
+  <GenStepDef>
+    <defName>RE_ElevationFertilityUnderground</defName>
+    <!--<linkWithMapGenerator>DeepMap</linkWithMapGenerator>-->
+    <order>10</order>
+    <genStep Class="RERimhazard.GenStep_ElevationFertility_Deep"/>
+  </GenStepDef>
+
+  <GenStepDef>
+    <defName>RE_Underground</defName>
+    <order>200</order>
+    <genStep Class="RERimhazard.GenStep_Underground"/>
+  </GenStepDef>
+
+  </Defs>

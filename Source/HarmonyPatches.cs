@@ -235,15 +235,83 @@ namespace RERimhazard
 
             //Stun gun should charge
             harmony.Patch(
-    AccessTools.Method(
-        typeof(Pawn),
-        "Tick"
-        ), null,
-    new HarmonyMethod(
-        typeof(HarmonyPatches),
-        nameof(PawnTick_PostFix)
-        ),
-    null);
+            AccessTools.Method(
+                typeof(Pawn),
+                "Tick"
+                ), null,
+            new HarmonyMethod(
+                typeof(HarmonyPatches),
+                nameof(PawnTick_PostFix)
+                ),
+            null);
+
+
+            // TODO
+            //Testing what is going on
+            harmony.Patch(
+            AccessTools.Method(
+                typeof(SectionLayer_FogOfWar),
+                "Regenerate"
+                ), 
+
+            new HarmonyMethod(
+                typeof(HarmonyPatches),
+                nameof(Regenerate)
+                ), null,
+            null);
+
+
+            harmony.Patch(
+            AccessTools.Method(
+                typeof(WealthWatcher),
+                "CalculateWealthFloors"
+                ),
+
+            new HarmonyMethod(
+                typeof(HarmonyPatches),
+                nameof(CalculateWealthFloors)
+                ), null,
+            null);
+        }
+
+        public static bool calcWealthFloors = true;
+        private static bool CalculateWealthFloors(ref float __result)
+        {
+            if (calcWealthFloors)
+            {
+                return true;
+            }
+            else
+            {
+                Log.Message("Wealth floors ignored");
+                __result = 0f;
+                calcWealthFloors = true;
+                return false;
+            }
+        }
+
+        public static bool Regenerate(SectionLayer_FogOfWar __instance)
+        {
+            Section section = (Section)AccessTools.Field(typeof(SectionLayer_FogOfWar), "section").GetValue(__instance);
+            Map map = section.map;
+            if (map.fogGrid.fogGrid == null || map.fogGrid.fogGrid.Count() == 0)
+            {
+                map.fogGrid.fogGrid = new bool[map.AllCells.Count()];
+                Log.Message("Created new fog grid");
+            }
+            if (map.roofGrid == null)
+            {
+                map.roofGrid = new RoofGrid(map);
+            }
+            if (map.terrainGrid == null)
+            {
+                map.terrainGrid = new TerrainGrid(map);
+            }
+            if (map.edificeGrid.InnerArray == null || map.edificeGrid.InnerArray.Count() == 0)
+            {
+                map.edificeGrid = new EdificeGrid(map);
+            }
+            return true;
         }
 
         public static void PawnTick_PostFix(Pawn __instance)
@@ -376,32 +444,7 @@ namespace RERimhazard
                 }
             }
         }
-
-        ////// Verse.Region
-        ////public static void DangerForPostFix(Region __instance, Pawn p, ref Danger __result)
-        ////{
-        ////    if (Current.ProgramState == ProgramState.Playing)
-        ////    {
-        ////        if (Find.Scenario.name == "Resident Evil")
-        ////        {
-        ////            if (p is Zombie) return;
-
-        ////            Pawn pawn = (Pawn)AccessTools.Field(typeof(PawnUIOverlay), "pawn").GetValue(__instance);
-
-        ////            if (p.RaceProps.Humanlike)
-        ////            {
-        ////                var zombieDangerMap = p.Map.GetComponent<ZombieDangerMap>();
-        ////                if (zombieDangerMap == null) return;
-        ////                if (!zombieDangerMap.regionDangers.ContainsKey(__instance))
-        ////                {
-        ////                    zombieDangerMap.regionDangers.Add(__instance, 1000);
-        ////                }
-        ////                if (zombieDangerMap.regionDangers[__instance] > 0)
-        ////                    __result = Danger.Deadly;
-        ////            }
-        ////        }
-        ////    }
-        ////}
+        
 
         public static void get_IsPrisoner_PostFix(Pawn_GuestTracker __instance, ref bool __result)
         {
@@ -472,10 +515,12 @@ namespace RERimhazard
             }
         }
 
-
+        public static bool currentlyGenerating = false;
         // RimWorld.ScenPart_PlayerPawnsArriveMethod
         public static void GenerateIntoMap(ScenPart_PlayerPawnsArriveMethod __instance, Map map)
         {
+            if (currentlyGenerating) return;
+            currentlyGenerating = true;
             if (Find.GameInitData != null)
             {
                 var REScenarios = new List<string>
@@ -550,6 +595,7 @@ namespace RERimhazard
 
                     }
                 }
+                currentlyGenerating = false;
             }
         }
 
