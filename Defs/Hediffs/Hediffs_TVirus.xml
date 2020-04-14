@@ -9,6 +9,7 @@
   <HediffDef ParentName="RE_TVirusBase">
     <defName>RE_TVirus</defName>
     <label>T-Virus Biohazard</label>
+    <description>t-virus biohazard</description>
     <hediffClass>RERimhazard.HediffWithComps_TVirus</hediffClass>
     <scenarioCanAdd>true</scenarioCanAdd>
     <isBad>true</isBad>

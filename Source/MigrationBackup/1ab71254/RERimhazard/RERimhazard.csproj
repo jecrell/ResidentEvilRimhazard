@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A36BEEB2-7379-475B-B537-827E34571962}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RERimhazard</RootNamespace>
+    <AssemblyName>RERimhazard</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Assemblies\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony, Version=2.0.0.9, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Lib.Harmony.2.0.0.9\lib\net472\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="0JecsTools">
+      <HintPath>..\..\JecsTools\Assemblies\0JecsTools.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Building_CageDog.cs" />
+    <Compile Include="Building_HerbSpawner.cs" />
+    <Compile Include="Creatures\JobDriver_EatOffFloor.cs" />
+    <Compile Include="Utilities\DungeonGenerator.cs" />
+    <Compile Include="Utilities\RoomGenDef.cs" />
+    <Compile Include="Utilities\Stencil.cs" />
+    <Compile Include="Z-Levels\Building_StairsUp.cs" />
+    <Compile Include="Z-Levels\GenUndergroundMap.cs" />
+    <Compile Include="Z-Levels\Building_StairsDown.cs" />
+    <Compile Include="Buttons.cs" />
+    <Compile Include="Combinable.cs" />
+    <Compile Include="CombinableSyringe.cs" />
+    <Compile Include="CombinableSyringeEmpty.cs" />
+    <Compile Include="CompStunCharge.cs" />
+    <Compile Include="Creatures\BOW.cs" />
+    <Compile Include="Creatures\PawnRelocatable.cs" />
+    <Compile Include="GenStep_Underground.cs" />
+    <Compile Include="Gizmo_StunGunCharge.cs" />
+    <Compile Include="Herbs\CombinableHerb.cs" />
+    <Compile Include="DamageWorker_Constrict.cs" />
+    <Compile Include="GenStep_ZombiePower.cs" />
+    <Compile Include="GenStep_ZombieSettlement.cs" />
+    <Compile Include="HarmonyPatches.cs" />
+    <Compile Include="Incidents\IncidentWorker_InjuredStranger.cs" />
+    <Compile Include="JobDriver_CombineItems.cs" />
+    <Compile Include="JobDriver_HaulZombie.cs" />
+    <Compile Include="JobDriver_InjectWithSyringe.cs" />
+    <Compile Include="JobDriver_InstallBrainChip.cs" />
+    <Compile Include="LordJob_DefendZombieBase.cs" />
+    <Compile Include="REDataCache.cs" />
+    <Compile Include="Z-Levels\JobDriver_GoToStairs.cs" />
+    <Compile Include="Z-Levels\MapParent_ZLevel.cs" />
+    <Compile Include="Utilities\ScenarioGen.cs" />
+    <Compile Include="SymbolResolver_BasePart_Indoors_Leaf_GEncounter.cs" />
+    <Compile Include="SymbolResolver_BasePart_Indoors_Leaf_TyrantEncounter.cs" />
+    <Compile Include="SymbolResolver_BasePart_Indoors_Leaf_CrimsonHeadEncounter.cs" />
+    <Compile Include="SymbolResolver_BasePart_Indoors_Leaf_LickerEncounter.cs" />
+    <Compile Include="SymbolResolver_BasePart_Indoors_Leaf_ZombieEncounter.cs" />
+    <Compile Include="SymbolResolver_BasePart_Indoors_Leaf_ZombieDogEncounter.cs" />
+    <Compile Include="SymbolResolver_Interior_GEncounter.cs" />
+    <Compile Include="SymbolResolver_Interior_TyrantEncounter.cs" />
+    <Compile Include="SymbolResolver_Interior_CrimsonHeadEncounter.cs" />
+    <Compile Include="SymbolResolver_Interior_ZombieDogEncounter.cs" />
+    <Compile Include="SymbolResolver_Interior_LickerEncounter.cs" />
+    <Compile Include="SymbolResolver_Interior_ZombieEncounter.cs" />
+    <Compile Include="SymbolResolver_ZombieBasepart_Indoors.cs" />
+    <Compile Include="SymbolResolver_ZombieBasePart_Indoors_Division_Split.cs" />
+    <Compile Include="SymbolResolver_ZombieBasePart_Outdoors.cs" />
+    <Compile Include="SymbolResolver_ZombieBasePart_Outdoors_Division_Grid.cs" />
+    <Compile Include="SymbolResolver_ZombieBasePart_Outdoors_Division_Split.cs" />
+    <Compile Include="SymbolResolver_ZombieBasePart_Outdoors_LeafDecorated_EdgeStreet.cs" />
+    <Compile Include="SymbolResolver_ZombieBasePart_Outdoors_LeafDecorated_RandomInnerRect.cs" />
+    <Compile Include="SymbolResolver_ZombieBasePart_Outdoors_LeafPossiblyDecorated.cs" />
+    <Compile Include="SymbolResolver_ZombieBasePart_Outdoors_Leaf_Building.cs" />
+    <Compile Include="SymbolResolver_ZombieSettlement.cs" />
+    <Compile Include="TVirus\HediffWithComps_GVirus.cs" />
+    <Compile Include="TVirus\HediffWithComps_GVirusCarrier.cs" />
+    <Compile Include="TVirus\HediffWithComps_TVirusCarrier.cs" />
+    <Compile Include="TVirus\HediffWithComps_GVirusLocal.cs" />
+    <Compile Include="TVirus\HediffWithComps_TVirusLocal.cs" />
+    <Compile Include="TVirus\HediffWithComps_TVirus.cs" />
+    <Compile Include="Incidents\IncidentWorker_RefugeeChasedZombies.cs" />
+    <Compile Include="Herbs\IngestionOutcomeDoer_Herb.cs" />
+    <Compile Include="Creatures\JobGiver_FindKillEat.cs" />
+    <Compile Include="Creatures\MapComponent_ZombieTracker.cs" />
+    <Compile Include="Utilities\MiscUtility.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RESettings.cs" />
+    <Compile Include="Utilities\REUtility.cs" />
+    <Compile Include="Creatures\Zombie.cs" />
+    <Compile Include="Utilities\ScenarioGenUmbrellaBase.cs" />
+    <Compile Include="Utilities\ZombieUtility.cs" />
+    <Compile Include="Z-Levels\WorldComponent_ZLevels.cs" />
+    <Compile Include="Z-Levels\ZLevelTracker.cs" />
+    <Compile Include="ZombieDangerMap.cs" />
+    <Compile Include="ZombieFloatMenuPatch.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

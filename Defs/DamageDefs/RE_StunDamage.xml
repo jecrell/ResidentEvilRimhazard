@@ -45,6 +45,7 @@
     <defName>RE_StunShockHediff</defName>
     <label>electric burn</label>
     <labelNoun>an electric burn</labelNoun>
+    <description>electric burn</description>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
         <labelTendedWell>bandaged</labelTendedWell>
@@ -72,6 +73,7 @@
     <hediffClass>HediffWithComps</hediffClass>
     <defaultLabelColor>(0.7, 1.0, 0.7)</defaultLabelColor>
     <label>shock buildup</label>
+    <description>shock buildup</description>
     <makesSickThought>true</makesSickThought>
     <scenarioCanAdd>true</scenarioCanAdd>
     <comps>

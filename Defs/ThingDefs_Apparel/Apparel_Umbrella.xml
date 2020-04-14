@@ -181,6 +181,7 @@
       <EquipDelay>2.5</EquipDelay>
     </statBases>
     <apparel>
+      <useWornGraphicMask>true</useWornGraphicMask>
       <bodyPartGroups>
         <li>Torso</li>
         <li>Neck</li>
@@ -198,6 +199,10 @@
     </apparel>
     <colorGenerator Class="ColorGenerator_Options">
       <options>
+        <li>
+          <weight>90</weight>
+          <only>(1,1,1)</only>
+        </li>
         <li>
           <weight>10</weight>
           <only>(0.33,0.33,0.33)</only>

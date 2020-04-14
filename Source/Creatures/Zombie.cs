@@ -50,13 +50,16 @@ namespace RERimhazard
         {
             base.Kill(dinfo, exactCulprit);
 
-            if (dinfo.Value is DamageInfo d && d.Instigator is Pawn p && p.RaceProps.Humanlike)
+            if (exactCulprit == null) return;
+
+            if (dinfo.Value is DamageInfo d && d.Instigator is Pawn p && p?.RaceProps?.Humanlike == true)
             {
                 Thought_Memory newThought = (Thought_Memory)ThoughtMaker.MakeThought(ThoughtDef.Named("RE_KilledZombie"));
                 p.needs.mood.thoughts.memories.TryGainMemory(newThought);
             }
 
-            if (this.kindDef.defName != "RE_LickerKind" &&
+            if (
+                this.kindDef.defName != "RE_LickerKind" &&
                 this.kindDef.defName != "RE_CrimsonHeadKind")
             {
                 //Log.Message($"Added zombie, {this.Label}, to resurrection list");
@@ -246,7 +249,7 @@ namespace RERimhazard
                     if (zKind.defName != "RE_CrimsonHeadKind")
                     {
                         this.Destroy();
-                        FilthMaker.MakeFilth(curLoc, curMap, ThingDefOf.Filth_Blood, Rand.Range(5, 8));
+                        FilthMaker.TryMakeFilth(curLoc, curMap, ThingDefOf.Filth_Blood, Rand.Range(5, 8));
                         newThing = PawnGenerator.GeneratePawn(zKind, zFaction);
 
                     }

@@ -113,15 +113,12 @@
         <selectionWeight>1</selectionWeight>
       </li>
       <li Class="RERimhazard.SymbolResolver_BasePart_Indoors_Leaf_ZombieEncounter">
-        <minRectSize>(3, 3)</minRectSize>
         <selectionWeight>1</selectionWeight>
       </li>
       <li Class="RERimhazard.SymbolResolver_BasePart_Indoors_Leaf_LickerEncounter">
-        <minRectSize>(5, 5)</minRectSize>
         <selectionWeight>0.4</selectionWeight>
       </li>
       <li Class="RERimhazard.SymbolResolver_BasePart_Indoors_Leaf_CrimsonHeadEncounter">
-        <minRectSize>(5, 5)</minRectSize>
         <selectionWeight>0.05</selectionWeight>
       </li>
     </resolvers>
@@ -255,12 +252,10 @@
   </RuleDef>
 
 
-
   <MapGeneratorDef ParentName="MapCommonBase">
     <defName>Base_Player</defName>
     <genSteps>
       <li>RocksFromGrid</li>
-      <li>ScatterDeepResourceLumps</li>
       <li>RE_ZombieSettlement</li>
       <li>RE_ZombieSettlementPower</li>
     </genSteps>

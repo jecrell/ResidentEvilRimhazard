@@ -10,6 +10,7 @@
     <hediffClass>RERimhazard.HediffWithComps_TVirusLocal</hediffClass>
     <label>infected bite</label>
     <labelNoun>infected bite wound</labelNoun>
+    <description>infected bite</description>
     <makesSickThought>true</makesSickThought>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -39,6 +40,7 @@
     <defName>RE_TVirusScratchHediff</defName>
     <label>infected scratch</label>
     <labelNoun>an infected scratch</labelNoun>
+    <description>infected scratch</description>
     <hediffClass>RERimhazard.HediffWithComps_TVirusLocal</hediffClass>
     <comps>
       <li Class="HediffCompProperties_TendDuration">
@@ -67,6 +69,7 @@
     <defName>RE_TVirusLocalHediff</defName>
     <label>spread infection</label>
     <labelNoun>an infection</labelNoun>
+    <description>spread infection</description>
     <hediffClass>RERimhazard.HediffWithComps_TVirusLocal</hediffClass>
     <comps>
       <li Class="HediffCompProperties_TendDuration">

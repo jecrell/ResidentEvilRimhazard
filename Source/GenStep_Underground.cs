@@ -47,18 +47,18 @@ namespace RERimhazard
         // Token: 0x0600001C RID: 28 RVA: 0x00002B78 File Offset: 0x00000D78
         public override void Generate(Map map, GenStepParams parms)
         {
-            map.regionAndRoomUpdater.Enabled = false;
-            foreach (IntVec3 intVec in map.AllCells)
-            {
-                ThingDef def = GenStep_RocksFromGrid.RockDefAt(intVec);
-                GenSpawn.Spawn(def, intVec, map, WipeMode.Vanish);
-                map.roofGrid.SetRoof(intVec, RoofDefOf.RoofRockThick);
-            }
-            GenStep_ScatterLumpsMineable genStep_ScatterLumpsMineable = new GenStep_ScatterLumpsMineable();
-            float num = 16f;
-            genStep_ScatterLumpsMineable.countPer10kCellsRange = new FloatRange(num, num);
-            genStep_ScatterLumpsMineable.Generate(map, default(GenStepParams));
-            map.regionAndRoomUpdater.Enabled = true;
+            //map.regionAndRoomUpdater.Enabled = false;
+            //foreach (IntVec3 intVec in map.AllCells)
+            //{
+            //    ThingDef def = GenStep_RocksFromGrid.RockDefAt(intVec);
+            //    GenSpawn.Spawn(def, intVec, map, WipeMode.Vanish);
+            //    map.roofGrid.SetRoof(intVec, RoofDefOf.RoofRockThick);
+            //}
+            //GenStep_ScatterLumpsMineable genStep_ScatterLumpsMineable = new GenStep_ScatterLumpsMineable();
+            //float num = 16f;
+            //genStep_ScatterLumpsMineable.countPer10kCellsRange = new FloatRange(num, num);
+            //genStep_ScatterLumpsMineable.Generate(map, default(GenStepParams));
+            //map.regionAndRoomUpdater.Enabled = true;
         }
 
         // Token: 0x0600001D RID: 29 RVA: 0x00002C5C File Offset: 0x00000E5C

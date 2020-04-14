@@ -17,9 +17,20 @@
             </points>
         </raidCommonalityFromPointsCurve>
         <techLevel>Neolithic</techLevel>
-        <backstoryCategories>
-            <li>Civil</li>
-        </backstoryCategories>
+        <backstoryFilters>
+        <li>
+            <categories>
+            <li>Outlander</li>
+            </categories>
+            <commonality>0.90</commonality>
+        </li>
+        <li>
+            <categories>
+            <li>Offworld</li>
+            </categories>
+            <commonality>0.10</commonality>
+        </li>
+        </backstoryFilters>
         <hairTags>
             <li>Urban</li>
         </hairTags>
@@ -35,7 +46,7 @@
                 <li>(100000,10000)</li>
             </points>
         </maxPawnCostPerTotalPointsCurve>
-        <homeIconPath>World/WorldObjects/DefaultSettlement</homeIconPath>
+        <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
         <allowedArrivalTemperatureRange>
             <min>-100</min>
             <max>200</max>

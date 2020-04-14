@@ -57,7 +57,8 @@ namespace RERimhazard
             refugee.relations.everSeenByPlayer = true;
             string text = "RefugeeChasedInitial".Translate(refugee.Name.ToStringFull, refugee.story.Title, enemyFac.def.pawnsPlural, enemyFac.Name, refugee.ageTracker.AgeBiologicalYears, PawnUtility.PawnKindsToCommaList(pawnKinds, useAnd: true), refugee.Named("PAWN"));
             text = text.AdjustedFor(refugee);
-            PawnRelationUtility.TryAppendRelationsWithColonistsInfo(ref text, refugee);
+            TaggedString temp = new TaggedString(text);
+            PawnRelationUtility.TryAppendRelationsWithColonistsInfo(ref temp, refugee);
             DiaNode diaNode = new DiaNode(text);
             DiaOption diaOption = new DiaOption("RefugeeChasedInitial_Accept".Translate());
             diaOption.action = delegate

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Stairs base -->
+  <ThingDef Abstract="True" ParentName="FurnitureWithQualityBase" Name="StairsBase">
+    <description>For going between different floors.</description>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>Standable</passability>
+    <pathCost>60</pathCost>
+    <canOverlapZones>false</canOverlapZones>
+    <stuffCategories>
+      <li>Metallic</li>
+      <li>Woody</li>
+      <li>Stony</li>
+    </stuffCategories>
+    <leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
+    <surfaceType>Eat</surfaceType>
+    <costStuffCount>30</costStuffCount>
+    <tickerType>Rare</tickerType>
+    <placeWorkers>
+    <!-- TODO -->
+    </placeWorkers>
+  </ThingDef>
+
+  <ThingDef ParentName="StairsBase">
+    <defName>RE_StairsUp</defName>
+    <label>stairs (up)</label>
+    <description>For going between different floors.</description>
+    <thingClass>RERimhazard.Building_StairsUp</thingClass>
+    <graphicData>
+      <texPath>Things/Building/RE_StairsUp</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>75</MaxHitPoints>
+      <WorkToBuild>1000</WorkToBuild>
+      <Mass>5</Mass>
+      <Flammability>1.0</Flammability>
+      <Beauty>3</Beauty>
+    </statBases>
+
+    <rotatable>false</rotatable>
+    <castEdgeShadows>true</castEdgeShadows>
+    <fillPercent>0.4</fillPercent>
+    <staticSunShadowHeight>0.20</staticSunShadowHeight>
+    <pathCost>60</pathCost>
+  </ThingDef>
+
+
+
+  <ThingDef ParentName="StairsBase">
+    <defName>RE_StairsDown</defName>
+    <label>stairs (down)</label>
+    <description>For going between different floors.</description>
+    <thingClass>RERimhazard.Building_StairsDown</thingClass>
+    <surfaceType>Item</surfaceType>
+    <graphicData>
+      <texPath>Things/Building/RE_StairsDown</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <statBases>
+      <MaxHitPoints>75</MaxHitPoints>
+      <WorkToBuild>1000</WorkToBuild>
+      <Mass>5</Mass>
+      <Flammability>1.0</Flammability>
+      <Beauty>3</Beauty>
+    </statBases>
+    
+    <rotatable>false</rotatable>
+    <castEdgeShadows>false</castEdgeShadows>
+    <fillPercent>0.0</fillPercent>
+    <staticSunShadowHeight>0.0</staticSunShadowHeight>
+    <pathCost>10</pathCost>
+  </ThingDef>
+
+
+</Defs>

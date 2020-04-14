@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RERimhazard</RootNamespace>
     <AssemblyName>RERimhazard</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -23,6 +23,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,33 +32,33 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony">
-      <HintPath>..\..\JecsTools\Assemblies\0Harmony.dll</HintPath>
-    </Reference>
     <Reference Include="0JecsTools">
       <HintPath>..\..\JecsTools\Assemblies\0JecsTools.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine">
-      <HintPath>Source-DLLs\UnityEngine.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AI\JobGiver_FindKill.cs" />
+    <Compile Include="Building_CageDog.cs" />
+    <Compile Include="Building_HerbSpawner.cs" />
+    <Compile Include="AI\JobDriver_EatOffFloor.cs" />
+    <Compile Include="GameComponent_Rimhazard.cs" />
+    <Compile Include="Utilities\DungeonGenerator.cs" />
+    <Compile Include="Utilities\RoomGenDef.cs" />
+    <Compile Include="Utilities\Stencil.cs" />
+    <Compile Include="Z-Levels\Building_StairsUp.cs" />
     <Compile Include="Z-Levels\GenUndergroundMap.cs" />
-    <Compile Include="Z-Levels\BuildingStairs.cs" />
+    <Compile Include="Z-Levels\Building_StairsDown.cs" />
     <Compile Include="Buttons.cs" />
     <Compile Include="Combinable.cs" />
     <Compile Include="CombinableSyringe.cs" />
@@ -73,12 +74,13 @@
     <Compile Include="GenStep_ZombieSettlement.cs" />
     <Compile Include="HarmonyPatches.cs" />
     <Compile Include="Incidents\IncidentWorker_InjuredStranger.cs" />
-    <Compile Include="JobDriver_CombineItems.cs" />
-    <Compile Include="JobDriver_HaulZombie.cs" />
-    <Compile Include="JobDriver_InjectWithSyringe.cs" />
-    <Compile Include="JobDriver_InstallBrainChip.cs" />
+    <Compile Include="AI\JobDriver_CombineItems.cs" />
+    <Compile Include="AI\JobDriver_HaulZombie.cs" />
+    <Compile Include="AI\JobDriver_InjectWithSyringe.cs" />
+    <Compile Include="AI\JobDriver_InstallBrainChip.cs" />
     <Compile Include="LordJob_DefendZombieBase.cs" />
     <Compile Include="REDataCache.cs" />
+    <Compile Include="Z-Levels\JobDriver_GoToStairs.cs" />
     <Compile Include="Z-Levels\MapParent_ZLevel.cs" />
     <Compile Include="Utilities\ScenarioGen.cs" />
     <Compile Include="SymbolResolver_BasePart_Indoors_Leaf_GEncounter.cs" />
@@ -111,7 +113,7 @@
     <Compile Include="TVirus\HediffWithComps_TVirus.cs" />
     <Compile Include="Incidents\IncidentWorker_RefugeeChasedZombies.cs" />
     <Compile Include="Herbs\IngestionOutcomeDoer_Herb.cs" />
-    <Compile Include="Creatures\JobGiver_FindKillEat.cs" />
+    <Compile Include="AI\JobGiver_FindKillEat.cs" />
     <Compile Include="Creatures\MapComponent_ZombieTracker.cs" />
     <Compile Include="Utilities\MiscUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -121,10 +123,17 @@
     <Compile Include="Utilities\ScenarioGenUmbrellaBase.cs" />
     <Compile Include="Utilities\ZombieUtility.cs" />
     <Compile Include="Z-Levels\WorldComponent_ZLevels.cs" />
-    <Compile Include="Z-Levels\ZLevelTile.cs" />
     <Compile Include="Z-Levels\ZLevelTracker.cs" />
     <Compile Include="ZombieDangerMap.cs" />
     <Compile Include="ZombieFloatMenuPatch.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Krafs.Rimworld.Ref">
+      <Version>1.1.2598</Version>
+    </PackageReference>
+    <PackageReference Include="Lib.Harmony">
+      <Version>2.0.0.9</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

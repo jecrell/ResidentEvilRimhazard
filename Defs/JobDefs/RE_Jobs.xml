@@ -2,6 +2,14 @@
 <Defs>
 
   <JobDef>
+		<defName>RE_EatOffFloor</defName>
+		<driverClass>RERimhazard.JobDriver_EatOffFloor</driverClass>
+		<reportString>consuming TargetA.</reportString>
+    <allowOpportunisticPrefix>true</allowOpportunisticPrefix>
+  </JobDef>
+
+
+  <JobDef>
     <defName>RE_InstallBrainChip</defName>
     <driverClass>RERimhazard.JobDriver_InstallBrainChip</driverClass>
     <reportString>installing brainchip on TargetA.</reportString>

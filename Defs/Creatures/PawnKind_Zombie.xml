@@ -36,7 +36,6 @@
     <combatPower>20</combatPower>
     <defaultFactionType>RE_Zombies</defaultFactionType>
     <baseRecruitDifficulty>0.99</baseRecruitDifficulty>
-    <backstoryCategories><li>Slave</li></backstoryCategories>
     <itemQuality>Shoddy</itemQuality>
     <backstoryCryptosleepCommonality>0</backstoryCryptosleepCommonality>
     <maxGenerationAge>60</maxGenerationAge>

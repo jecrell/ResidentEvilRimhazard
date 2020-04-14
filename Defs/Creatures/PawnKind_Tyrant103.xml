@@ -71,8 +71,8 @@
       </li>
     </tools>
     <race>
-      <thinkTreeMain>RE_Zombielike</thinkTreeMain>
-      <thinkTreeConstant>RE_ZombielikeConstant</thinkTreeConstant>
+      <thinkTreeMain>RE_BOWlike</thinkTreeMain>
+      <thinkTreeConstant>RE_BOWlikeConstant</thinkTreeConstant>
       <body>Human</body>
       <herdAnimal>false</herdAnimal>
       <predator>true</predator>

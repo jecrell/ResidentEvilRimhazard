@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <RERimhazard.RoomFurnishingsDef Name="UmbrellaRoom" Abstract="True">
+
+    <!-- Room x/z is larger than 0 -->
+  <tinyRoomBuildingsToSpawn>
+    <li>
+      <buildingDef>StandingLamp_Red</buildingDef>
+      <numToSpawn>1~1</numToSpawn>
+    </li>
+  </tinyRoomBuildingsToSpawn>
+  
+    <!-- Room x/z is larger than 5 -->
+  <smallRoomBuildingsToSpawn>
+    <li>
+      <buildingDef>StandingLamp_Red</buildingDef>
+      <numToSpawn>1~1</numToSpawn>
+    </li>
+  </smallRoomBuildingsToSpawn>
+  
+    <!-- Room x/z is larger than 8 -->
+  <mediumRoomBuildingsToSpawn>
+    <li>
+      <buildingDef>StandingLamp_Red</buildingDef>
+      <numToSpawn>1~1</numToSpawn>
+    </li>
+  </mediumRoomBuildingsToSpawn>
+  
+    <!-- Room x/z is larger than 12 -->
+  <largeRoomBuildingsToSpawn>
+    <li>
+      <buildingDef>StandingLamp_Red</buildingDef>
+      <numToSpawn>1~1</numToSpawn>
+    </li>
+  </largeRoomBuildingsToSpawn>
+  
+    <!-- Room x/z is larger than 24 -->
+  <colossalRoomBuildingsToSpawn>
+    <li>
+      <buildingDef>StandingLamp_Red</buildingDef>
+      <numToSpawn>1~1</numToSpawn>
+    </li>
+  </colossalRoomBuildingsToSpawn>
+  </RERimhazard.RoomFurnishingsDef>
+
+
+  <RERimhazard.RoomFurnishingsDef>
+    <defName>RE_Plants</defName>
+
+    <!-- Room x/z is larger than 0 -->
+  <tinyRoomBuildingsToSpawn>
+    <li>
+      <buildingDef>Plant_TallGrass</buildingDef>
+      <numToSpawn>1~3</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>Plant_Brambles</buildingDef>
+      <numToSpawn>1~1</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>Glowstool</buildingDef>
+      <numToSpawn>1~1</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>Agarilux</buildingDef>
+      <numToSpawn>1~1</numToSpawn>
+    </li>    
+    <li>
+      <buildingDef>Bryolux</buildingDef>
+      <numToSpawn>1~1</numToSpawn>
+    </li>    
+    <li>
+      <buildingDef>Plant_TreeWillow</buildingDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>    
+    <li>
+      <buildingDef>Plant_TreeCypress</buildingDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>    
+    <li>
+      <buildingDef>Plant_Chokevine</buildingDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>    
+  </tinyRoomBuildingsToSpawn>
+  
+    <!-- Room x/z is larger than 5 -->
+  <smallRoomBuildingsToSpawn>
+    <li>
+      <buildingDef>Plant_TallGrass</buildingDef>
+      <numToSpawn>2~4</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>Plant_Brambles</buildingDef>
+      <numToSpawn>1~2</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>Glowstool</buildingDef>
+      <numToSpawn>2~2</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>Agarilux</buildingDef>
+      <numToSpawn>1~1</numToSpawn>
+    </li>    
+    <li>
+      <buildingDef>Bryolux</buildingDef>
+      <numToSpawn>1~1</numToSpawn>
+    </li>    
+    <li>
+      <buildingDef>Plant_TreeWillow</buildingDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>    
+    <li>
+      <buildingDef>Plant_TreeCypress</buildingDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>    
+    <li>
+      <buildingDef>Plant_Chokevine</buildingDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>    
+  </smallRoomBuildingsToSpawn>
+  
+    <!-- Room x/z is larger than 8 -->
+  <mediumRoomBuildingsToSpawn>
+    <li>
+      <buildingDef>Plant_TallGrass</buildingDef>
+      <numToSpawn>3~5</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>Plant_Brambles</buildingDef>
+      <numToSpawn>1~2</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>Glowstool</buildingDef>
+      <numToSpawn>2~3</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>Agarilux</buildingDef>
+      <numToSpawn>1~1</numToSpawn>
+    </li>    
+    <li>
+      <buildingDef>Bryolux</buildingDef>
+      <numToSpawn>1~1</numToSpawn>
+    </li>    
+    <li>
+      <buildingDef>Plant_TreeWillow</buildingDef>
+      <numToSpawn>-1~3</numToSpawn>
+    </li>    
+    <li>
+      <buildingDef>Plant_TreeCypress</buildingDef>
+      <numToSpawn>-1~3</numToSpawn>
+    </li>    
+    <li>
+      <buildingDef>Plant_Chokevine</buildingDef>
+      <numToSpawn>-1~4</numToSpawn>
+    </li>    
+  </mediumRoomBuildingsToSpawn>
+  
+    <!-- Room x/z is larger than 12 -->
+  <largeRoomBuildingsToSpawn>
+    <li>
+      <buildingDef>Plant_TallGrass</buildingDef>
+      <numToSpawn>4~6</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>Plant_Brambles</buildingDef>
+      <numToSpawn>1~3</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>Glowstool</buildingDef>
+      <numToSpawn>2~3</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>Agarilux</buildingDef>
+      <numToSpawn>1~1</numToSpawn>
+    </li>    
+    <li>
+      <buildingDef>Bryolux</buildingDef>
+      <numToSpawn>1~1</numToSpawn>
+    </li>    
+    <li>
+      <buildingDef>Plant_TreeWillow</buildingDef>
+      <numToSpawn>-1~3</numToSpawn>
+    </li>    
+    <li>
+      <buildingDef>Plant_TreeCypress</buildingDef>
+      <numToSpawn>-1~3</numToSpawn>
+    </li>    
+    <li>
+      <buildingDef>Plant_Chokevine</buildingDef>
+      <numToSpawn>-1~4</numToSpawn>
+    </li>    
+  </largeRoomBuildingsToSpawn>
+  
+    <!-- Room x/z is larger than 24 -->
+  <colossalRoomBuildingsToSpawn>
+    <li>
+      <buildingDef>Plant_TallGrass</buildingDef>
+      <numToSpawn>3~12</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>Plant_Brambles</buildingDef>
+      <numToSpawn>3~5</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>Glowstool</buildingDef>
+      <numToSpawn>2~3</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>Agarilux</buildingDef>
+      <numToSpawn>1~1</numToSpawn>
+    </li>    
+    <li>
+      <buildingDef>Bryolux</buildingDef>
+      <numToSpawn>1~1</numToSpawn>
+    </li>    
+    <li>
+      <buildingDef>Plant_TreeWillow</buildingDef>
+      <numToSpawn>-1~3</numToSpawn>
+    </li>    
+    <li>
+      <buildingDef>Plant_TreeCypress</buildingDef>
+      <numToSpawn>-1~3</numToSpawn>
+    </li>    
+    <li>
+      <buildingDef>Plant_Chokevine</buildingDef>
+      <numToSpawn>-1~4</numToSpawn>
+    </li>    
+  </colossalRoomBuildingsToSpawn>
+
+
+  </RERimhazard.RoomFurnishingsDef>
+
+
+  <RERimhazard.RoomFurnishingsDef ParentName="UmbrellaRoom" Name="UmbrellaStandard">
+    <defName>RE_Standard</defName>
+    <!-- Room x/z is larger than 0 -->
+    <tinyRoomBuildingsToSpawn>
+    <li>
+    </li>
+    </tinyRoomBuildingsToSpawn>
+
+    <!-- Room x/z is larger than 5 -->
+    <smallRoomBuildingsToSpawn>
+    <li>
+    </li>
+    </smallRoomBuildingsToSpawn>
+
+    <!-- Room x/z is larger than 8 -->
+    <mediumRoomBuildingsToSpawn>
+    <li>
+      <buildingDef>Battery</buildingDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>SimpleResearchBench</buildingDef>
+      <chairDef>Stool</chairDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>ChemfuelPoweredGenerator</buildingDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>
+    </mediumRoomBuildingsToSpawn>
+
+
+    <!-- Room x/z is larger than 12 -->
+    <largeRoomBuildingsToSpawn>
+    <li>
+      <buildingDef>Battery</buildingDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>SimpleResearchBench</buildingDef>
+      <chairDef>Stool</chairDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>ChemfuelPoweredGenerator</buildingDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>DrugLab</buildingDef>
+      <chairDef>DiningChair</chairDef>
+      <numToSpawn>-3~1</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>BiofuelRefinery</buildingDef>
+      <chairDef>Stool</chairDef>
+      <numToSpawn>-3~1</numToSpawn>
+    </li>
+    </largeRoomBuildingsToSpawn>
+
+    <!-- Room x/z is larger than 24 -->
+    <colossalRoomBuildingsToSpawn>
+    
+    <!-- Center Piece for Colossal Rooms-->
+    <li>
+      <buildingDef>GeothermalGenerator</buildingDef>
+      <numToSpawn>-1~1</numToSpawn>
+      <isCenterpiece>true</isCenterpiece>
+    </li>
+
+    
+    <li>
+      <buildingDef>Battery</buildingDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>SimpleResearchBench</buildingDef>
+      <chairDef>Stool</chairDef>
+      <numToSpawn>-1~2</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>ChemfuelPoweredGenerator</buildingDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>DrugLab</buildingDef>
+      <chairDef>DiningChair</chairDef>
+      <numToSpawn>-3~1</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>BiofuelRefinery</buildingDef>
+      <chairDef>Stool</chairDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>FabricationBench</buildingDef>
+      <chairDef>DiningChair</chairDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>HiTechResearchBench</buildingDef>
+      <chairDef>DiningChair</chairDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>ElectricSmelter</buildingDef>
+      <numToSpawn>-3~1</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>ElectricStove</buildingDef>
+      <chairDef>Stool</chairDef>
+      <numToSpawn>-6~1</numToSpawn>
+    </li>
+    </colossalRoomBuildingsToSpawn>
+  </RERimhazard.RoomFurnishingsDef>
+
+
+
+
+
+
+  <RERimhazard.RoomFurnishingsDef ParentName="UmbrellaStandard">
+    <defName>RE_Stairs</defName>
+    <!-- Room x/z is larger than 0 -->
+    <tinyRoomBuildingsToSpawn>
+    <li>
+      <buildingDef>RE_StairsUp</buildingDef>
+      <numToSpawn>1~1</numToSpawn>
+    </li>
+    </tinyRoomBuildingsToSpawn>
+
+  </RERimhazard.RoomFurnishingsDef>
+
+
+
+
+
+
+
+
+
+
+  
+  <RERimhazard.RoomFurnishingsDef ParentName="UmbrellaRoom">
+    <defName>RE_Herbs</defName>
+
+    <!-- Room x/z is larger than 0 -->
+    <tinyRoomBuildingsToSpawn>
+    <li>
+      <buildingDef>RE_HerbSpawner</buildingDef>
+      <numToSpawn>1~3</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>HospitalBed</buildingDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>
+    </tinyRoomBuildingsToSpawn>
+
+    <!-- Room x/z is larger than 5 -->
+    <smallRoomBuildingsToSpawn>
+    <li>
+      <buildingDef>RE_HerbSpawner</buildingDef>
+      <numToSpawn>1~1</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>HospitalBed</buildingDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>
+    </smallRoomBuildingsToSpawn>
+    
+    <!-- Room x/z is larger than 8 -->
+    <mediumRoomBuildingsToSpawn>
+    <li>
+      <buildingDef>RE_HerbSpawner</buildingDef>
+      <numToSpawn>1~1</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>HospitalBed</buildingDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>DrugLab</buildingDef>
+      <chairDef>DiningChair</chairDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>
+    </mediumRoomBuildingsToSpawn>
+
+    <!-- Room x/z is larger than 12 -->
+    <largeRoomBuildingsToSpawn>
+    <li>
+      <buildingDef>RE_HerbSpawner</buildingDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>HospitalBed</buildingDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>BiofuelRefinery</buildingDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>
+    </largeRoomBuildingsToSpawn>
+    
+    <!-- Room x/z is larger than 12 -->
+    <colossalRoomBuildingsToSpawn>
+    <li>
+      <buildingDef>RE_HerbSpawner</buildingDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>HospitalBed</buildingDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>BiofuelRefinery</buildingDef>
+      <chairDef>Stool</chairDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>FabricationBench</buildingDef>
+      <chairDef>DiningChair</chairDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>SimpleResearchBench</buildingDef>
+      <chairDef>Stool</chairDef>
+      <numToSpawn>-1~2</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>HiTechResearchBench</buildingDef>
+      <chairDef>DiningChair</chairDef>
+      <numToSpawn>-1~1</numToSpawn>
+    </li>
+    </colossalRoomBuildingsToSpawn>
+
+  </RERimhazard.RoomFurnishingsDef>
+
+
+
+
+
+
+
+
+  <RERimhazard.RoomFurnishingsDef ParentName="UmbrellaStandard">
+    <defName>RE_Dogs</defName>
+
+    <!-- Room x/z is larger than 0 -->
+    <tinyRoomBuildingsToSpawn>
+    <li>
+        <buildingDef>RE_CageDog</buildingDef>
+        <numToSpawn>1~1</numToSpawn>
+    </li>
+    <li>
+      <buildingDef>RE_HerbSpawner</buildingDef>
+      <numToSpawn>-1~2</numToSpawn>
+    </li>
+    </tinyRoomBuildingsToSpawn>
+
+    <!-- Room x/z is larger than 5-->
+    <smallRoomBuildingsToSpawn>
+    <li>
+        <buildingDef>RE_CageDog</buildingDef>
+        <numToSpawn>1~1</numToSpawn>
+    </li>
+    </smallRoomBuildingsToSpawn>
+    
+    <!-- Room x/z is larger than 8-->
+    <mediumRoomBuildingsToSpawn>
+    <li>
+        <buildingDef>RE_CageDog</buildingDef>
+        <numToSpawn>1~1</numToSpawn>
+    </li>
+    </mediumRoomBuildingsToSpawn>
+
+    <!-- Room x/z is larger than 12-->
+    <largeRoomBuildingsToSpawn>
+    <li>
+        <buildingDef>RE_CageDog</buildingDef>
+        <numToSpawn>1~1</numToSpawn>
+    </li>
+    </largeRoomBuildingsToSpawn>
+
+    <!-- Room x/z is larger than 24-->
+    <colossalRoomBuildingsToSpawn>
+    <li>
+        <buildingDef>RE_CageDog</buildingDef>
+        <numToSpawn>2~2</numToSpawn>
+    </li>
+    </colossalRoomBuildingsToSpawn>
+    
+  </RERimhazard.RoomFurnishingsDef>
+
+  
+
+</Defs>

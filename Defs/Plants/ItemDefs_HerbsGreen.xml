@@ -6,6 +6,7 @@
     <hediffClass>HediffWithComps</hediffClass>
     <label>Green herb effects</label>
     <labelNoun>Green herb effects</labelNoun>
+    <description>green herb effects</description>
     <defaultLabelColor>(0,1.0,0)</defaultLabelColor>
     <scenarioCanAdd>true</scenarioCanAdd>
     <maxSeverity>1.0</maxSeverity>

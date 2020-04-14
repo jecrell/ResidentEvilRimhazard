@@ -45,11 +45,11 @@ namespace RERimhazard
             return true;
         }
 
-        protected override void ScatterAt(IntVec3 c, Map map, int stackCount = 1)
+        protected override void ScatterAt(IntVec3 loc, Map map, GenStepParams parms, int count = 1)
         {
             int randomInRange = SettlementSizeRange.RandomInRange;
             int randomInRange2 = SettlementSizeRange.RandomInRange;
-            CellRect rect = new CellRect(c.x - randomInRange / 2, c.z - randomInRange2 / 2, randomInRange, randomInRange2);
+            CellRect rect = new CellRect(loc.x - randomInRange / 2, loc.z - randomInRange2 / 2, randomInRange, randomInRange2);
             Faction faction = Find.FactionManager.FirstFactionOfDef(DefDatabase<FactionDef>.GetNamed("RE_Zombies"));
             rect.ClipInsideMap(map);
             ResolveParams resolveParams = default(ResolveParams);

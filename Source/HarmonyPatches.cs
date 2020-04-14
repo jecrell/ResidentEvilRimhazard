@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -9,6 +9,7 @@ using Verse.AI;
 using System.Reflection;
 using UnityEngine;
 using Verse.Sound;
+using static Verse.RockNoises;
 
 namespace RERimhazard
 {
@@ -17,7 +18,7 @@ namespace RERimhazard
     {
         static HarmonyPatches()
         {
-            HarmonyInstance harmony = HarmonyInstance.Create("rimworld.jecrell.rerimhazard");
+            var harmony = new Harmony("rimworld.jecrell.rerimhazard");
 
             //Zombies shamble
             harmony.Patch(
@@ -90,7 +91,6 @@ namespace RERimhazard
                     typeof(ScenPart_PlayerPawnsArriveMethod),
                     "GenerateIntoMap"
                     ),
-                null,
                 new HarmonyMethod(
                     typeof(HarmonyPatches),
                     nameof(GenerateIntoMap)
@@ -252,7 +252,7 @@ namespace RERimhazard
             AccessTools.Method(
                 typeof(SectionLayer_FogOfWar),
                 "Regenerate"
-                ), 
+                ),
 
             new HarmonyMethod(
                 typeof(HarmonyPatches),
@@ -272,6 +272,56 @@ namespace RERimhazard
                 nameof(CalculateWealthFloors)
                 ), null,
             null);
+
+            //Save rock noise
+            harmony.Patch(
+            AccessTools.Method(
+                typeof(RockNoises),
+                "Init"
+                ),
+            new HarmonyMethod(
+                typeof(HarmonyPatches),
+                nameof(Init_PostFix)
+                ), null,
+            null);
+
+            //WOOOYEAH
+            //harmony.Patch(
+            //AccessTools.Method(
+            //    typeof(GenHostility),
+            //    "HostileTo", new Type[] {typeof(Thing), typeof(Thing)}
+            //    ),null,
+            //new HarmonyMethod(
+            //    typeof(HarmonyPatches),
+            //    nameof(HostileTo_PostFix)
+            //    ),
+            //null);
+
+        }
+
+        // RimWorld.GenHostility
+        public static void HostileTo_PostFix(Thing a, Thing b, ref bool __result)
+        {
+            if (a != null && b != null)
+            {
+                if (a is Pawn pawnA && b is Pawn pawnB)
+                {
+                    if (ZombieUtility.IsZombie(pawnA) && !ZombieUtility.IsZombie(pawnB))
+                        __result = true;
+                }
+            }
+        }
+
+        public static List<RockNoise> tempRockNoises;
+        public static void Init_PostFix(Map map)
+        {
+            if (RockNoises.rockNoises != null)
+            {
+                tempRockNoises = new List<RockNoise>(RockNoises.rockNoises);
+                Log.Message("yay rock noises");
+            }
+            else
+                Log.Message("Null rock noises? wut");
         }
 
         public static bool calcWealthFloors = true;
@@ -516,10 +566,12 @@ namespace RERimhazard
         }
 
         public static bool currentlyGenerating = false;
+        public static List<Pawn> startingPawns = new List<Pawn>();
+        public static Map startingMap;
         // RimWorld.ScenPart_PlayerPawnsArriveMethod
-        public static void GenerateIntoMap(ScenPart_PlayerPawnsArriveMethod __instance, Map map)
+        public static bool GenerateIntoMap(ScenPart_PlayerPawnsArriveMethod __instance, Map map)
         {
-            if (currentlyGenerating) return;
+            if (currentlyGenerating) return true;
             currentlyGenerating = true;
             if (Find.GameInitData != null)
             {
@@ -531,72 +583,27 @@ namespace RERimhazard
                 };
                 if (REScenarios.Any(x => x == Find.Scenario.name))
                 {
-                    bool miniBaseCreated = false;
-                    foreach (Pawn startingAndOptionalPawn in Find.GameInitData.startingAndOptionalPawns)
+                    startingPawns = new List<Pawn>(Find.GameInitData.startingAndOptionalPawns);
+
+                    var fac = startingPawns.First().Faction;
+                    var pos = startingPawns.First().Position;
+
+                    if (Find.Scenario.name == "Resident Evil - Umbrella Corp")
                     {
-                        if (startingAndOptionalPawn.Spawned)
-                        {
-                            //Give K9 backstory characters a Doberman.
-                            if (startingAndOptionalPawn.Spawned &&
-                            startingAndOptionalPawn.story != null &&
-                            startingAndOptionalPawn.story.childhood != null &&
-                            startingAndOptionalPawn.story.childhood.title == "Police Cadet (K9)")
-                            {
-                                var pawn = PawnGenerator.GeneratePawn(PawnKindDef.Named("RE_DobermanPinscherKind"), startingAndOptionalPawn.Faction);
-
-                                GenPlace.TryPlaceThing(pawn, startingAndOptionalPawn.PositionHeld, startingAndOptionalPawn.MapHeld, ThingPlaceMode.Near);
-
-                                pawn.training.Train(TrainableDefOf.Obedience, startingAndOptionalPawn, true);
-                                pawn.playerSettings.Master = startingAndOptionalPawn;
-                            }
-
-
-                            //No zombies at spawnpoint
-                            var zombiesNearby = map.mapPawns.AllPawnsSpawned.FindAll(p => (p is Zombie || p is BOW) && p.PositionHeld.DistanceToSquared(startingAndOptionalPawn.PositionHeld) < 10);
-                            foreach (var zombie in zombiesNearby)
-                            {
-                                zombie.Destroy();
-                            }
-
-                            //All characters start off aggressive
-                            startingAndOptionalPawn.playerSettings.hostilityResponse = HostilityResponseMode.Attack;
-
-                            if (Find.Scenario.name == "Resident Evil")
-                                ScenarioGen.CreateBeds(startingAndOptionalPawn, map, ThingDefOf.Bedroll, ThingDefOf.Cloth);
-
-                            //Unfog
-                            try
-                            {
-                                AccessTools.Method(typeof(FogGrid), "FloodUnfogAdjacent").Invoke(map.fogGrid, new object[] { startingAndOptionalPawn.PositionHeld });
-                            }
-                            catch
-                            {
-
-                            }
-
-                            //Create a minibase
-                            if (miniBaseCreated)
-                                continue;
-                            miniBaseCreated = true;
-                            
-                            if (Find.Scenario.name == "Resident Evil - Umbrella Corp")
-                                ScenarioGen.CreateBase(startingAndOptionalPawn, map);
-                            else if (Find.Scenario.name == "Resident Evil")
-                                ScenarioGen.CreateOutpost(startingAndOptionalPawn, map);
-
-                        }
-                        else
-                        {
-                            //Spawn dead bodies of other STARS members in the map.
-                            CellFinder.TryFindBestPawnStandCell(startingAndOptionalPawn, out IntVec3 spot);
-                            GenPlace.TryPlaceThing(startingAndOptionalPawn, spot, Find.AnyPlayerHomeMap, ThingPlaceMode.Near);
-                            startingAndOptionalPawn.Kill(null);
-                        }
+                        ScenarioGen.CreateBase(fac, pos, map);
+                        currentlyGenerating = false;
+                        return false;
 
                     }
+                    else if (Find.Scenario.name == "Resident Evil")
+                    {
+                        ScenarioGen.CreateOutpost(fac, pos, map);
+                        currentlyGenerating = false;
+                        return true;
+                    }
                 }
-                currentlyGenerating = false;
             }
+            return true;
         }
 
         // RimWorld.PawnBioAndNameGenerator

@@ -14,7 +14,7 @@
       <li>RE_Umbrella</li>
       <li>RE_UmbrellaSec</li>
     </backstoryCategories>
-    <expandingIconTexture>World/WorldObjects/Expanding/Town</expandingIconTexture>
+    <settlementTexturePath>World/WorldObjects/Expanding/Town</settlementTexturePath>
 		<settlementNameMaker>NamerSettlementOutlander</settlementNameMaker>
 		<playerInitialSettlementNameMaker>NamerInitialSettlementColony</playerInitialSettlementNameMaker>
 		<factionNameMaker>NamerSettlementOutlander</factionNameMaker>

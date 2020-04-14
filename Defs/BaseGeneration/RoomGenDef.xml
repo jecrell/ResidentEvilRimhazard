@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+  <RERimhazard.RoomGenDef>
+    <defName>RE_RoomZombie</defName>
+    <furnishingsDef>RE_Standard</furnishingsDef>
+    <pawnsToSpawn>
+      <li>
+        <pawnKindDef>RE_ZombieKind</pawnKindDef>
+        <numToSpawn>2~3</numToSpawn>
+        <factionDef>RE_Zombies</factionDef>
+      </li>
+    </pawnsToSpawn>
+  </RERimhazard.RoomGenDef>
+
+  <RERimhazard.RoomGenDef>
+    <defName>RE_RoomExitStairs</defName>
+    <maxNumOfRoom>3</maxNumOfRoom>
+    <furnishingsDef>RE_Stairs</furnishingsDef>
+  </RERimhazard.RoomGenDef>
+
+  <RERimhazard.RoomGenDef>
+    <defName>RE_RoomHerbRoom</defName>
+    <maxNumOfRoom>2</maxNumOfRoom>
+    <furnishingsDef>RE_Herbs</furnishingsDef>
+  </RERimhazard.RoomGenDef>
+
+  <RERimhazard.RoomGenDef>
+    <defName>RE_RoomZombieDog</defName>
+    <maxNumOfRoom>1</maxNumOfRoom>
+    <furnishingsDef>RE_Dogs</furnishingsDef>
+    <pawnsToSpawn>
+      <li>
+        <pawnKindDef>RE_ZombieDogKind</pawnKindDef>
+        <numToSpawn>4~5</numToSpawn>
+        <factionDef>RE_Zombies</factionDef>
+      </li>
+      <li>
+        <pawnKindDef>RE_ZombieKind</pawnKindDef>
+        <numToSpawn>-1~1</numToSpawn>
+        <factionDef>RE_Zombies</factionDef>
+      </li>
+    </pawnsToSpawn>
+
+
+  </RERimhazard.RoomGenDef>
+
+  <RERimhazard.RoomGenDef>
+    <defName>RE_RoomGMonster</defName>
+    <maxNumOfRoom>1</maxNumOfRoom>
+    <furnishingsDef>RE_Standard</furnishingsDef>
+    <pawnsToSpawn>
+      <li>
+        <pawnKindDef>RE_GKind</pawnKindDef>
+        <numToSpawn>1~1</numToSpawn>
+        <factionDef>RE_Zombies</factionDef>
+      </li>
+    </pawnsToSpawn>
+  </RERimhazard.RoomGenDef>
+
+  <RERimhazard.RoomGenDef>
+    <defName>RE_RoomLickers</defName>
+    <maxNumOfRoom>2</maxNumOfRoom>
+    <furnishingsDef>RE_Standard</furnishingsDef>
+    <pawnsToSpawn>
+      <li>
+        <pawnKindDef>RE_LickerKind</pawnKindDef>
+        <numToSpawn>1~3</numToSpawn>
+        <factionDef>RE_Zombies</factionDef>
+      </li>
+    </pawnsToSpawn>
+    
+  </RERimhazard.RoomGenDef>
+
+  <RERimhazard.RoomGenDef>
+    <defName>RE_RoomZombieJumpScare</defName>
+    <maxNumOfRoom>2</maxNumOfRoom>
+    <furnishingsDef>RE_Standard</furnishingsDef>
+    <pawnsToSpawn>
+      <li>
+        <pawnKindDef>RE_ZombieKind</pawnKindDef>
+        <numToSpawn>3~4</numToSpawn>
+        <spawnDead>true</spawnDead>
+        <factionDef>RE_Zombies</factionDef>
+      </li>
+      <li>
+        <pawnKindDef>RE_UmbrellaScientist</pawnKindDef>
+        <numToSpawn>1~1</numToSpawn>
+        <spawnDead>true</spawnDead>
+      </li>
+    </pawnsToSpawn>
+  </RERimhazard.RoomGenDef>
+
+
+  <RERimhazard.RoomGenDef>
+    <defName>RE_ZombiePlantsRoom</defName>
+    <maxNumOfRoom>2</maxNumOfRoom>
+    <furnishingsDef>RE_Plants</furnishingsDef>
+    <pawnsToSpawn>
+      <li>
+        <pawnKindDef>RE_LickerKind</pawnKindDef>
+        <numToSpawn>2~3</numToSpawn>
+        <factionDef>RE_Zombies</factionDef>
+      </li>
+    </pawnsToSpawn>
+  </RERimhazard.RoomGenDef>
+
+  <RERimhazard.RoomGenDef>
+    <defName>RE_RoomZombieEatingBody</defName>
+    <maxNumOfRoom>1</maxNumOfRoom>
+    <furnishingsDef>RE_Standard</furnishingsDef>
+    <pawnsToSpawn>
+      <li>
+        <pawnKindDef>RE_ZombieKind</pawnKindDef>
+        <numToSpawn>5~7</numToSpawn>
+        <factionDef>RE_Zombies</factionDef>
+      </li>
+      <li>
+        <pawnKindDef>RE_UmbrellaScientist</pawnKindDef>
+        <numToSpawn>1~1</numToSpawn>
+        <spawnDead>true</spawnDead>
+       </li>
+    </pawnsToSpawn>
+  </RERimhazard.RoomGenDef>
+
+</Defs>

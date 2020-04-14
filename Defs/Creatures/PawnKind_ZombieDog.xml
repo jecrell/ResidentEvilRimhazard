@@ -51,6 +51,8 @@
       </li>
     </tools>
     <race>
+      <thinkTreeMain>RE_BOWlike</thinkTreeMain>
+      <thinkTreeConstant>RE_BOWlikeConstant</thinkTreeConstant>
       <body>QuadrupedAnimalWithPawsAndTail</body>
       <petness>0</petness>
       <baseBodySize>0.75</baseBodySize>

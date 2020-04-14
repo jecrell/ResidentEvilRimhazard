@@ -26,18 +26,32 @@ namespace RERimhazard
             {
                 return null;
             }
-            if (!pawn.mindState.anyCloseHostilesRecently)
-            {
-                Corpse corpse2 = this.FindCorpseTarget(pawn);
-                if (corpse2 != null && pawn.CanReach(corpse2, PathEndMode.Touch, Danger.Deadly, false, TraverseMode.ByPawn))
-                {
-                    return this.EatCorpseJob(pawn, corpse2);
-                }
-            }
+
+            var j = pawn?.CurJobDef?.defName;
+
+            if (
+                j == "AttackMelee" ||
+                j == "RE_EatOffFloor" || 
+                j == "Wait_MaintainPosture" ||
+                j == "Wait_Combat" ||
+                j == "Wait_Downed"
+                )
+                return null;
+
+
             Pawn pawn2 = this.FindPawnTarget(pawn);
             if (pawn2 != null && pawn.CanReach(pawn2, PathEndMode.Touch, Danger.Deadly, false, TraverseMode.ByPawn))
             {
                 return this.MeleeAttackJob(pawn, pawn2);
+            }
+
+            if (!pawn.mindState.anyCloseHostilesRecently)
+            {
+                var corpse2 = this.FindCorpseTarget(pawn);
+                if (corpse2 is Corpse corpse3 && pawn.CanReach(corpse3, PathEndMode.Touch, Danger.Deadly, false, TraverseMode.ByPawn))
+                {
+                    return this.EatCorpseJob(pawn, corpse3);
+                }
             }
 
             Building building = this.FindTurretTarget(pawn);
@@ -112,23 +126,35 @@ namespace RERimhazard
 
         private Job EatCorpseJob(Pawn pawn, Thing target)
         {
-            return new Job(JobDefOf.Ingest, target)
+            return new Job(DefDatabase<JobDef>.GetNamed("RE_EatOffFloor"), target)
             {
+                count = 1,
                 expiryInterval = Rand.Range(900, 1800)
             };
         }
 
 
 
-        private Corpse FindCorpseTarget(Pawn pawn)
+        private Thing FindCorpseTarget(Pawn pawn)
         {
-            return (Corpse)AttackTargetFinder.BestAttackTarget(pawn, TargetScanFlags.NeedLOSToNonPawns | TargetScanFlags.NeedReachable, (Thing x) => x is Corpse c && c?.InnerPawn?.def?.race?.intelligence >= Intelligence.ToolUser, 0f, 20, default(IntVec3), 3.40282347E+38f, true);
+            var nearestCorpse = 
+                GenClosest.ClosestThingReachable(
+                    pawn.Position, 
+                    pawn.Map, 
+                    ThingRequest.ForGroup(ThingRequestGroup.Corpse), 
+                    PathEndMode.ClosestTouch, 
+                    TraverseParms.For(pawn), 
+                    10f,
+                    (Thing x) => x is Corpse c && 
+                        c?.InnerPawn?.def?.race?.intelligence >= Intelligence.ToolUser);
+            return nearestCorpse;
+            //return (Corpse)AttackTargetFinder.BestAttackTarget(pawn, TargetScanFlags.NeedLOSToNonPawns | TargetScanFlags.NeedReachable, (Thing x) => x is Corpse c && c?.InnerPawn?.def?.race?.intelligence >= Intelligence.ToolUser, 0f, 20, default(IntVec3), 3.40282347E+38f, true);
         }
 
 
         private Pawn FindPawnTarget(Pawn pawn)
         {
-            return (Pawn)AttackTargetFinder.BestAttackTarget(pawn, TargetScanFlags.NeedLOSToPawns | TargetScanFlags.NeedReachable, (Thing x) => x is Pawn p && !p.Dead && x.def.race.intelligence >= Intelligence.ToolUser, 0f, 15f, default(IntVec3), 3.40282347E+38f, true);
+            return (Pawn)AttackTargetFinder.BestAttackTarget(pawn, TargetScanFlags.NeedLOSToPawns | TargetScanFlags.NeedReachable, (Thing x) => x is Pawn p && !p.Dead && x.def.race.intelligence >= Intelligence.ToolUser, 0f, 100f, default(IntVec3), 3.40282347E+38f, true);
         }
 
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Harmony;
+using HarmonyLib;
 using RimWorld;
 using Verse;
 
@@ -14,7 +14,7 @@ namespace RERimhazard
         private Dictionary<IntVec3, Pawn> infectedDeadLocations = new Dictionary<IntVec3, Pawn>();
         private Dictionary<Pawn, int> deadToRise = new Dictionary<Pawn, int>();
 
-        private bool unfoggedPlayerSpots = false;
+
 
         public void AddInfectedDeadLocation(Pawn infectedDead)
         {
@@ -44,14 +44,8 @@ namespace RERimhazard
         {
             base.MapComponentTick();
 
-            //if (!unfoggedPlayerSpots && Find.TickManager.TicksGame > 0)
-            //{
-            //    unfoggedPlayerSpots = true;
-            //    foreach (var colonist in map.mapPawns.FreeColonistsSpawned)
-            //    {
-            //        AccessTools.Method(typeof(FogGrid), "FloodUnfogAdjacent").Invoke(map.fogGrid, new object[] { colonist.PositionHeld });
-            //    }
-            //}
+
+
 
             //Bring back some of the dead
             if (Find.TickManager.TicksGame % 500 == 0)

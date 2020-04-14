@@ -8,6 +8,7 @@
     <defName>RE_TVirusCarrier_Zombie</defName>
     <label>T-Virus Carrier (Zombie)</label>
     <labelNoun>a T-virus Carrier (Zombie)</labelNoun>
+    <description>T-Virus carrier (Zombie)</description>
     <hediffClass>RERimhazard.HediffWithComps_TVirusCarrier</hediffClass>
     <stages>
       <li>
@@ -27,6 +28,7 @@
     <defName>RE_TVirusCarrier_Licker</defName>
     <label>T-Virus Carrier (Licker)</label>
     <labelNoun>a T-virus Carrier (Licker)</labelNoun>
+    <description>T-Virus Carrier (Licker)</description>
     <hediffClass>RERimhazard.HediffWithComps_TVirusCarrier</hediffClass>
     <stages>
       <li>
@@ -47,6 +49,7 @@
     <defName>RE_TVirusCarrier_CrimsonHead</defName>
     <label>T-Virus Carrier (V-ACT)</label>
     <labelNoun>a T-virus Carrier (V-ACT)</labelNoun>
+    <description>T-Virus Carrier (V-ACT)</description>
     <hediffClass>RERimhazard.HediffWithComps_TVirusCarrier</hediffClass>
     <stages>
       <li>
@@ -67,6 +70,7 @@
     <defName>RE_TVirusCarrier_Tyrant</defName>
     <label>T-Virus Carrier (Mutated)</label>
     <labelNoun>a T-virus Carrier (Mutated)</labelNoun>
+    <description>T-Virus Carrier (Mutated)</description>
     <hediffClass>RERimhazard.HediffWithComps_TVirusCarrier</hediffClass>
     <stages>
       <li>

@@ -24,10 +24,7 @@
       <harvestedThingDef>MedicineHerbal</harvestedThingDef>
       <harvestYield>1</harvestYield>
       <topWindExposure>0.1</topWindExposure>
-      <visualSizeRange>
-        <min>0.3</min>
-        <max>1.0</max>
-      </visualSizeRange>
+      <visualSizeRange>0.3~1.0</visualSizeRange>
       <wildOrder>2</wildOrder>
     </plant>
   </ThingDef>

@@ -29,14 +29,7 @@
       <li>Fog</li>
     </genSteps>
   </MapGeneratorDef>
-
-  <GenStepDef>
-    <defName>RE_ElevationFertilityUnderground</defName>
-    <!--<linkWithMapGenerator>DeepMap</linkWithMapGenerator>-->
-    <order>10</order>
-    <genStep Class="RERimhazard.GenStep_ElevationFertility_Deep"/>
-  </GenStepDef>
-
+  
   <GenStepDef>
     <defName>RE_Underground</defName>
     <order>200</order>

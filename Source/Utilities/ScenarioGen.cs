@@ -10,6 +10,8 @@ namespace RERimhazard
 {
     public static partial class ScenarioGen
     {
+
+
         public static void CreateBeds(Pawn startingAndOptionalPawn, Map map, ThingDef bedType, ThingDef stuffType)
         {
             //Place a sleeping bag on the ground near them.
@@ -30,7 +32,8 @@ namespace RERimhazard
         public static void SpawnBuildingAt(ThingDef def, int x, int z, Map map, Faction fac, Rot4 dir, ThingDef stuff = null)
         {
             Thing building = ThingMaker.MakeThing(def, stuff);
-            var buildingLoc = new IntVec3(map.Center.x + x, 0, map.Center.z + z);
+            var buildingLoc = new IntVec3(x, 0, z);
+            //var buildingLoc = new IntVec3(map.Center.x + x, 0, map.Center.z + z);
             GenSpawn.Spawn(building, buildingLoc, map, dir);
             building.SetFaction(fac);
         }
@@ -39,7 +42,8 @@ namespace RERimhazard
         public static void SpawnBuildingAt(ThingDef def, int x, int z, Map map, Faction fac, Rot4 dir, out Thing building, ThingDef stuff = null)
         {
             building = ThingMaker.MakeThing(def, stuff);
-            var buildingLoc = new IntVec3(map.Center.x + x, 0, map.Center.z + z);
+            var buildingLoc = new IntVec3(x, 0, z);
+            //var buildingLoc = new IntVec3(map.Center.x + x, 0, map.Center.z + z);
             GenSpawn.Spawn(building, buildingLoc, map, dir);
             building.SetFaction(fac);
         }
@@ -47,7 +51,8 @@ namespace RERimhazard
         public static void CreateWallsAt(int startX, int startZ, int numOfWalls, bool isVertical, Map map, ThingDef stuff, Faction fac, bool hasDoor = true, int createDoorAtIndex = 12)
         {
             //var wallStart = new IntVec3(map.Center.x - 10, 0, map.Center.z + 4);
-            var wallStart = new IntVec3(map.Center.x + startX, 0, map.Center.z + startZ);
+            var wallStart = new IntVec3(startX, 0, startZ);
+            //var wallStart = new IntVec3(map.Center.x + startX, 0, map.Center.z + startZ);
             for (int i = 0; i < numOfWalls; i++)
             {
                 Thing wall = (i == createDoorAtIndex) ? ThingMaker.MakeThing(ThingDefOf.Door, stuff) : ThingMaker.MakeThing(ThingDefOf.Wall, stuff);
@@ -98,7 +103,6 @@ namespace RERimhazard
                 NoiseDebugUI.StoreNoiseRender(rockNoise.noise, rockNoise.rockDef + " score", origin.Size.ToIntVec2);
             }
 
-
             foreach (IntVec3 cell in origin.AllCells)
             {
                 var originTerrain = cell.GetTerrain(origin);
@@ -123,19 +127,15 @@ namespace RERimhazard
             }
         }
 
-
-
-
-
-            public static void CreateOutpost(Pawn startingAndOptionalPawn, Map map)
+            public static void CreateOutpost(Faction fac, IntVec3 pos, Map map)
         {
             
             //Place a table
             Thing spawnedTable = null;
             Thing table = ThingMaker.MakeThing(ThingDefOf.Table2x2c, ThingDefOf.WoodLog);
-            var tableLoc = CellFinder.FindNoWipeSpawnLocNear(startingAndOptionalPawn.GetRegion().RandomCell, map, ThingDefOf.Table2x2c, Rot4.South);
-            table.SetFaction(startingAndOptionalPawn.Faction);
-                if (GenPlace.TryPlaceThing(table, tableLoc, startingAndOptionalPawn.MapHeld, ThingPlaceMode.Near, out spawnedTable))
+            var tableLoc = CellFinder.FindNoWipeSpawnLocNear(pos.GetRegion(map).RandomCell, map, ThingDefOf.Table2x2c, Rot4.South);
+            table.SetFaction(fac);
+                if (GenPlace.TryPlaceThing(table, tableLoc, map, ThingPlaceMode.Near, out spawnedTable))
                 {
                 }
            
@@ -164,27 +164,27 @@ namespace RERimhazard
 
             //Campfire
             Thing campfire = ThingMaker.MakeThing(ThingDefOf.Campfire);
-            campfire.SetFaction(startingAndOptionalPawn.Faction);
-            var campfireLoc = CellFinder.FindNoWipeSpawnLocNear(startingAndOptionalPawn.GetRegion().RandomCell, map, ThingDefOf.Campfire, Rot4.South);
-            GenPlace.TryPlaceThing(campfire, campfireLoc, startingAndOptionalPawn.MapHeld, ThingPlaceMode.Near);
+            campfire.SetFaction(fac);
+            var campfireLoc = CellFinder.FindNoWipeSpawnLocNear(pos.GetRegion(map).RandomCell, map, ThingDefOf.Campfire, Rot4.South);
+            GenPlace.TryPlaceThing(campfire, campfireLoc, map, ThingPlaceMode.Near);
 
             //Food
-            var foodStartPoint = CellFinder.FindNoWipeSpawnLocNear(startingAndOptionalPawn.GetRegion().RandomCell, map, ThingDefOf.MealSurvivalPack, Rot4.South);
+            var foodStartPoint = CellFinder.FindNoWipeSpawnLocNear(pos.GetRegion(map).RandomCell, map, ThingDefOf.MealSurvivalPack, Rot4.South);
             for (int i = 0; i < 2; i++)
             {
                 Thing foodToEat = ThingMaker.MakeThing(ThingDefOf.MealSurvivalPack);
-                if (GenPlace.TryPlaceThing(foodToEat, foodStartPoint, startingAndOptionalPawn.MapHeld, ThingPlaceMode.Near, out Thing foodSpawned))
+                if (GenPlace.TryPlaceThing(foodToEat, foodStartPoint, map, ThingPlaceMode.Near, out Thing foodSpawned))
                 {
                     foodSpawned.stackCount = 10;
                 }
             }
 
             //Some green herbs
-            var greenHerbStartPoint = CellFinder.FindNoWipeSpawnLocNear(startingAndOptionalPawn.GetRegion().RandomCell, map, ThingDefOf.MealSurvivalPack, Rot4.South);
+            var greenHerbStartPoint = CellFinder.FindNoWipeSpawnLocNear(pos.GetRegion(map).RandomCell, map, ThingDefOf.MealSurvivalPack, Rot4.South);
             for (int i = 0; i < 3; i++)
             {
                 Plant herb = (Plant)ThingMaker.MakeThing(ThingDef.Named("RE_Plant_ResidentEvilHerbGreen"));
-                if (GenPlace.TryPlaceThing(herb, greenHerbStartPoint, startingAndOptionalPawn.MapHeld, ThingPlaceMode.Near, out Thing herbSpawned))
+                if (GenPlace.TryPlaceThing(herb, greenHerbStartPoint, map, ThingPlaceMode.Near, out Thing herbSpawned))
                 {
                     var plantHerb = (Plant)herbSpawned;
                     plantHerb.Growth = 1.0f;
@@ -192,11 +192,11 @@ namespace RERimhazard
             }
 
             //Some other herbs.
-            var otherHerbStartPoint = CellFinder.FindNoWipeSpawnLocNear(startingAndOptionalPawn.GetRegion().RandomCell, map, ThingDefOf.MealSurvivalPack, Rot4.South);
+            var otherHerbStartPoint = CellFinder.FindNoWipeSpawnLocNear(pos.GetRegion(map).RandomCell, map, ThingDefOf.MealSurvivalPack, Rot4.South);
             for (int i = 0; i < 2; i++)
             {
                 Plant herb = (Plant)ThingMaker.MakeThing(Rand.Value > 0.5f ? ThingDef.Named("RE_Plant_ResidentEvilHerbBlue") : ThingDef.Named("RE_Plant_ResidentEvilHerbRed"));
-                if (GenPlace.TryPlaceThing(herb, otherHerbStartPoint, startingAndOptionalPawn.MapHeld, ThingPlaceMode.Near, out Thing herbSpawned))
+                if (GenPlace.TryPlaceThing(herb, otherHerbStartPoint, map, ThingPlaceMode.Near, out Thing herbSpawned))
                 {
                     var plantHerb = (Plant)herbSpawned;
                     plantHerb.Growth = 1.0f;

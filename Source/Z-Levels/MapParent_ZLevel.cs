@@ -9,7 +9,7 @@ namespace RERimhazard
 {
     public class MapParent_ZLevel : MapParent
     {
-        private int z;
+        private int z = 0;
         public int Z => z;
 
         public void SetZ(int newZ) => z = newZ;

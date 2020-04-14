@@ -5,6 +5,7 @@
     <defName>RE_ProgenitorVirusCarrier</defName>
     <label>Progenitor Virus Carrier</label>
     <labelNoun>a Progenitor virus Carrier</labelNoun>
+    <description>progenitor virus carrier</description>
     <hediffClass>RERimhazard.HediffWithComps_TVirusCarrier</hediffClass>
     <stages>
       <li>

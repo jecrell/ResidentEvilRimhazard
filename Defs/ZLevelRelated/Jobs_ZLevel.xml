@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <JobDef>
+    <defName>RE_GoToStairs</defName>
+    <driverClass>RERimhazard.JobDriver_GoToStairs</driverClass>
+    <reportString>traversing TargetA.</reportString>
+  </JobDef>
+
+</Defs>

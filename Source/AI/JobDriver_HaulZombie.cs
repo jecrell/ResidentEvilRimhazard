@@ -74,24 +74,6 @@ namespace RERimhazard
 
             yield return Toils_Reserve.Release(TargetIndex.B);
 
-            //Toil 9: Think about that.
-            yield return new Toil
-            {
-                initAction = delegate
-                {
-                    ////It's a day to remember
-                    //TaleDef taleToAdd = TaleDef.Named("HeldSermon");
-                    //if ((this.pawn.IsColonist || this.pawn.HostFaction == Faction.OfPlayer) && taleToAdd != null)
-                    //{
-                    //    TaleRecorder.RecordTale(taleToAdd, new object[]
-                    //    {
-                    //       this.pawn,
-                    //    });
-                    //}
-                },
-                defaultCompleteMode = ToilCompleteMode.Instant
-            };
-
             yield break;
 
 

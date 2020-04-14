@@ -15,7 +15,7 @@ namespace RERimhazard
             MapParent mapParent = (MapParent)WorldObjectMaker.MakeWorldObject(DefDatabase<WorldObjectDef>.GetNamed("RE_Underground", true));
             mapParent.Tile = origin.Tile;
             Find.WorldObjects.Add(mapParent);
-            var undergroundMapParent = (MapParent_ZLevel)mapParent;
+            var undergroundMapParent = mapParent as MapParent_ZLevel;
             string seedString = Find.World.info.seedString;
             Find.World.info.seedString = new System.Random().Next(0, 2147483646).ToString();
             HarmonyPatches.calcWealthFloors = false;
@@ -23,7 +23,8 @@ namespace RERimhazard
             Find.World.info.seedString = seedString;
 
             var worldZLevels = Find.World.GetComponent<WorldComponent_ZLevels>();
-            worldZLevels.InsertNewZLevel(origin.Tile, undergroundMapParent, true);
+            
+            worldZLevels.InsertNewZLevel(origin, origin.Parent, undergroundMapParent, true);
 
             Current.Game.CurrentMap = newMap;
             return newMap;

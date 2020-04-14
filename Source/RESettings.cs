@@ -35,6 +35,7 @@ namespace RERimhazard
         public static int DOWNZOMBIE_TRANSFORM_INTERVAL_MIN = 2000;
         public static int DOWNZOMBIE_TRANSFORM_INTERVAL_MAX = 7000;
         internal static float MUTATION_CHANCE = 0.15f;
+        public static bool DEBUG_MODE = true;
 
         public static IntRange SPREADTIME => new IntRange(SPREADTIME_MIN, SPREADTIME_MAX);
 
@@ -45,5 +46,14 @@ namespace RERimhazard
             new ZombieChance("RE_LickerKind", "RE_TVirusCarrier_Licker", 0),
             new ZombieChance("RE_TyrantKind", "RE_TVirusCarrier_Tyrant", 100)
             };
+    
+        public static void DM(string s)
+        {
+            if (DEBUG_MODE)
+                Log.Message(s);
+        }
+    
     }
+
+
 }
